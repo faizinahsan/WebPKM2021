@@ -1,66 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebPKM</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>WebPKM Unpad</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/navbar/navbar.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
 </head>
+
 <body>
-    <div class="container login-card">
-        <div class="row">
-            <form class="col-md-6 login-form">
-                <div class="form-group">
-                    <h1 class="login-header">PKM UNPAD</h1>
+    <div class="header">
+        <!-- <div class="img-container">
+            <img class="home-img" src="img/homeimg.png" alt="homeimg" srcset="">
+            <div class="home-img-container text-center">
+                <h1 class="pkm-unpad-title">PROGRAM KREATIVITAS MAHASISWA</h1>
+                <h2 class="pkm-unpad-subtitle">UNIVERSITAS PADJADJARAN</h2>
+            </div>
+        </div> -->
+        <!-- Start Navcontainer -->
+        <div class="nav-container">
+            <!-- Start Navbar -->
+            <nav class="navbar navbar-expand-lg fixed-top">
+                <a class="nav-brand" href="#">PKM UNPAD</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Alur</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Reviewer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Berkas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="auth-nav nav-link btn-auth" href="login.html">Sign In</a>
+                        </li>
+                        <li class="nav-item signup-nav">
+                            <a class="auth-nav nav-link btn-auth" href="signup.html">Sign Up</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="form-group">
-                    <h4 class="login-header2">Hallo, Selamat Datang Pejuang PKM!</h4    >
-                </div>
-                <label for="tipeAkun">Akun</label>
-                <div class="form-group">
-                    <select class="custom-select select-akun">
-                        <option selected>Select your account</option>
-                        <option value="1">Mahasiswa</option>
-                        <option value="2">Dosen Pembimbing</option>
-                        <option value="3">Dosen Reviewer</option>
-                        <option value="4">Kemahasiswaan</option>
-                      </select>
-                </div>
-                <div class="form-group">
-                    <label for="NPMatauNIP">NPM atau NIP</label>
-                    <input type="text" class="form-control" id="npmAtauNip" aria-describedby="npmAtauNip" placeholder="Enter your npm/nip">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
-                    <div class="text-right p-t-12">
-                        <a class="txt2" href="#">
-                            Forgot Password?
-                        </a>
+            </nav>
+            <!-- End Navbar -->
+
+            <!-- Start Image Slider -->
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="7000">
+                <!-- <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol> -->
+                <div class="carousel-inner" role="listbox">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active"
+                        style="background:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(img/backgroundhome.png);">
+                        <div class="carousel-caption text-center">
+                            <h1>Program Kreatifitas Mahasiswa</h1>
+                            <h2>Universitas Padjadjaran</h2>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item"
+                        style="background:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(img/backgroundhome2.png);">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-item"
+                        style="background:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(img/backgroundhome3.png);">
                     </div>
                 </div>
-                <div class="form-group text-center">
-                    <button type="submit" class="btn login-btn">Submit</button>
-                </div>
-                <div class="text-center p-t-12">
-                    <span class="txt1">
-                        Don't Have an Account?
-                    </span>
-                </div>
-                <div class="text-center p-t-12">
-                    <a class="txt2" href="#">
-                        Register
-                    </a>
-                </div>
-            </form>
-            <div class="col-md-6 login-img d-flex justify-content-lg-center">
-                <img src="img/loginimg.png" alt="loginimg">
+                <!-- End Carousel Inner -->
+                <!-- Prev & Next Buttons -->
+                <a href="#carouselExampleIndicators" class="carousel-control-prev" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a href="#carouselExampleIndicators" class="carousel-control-next" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
             </div>
-            
         </div>
+        <!-- End Image Slider -->
+
     </div>
-    
+    <!-- End Navcontainer -->
+    </div>
+    <!-- Start Container Section -->
+    <div class="container">
+        <!-- Start Introduction Section -->
+        <div class="introduction">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Apa itu PKM?</h1>
+                    <p>Program Kreativitas Mahasiswa adalah kegiatan di bawah Kementerian Riset, Teknologi, dan
+                        Pendidikan Tinggi untuk meningkatkan kreativitas dan inovasi berlandaskan penguasaan sains dan
+                        teknologi. Program ini berupa pemberian dana bagi proposal-proposal yang dinilai layak oleh tim
+                        juri untuk dilaksanakan. Di akhir program, karya terpilih akan diikutsertakan ke Pekan Ilmiah
+                        Mahasiswa Nasional (PIMNAS) yang menjadi salah satu penentu pemeringkatan perguruan tinggi
+                        negeri. </p>
+                    <a href="#" class="btn btn-primary">Upload Proposal</a>
+                </div>
+                <div class="col-md-4">
+                    <img src="img/homeicon.png" alt="icon">
+                </div>
+            </div>
+        </div>
+        <!-- End Introduction Section -->
+
+        <!-- Start Article Section -->
+        <div class="article">
+            <h1 class="text-center">Seputar PKM UNPAD</h1>
+            <!-- Start Carousel Card Section -->
+            <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
+                <!-- Controls -->
+                <div class="controls-top">
+                    <a class="btn-floating" href="#carousel-example-multi" data-slide="prev"><i
+                            class="fas fa-chevron-left"></i></a>
+                    <a class="btn-floating" href="#carousel-example-multi" data-slide="next"><i
+                            class="fas fa-chevron-right"></i></a>
+                </div>
+                <!-- End Controls -->
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-multi" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-multi" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-multi" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-multi" data-slide-to="3"></li>
+                    <li data-target="#carousel-example-multi" data-slide-to="4"></li>
+                    <li data-target="#carousel-example-multi" data-slide-to="5"></li>
+                </ol>
+                <!--End Indicators-->
+                
+                <!-- Carousel Inner -->
+                <div class="carousel-inner v-2" role="listbox">
+                    
+                </div>
+                <!-- End Carousel Inner -->
+            </div>
+            <!-- End Carousel Card Section -->
+        </div>
+        <!-- End Article Section -->
+    </div>
+    <!-- End Container Section -->
+
+    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script>
+        $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < 4; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+    </script>
 </body>
+
 </html>
