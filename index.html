@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebPKM Unpad</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/homepage/card.css">
+    <link rel="stylesheet" href="css/homepage/timeline.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/navbar/navbar.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
+    <link rel="stylesheet" href="css/navbar/navbar_homepage.css">
+    <!-- <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> -->
+    <!-- <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script> -->
 </head>
 
 <body>
@@ -25,7 +27,7 @@
         <div class="nav-container">
             <!-- Start Navbar -->
             <nav class="navbar navbar-expand-lg fixed-top">
-                <a class="nav-brand" href="#">PKM UNPAD</a>
+                <a class="nav-brand" href="index.html">PKM UNPAD</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -34,10 +36,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Alur</a>
+                            <a href="alur.html" class="nav-link">Alur</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Reviewer</a>
+                            <a href="table.html" class="nav-link">Reviewer</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Berkas</a>
@@ -98,7 +100,7 @@
         <!-- Start Introduction Section -->
         <div class="introduction">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <h1>Apa itu PKM?</h1>
                     <p>Program Kreativitas Mahasiswa adalah kegiatan di bawah Kementerian Riset, Teknologi, dan
                         Pendidikan Tinggi untuk meningkatkan kreativitas dan inovasi berlandaskan penguasaan sains dan
@@ -106,70 +108,161 @@
                         juri untuk dilaksanakan. Di akhir program, karya terpilih akan diikutsertakan ke Pekan Ilmiah
                         Mahasiswa Nasional (PIMNAS) yang menjadi salah satu penentu pemeringkatan perguruan tinggi
                         negeri. </p>
-                    <a href="#" class="btn btn-primary">Upload Proposal</a>
+                    <a href="#" class="btn btn-primary btn-upload-proposal">Upload Proposal</a>
                 </div>
-                <div class="col-md-4">
-                    <img src="img/homeicon.png" alt="icon">
+                <div class="col-md-5">
+                    <img class="upload-proposal-img" src="img/homeicon.png" alt="icon">
                 </div>
             </div>
         </div>
         <!-- End Introduction Section -->
-
-        <!-- Start Article Section -->
-        <div class="article">
-            <h1 class="text-center">Seputar PKM UNPAD</h1>
-            <!-- Start Carousel Card Section -->
-            <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
-                <!-- Controls -->
-                <div class="controls-top">
-                    <a class="btn-floating" href="#carousel-example-multi" data-slide="prev"><i
-                            class="fas fa-chevron-left"></i></a>
-                    <a class="btn-floating" href="#carousel-example-multi" data-slide="next"><i
-                            class="fas fa-chevron-right"></i></a>
-                </div>
-                <!-- End Controls -->
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-multi" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-multi" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-multi" data-slide-to="2"></li>
-                    <li data-target="#carousel-example-multi" data-slide-to="3"></li>
-                    <li data-target="#carousel-example-multi" data-slide-to="4"></li>
-                    <li data-target="#carousel-example-multi" data-slide-to="5"></li>
-                </ol>
-                <!--End Indicators-->
-                
-                <!-- Carousel Inner -->
-                <div class="carousel-inner v-2" role="listbox">
-                    
-                </div>
-                <!-- End Carousel Inner -->
-            </div>
-            <!-- End Carousel Card Section -->
-        </div>
-        <!-- End Article Section -->
     </div>
     <!-- End Container Section -->
+    <!-- Start Article Section -->
+    <div class="article">
+        <h1 class="text-center">Seputar PKM UNPAD</h1>
+        <div class="">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
+                <div class="container">
+                    <div class="carousel-inner carousel-inner-two row mx-auto ">
+                        <div class="carousel-item carousel-item-two col-md-3 active" style="max-height: 500px;">
+                            <div class="card" style="max-width: 261px; max-height: 500px;">
+                                <img class="card-img-top" src="img/cardimgcontainer.png" alt="Card image cap"
+                                    style="max-width: 261px; max-height: 185px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">PKM Unpad Lolos Pimnas</h5>
+                                    <p class="card-text" style="max-height: 154px;">Empat kelompok Program Kreativitas
+                                        Mahasiswa (PKM) Universitas
+                                        Padjadjaran dinyatakan lolos sebagai peserta Pekan Ilmiah Mahasiswa Nasional
+                                        (Pimnas)
+                                        ke-32 </p>
+                                    <div class="text-center pt-md-2">
+                                        <a class="btn btn-primary btn-custom-readmore" href="news.html">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item carousel-item-two col-md-3" style="max-height: 500px;">
+                            <div class="card" style="max-width: 261px; max-height: 500px;">
+                                <img class="card-img-top" src="img/cardimgcontainer.png" alt="Card image cap"
+                                    style="max-width: 261px; max-height: 185px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tim Plesetan Siap Pimnas</h5>
+                                    <p class="card-text" style="max-height: 154px;">Empat kelompok Program Kreativitas
+                                        Mahasiswa (PKM) Universitas
+                                        Padjadjaran dinyatakan lolos sebagai peserta Pekan Ilmiah Mahasiswa Nasional
+                                        (Pimnas)
+                                        ke-32 </p>
+                                    <div class="text-center pt-md-2">
+                                        <a class="btn btn-primary btn-custom-readmore" href="news.html">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item carousel-item-two col-md-3" style="max-height: 500px;">
+                            <div class="card" style="max-width: 261px; max-height: 500px;">
+                                <img class="card-img-top" src="img/cardimgcontainer.png" alt="Card image cap"
+                                    style="max-width: 261px; max-height: 185px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">PKM Unpad Lolos Pimnas</h5>
+                                    <p class="card-text" style="max-height: 154px;">Empat kelompok Program Kreativitas
+                                        Mahasiswa (PKM) Universitas
+                                        Padjadjaran dinyatakan lolos sebagai peserta Pekan Ilmiah Mahasiswa Nasional
+                                        (Pimnas)
+                                        ke-32 </p>
+                                    <div class="text-center pt-md-2">
+                                        <a class="btn btn-primary btn-custom-readmore" href="news.html">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item carousel-item-two col-md-3" style="max-height: 500px;">
+                            <div class="card" style="max-width: 261px; max-height: 500px;">
+                                <img class="card-img-top" src="img/cardimgcontainer.png" alt="Card image cap"
+                                    style="max-width: 261px; max-height: 185px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Kompor Lansia Unpad</h5>
+                                    <p class="card-text" style="max-height: 154px;">Empat kelompok Program Kreativitas
+                                        Mahasiswa (PKM) Universitas
+                                        Padjadjaran dinyatakan lolos sebagai peserta Pekan Ilmiah Mahasiswa Nasional
+                                        (Pimnas)
+                                        ke-32 </p>
+                                    <div class="text-center pt-md-2">
+                                        <a class="btn btn-primary btn-custom-readmore" href="news.html">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+                <!--Controls-->
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <!-- <i class="fa fa-angle-left" aria-hidden="true" style="color: blue;"></i> -->
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <!-- <i class="fa fa-angle-right" aria-hidden="true" style="color: blue;"></i> -->
+                    <span class="sr-only">Next</span>
+                </a>
+                <!--/.Controls-->
+
+            </div>
+        </div>
+    </div>
+    <!-- End Article Section -->
+
+    <!-- Start Timeline Section-->
+    <div class="container">
+        <div class="page-header">
+            <h1 id="" class="text-center">Timeline PKM UNPAD</h1>
+        </div>
+       
+    </div>
+    
+    <!-- End  Timeline Section-->
+    <div class="footer">
+        <h1>PKM UNPAD</h1>
+        <h3>Dibuat Oleh</h3>
+        <div class="row nama-developer">
+            <div class="col-md-2"><h4>Intan Pratiwi</h4></div>
+            <div class="col-md-3"><h4>Mochamad Fa'izin Ahsan</h4></div>
+        </div>
+    </div>
+    
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-        $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
-            var next = $(this).next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
-            }
-            next.children(':first-child').clone().appendTo($(this));
+        $(document).ready(function () {
+            $("#myCarousel").on("slide.bs.carousel", function (e) {
+                var $e = $(e.relatedTarget);
+                var idx = $e.index();
+                var itemsPerSlide = 4;
+                var totalItems = $(".carousel-item-two").length;
+                console.log("total items: " + totalItems)
 
-            for (var i = 0; i < 4; i++) {
-                next = next.next();
-                if (!next.length) {
-                    next = $(this).siblings(':first');
+                if (idx >= totalItems - (itemsPerSlide - 1)) {
+                    var it = itemsPerSlide - (totalItems - idx);
+                    for (var i = 0; i < it; i++) {
+                        // append slides to end
+                        if (e.direction == "left") {
+                            $(".carousel-item-two")
+                                .eq(i)
+                                .appendTo(".carousel-inner-two");
+                        } else {
+                            $(".carousel-item-two")
+                                .eq(0)
+                                .appendTo($(this).find(".carousel-inner-two"));
+                        }
+                    }
                 }
-                next.children(':first-child').clone().appendTo($(this));
-            }
+            });
         });
     </script>
+
 </body>
 
 </html>

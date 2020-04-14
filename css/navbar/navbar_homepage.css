@@ -4,8 +4,7 @@ body {
 
 .navbar{
     text-transform: uppercase;
-    box-shadow: 0 2px 0.5px 0 rgba(0, 0, 0, 0.04);
-    background-color: #ffffff !important;
+    background-color: rgba(105, 77, 23, 0.3)!important;
     
   }
 
@@ -21,7 +20,7 @@ body {
 }
 
 .nav-link {
-    color: #f9ca48;
+    color: #ffffff;
     font-family: Opensans-Regular, 'sans-serif';
 }
 
