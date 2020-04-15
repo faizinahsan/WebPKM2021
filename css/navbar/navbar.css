@@ -69,3 +69,23 @@ body {
     line-height: normal;
     letter-spacing: normal;
 }
+
+/* Profile */
+.btn-dropdown {
+    color: #f9ca48;
+    font-family: OpenSans;
+    font-size: 20px;
+    margin-right: 71px;
+    margin-left: 50px;
+    background-color: #ffffff;
+}
+.btn-dropdown:focus{
+    border-color: #ffffff;  box-shadow: none; -webkit-box-shadow: none;
+}
+.dropdown-menu{
+    border-color: #f9ca48;
+}
+.dropdown-menu a{
+    font-family: NunitoSans-Regular;
+    font-size: 16px;
+}
