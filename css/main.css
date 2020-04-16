@@ -15,6 +15,10 @@
   font-family: Opensans-Regular;
   src: url('../fonts/opensans/OpenSans-Regular.ttf');
 }
+@font-face {
+  font-family: Opensans-Bold;
+  src: url('../fonts/opensans/OpenSans-Bold.ttf');
+}
 
 @font-face {
   font-family: NunitoSans-Regular;

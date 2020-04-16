@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/navbar/navbar.css">
     <link rel="stylesheet" href="../css/navbar/sidebar.css">
-    <link rel="stylesheet" href="../css/mahasiswa/profile.css">
+    <link rel="stylesheet" href="../css/mahasiswa/tahapanPkm.css">
     <script src="https://kit.fontawesome.com/3d79b0331b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -54,15 +54,15 @@
         <!-- Side Bar -->
         <nav id="sidebar">
             <ul class="list-unstyled components">
-                <li class="active">
-                    <a href="#">Profile</a>
+                <li class="">
+                    <a href="profile.html">Profile</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tahapan
                         PKM</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="kosultasi_dosbim.html">Konsultasi Dosen Pendamping</a>
+                        <li class="active">
+                            <a href="#">Konsultasi Dosen Pendamping</a>
                         </li>
                         <li>
                             <a href="#">Upload Proposal</a>
@@ -74,7 +74,7 @@
                             <a href="#">Upload Proposal Final</a>
                         </li>
                         <li>
-                            <a href="#">Akun Simbelawa</a>
+                            <a href="#">Akun Simbelmawa</a>
                         </li>
                     </ul>
                 </li>
@@ -83,55 +83,39 @@
         <!-- End Side Bar -->
         <!-- Container/Content -->
         <div id="content">
+            <!-- Start Container -->
             <div class="container">
-                <h3>Profile</h3>
-                <h4>Data Ketua Kelompok</h4>
-                <table class="table table-borderless">
-                    <tbody>
-                        <tr>
-                            <td>Nama Lengkap: </td>
-                            <td>Ibnu Mualim</td>
-                        </tr>
-                        <tr>
-                            <td>Npm : </td>
-                            <td>140810160022</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h4>Data Anggota Kelompok</h4>
-                <button type="button" data-toggle="modal" data-target="#tambahAnggotaModal" class="btn btn-custom">Tambahkan Anggota</button>
-                <!-- Modal -->
-                <div class="modal fade" id="tambahAnggotaModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambahkan Anggota</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="#" method="POST">
-                                    <div class="form-group">
-                                      <label for="exampleInputEmail1">NPM: </label>
-                                      <input type="text" class="form-control" id="inputNpmAnggota" aria-describedby="emailHelp" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword1">Nama Lengkap:</label>
-                                      <input type="text" class="form-control" id="inputNamaLengkapAnggota" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-custom">Tambahkan</button>
-                                </div>
-                            </form>
-                        </div>
+                <!-- Start Timeline Horizontal -->
+                <div class="timeline-horizontal">
+                    <div class="tahap-satu text-center">
+                        <img class="tahap-img" src="../img/tahap1active.png" alt="" />
+                        <img class="tahap-icon" src="../img/kosuldosbim.png" alt="Konsultasi Dosen">
+                        <h3 class="tahap-nama">
+                          Konsultasi <br> Dosen Pendamping
+                        </h3>
+                    </div>
+                    <div class="tahap-dua">
+                        <img class="tahap-img" src="../img/tahap2disabled.png" alt="" />
+                        <h3 class="tahap-nama">
+                            Relative
+                        </h3>
+                        <p class="tahap-deskripsi">
+                            All elements are positioned realtive to the parent. No absolute positioning.
+                          </p>
+                    </div>
+                    <div class="tahap-tiga">
+                        <img class="tahap-img" src="../img/tahap3disabled.png" alt="" />
+                        <h3 class="tahap-nama">
+                            Contained
+                        </h3>
+                        <p class="tahap-deskripsi">
+                            The timeline does not extend past the first and last elements.
+                          </p>
                     </div>
                 </div>
-                <!-- End Modal -->
+                <!-- End Timeline Horizontal -->
             </div>
+            <!-- End Container -->
         </div>
         <!-- End Container/Content -->
     </div>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/navbar/navbar.css">
     <link rel="stylesheet" href="../css/navbar/sidebar.css">
-    <link rel="stylesheet" href="../css/mahasiswa/profile.css">
+    <link rel="stylesheet" href="../css/mahasiswa/tahapanPkm.css">
     <script src="https://kit.fontawesome.com/3d79b0331b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -54,8 +54,8 @@
         <!-- Side Bar -->
         <nav id="sidebar">
             <ul class="list-unstyled components">
-                <li class="active">
-                    <a href="#">Profile</a>
+                <li class="">
+                    <a href="profile.html">Profile</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tahapan
@@ -64,17 +64,17 @@
                         <li>
                             <a href="kosultasi_dosbim.html">Konsultasi Dosen Pendamping</a>
                         </li>
-                        <li>
-                            <a href="#">Upload Proposal</a>
+                        <li class="active">
+                            <a href="upload_proposal.html">Upload Proposal</a>
                         </li>
                         <li>
-                            <a href="#">Coaching Dosen Reviewer</a>
+                            <a href="coaching.html">Coaching Dosen Reviewer</a>
                         </li>
                         <li>
-                            <a href="#">Upload Proposal Final</a>
+                            <a href="upload_final.html">Upload Proposal Final</a>
                         </li>
                         <li>
-                            <a href="#">Akun Simbelawa</a>
+                            <a href="akun_simbelmawa.html">Akun Simbelmawa</a>
                         </li>
                     </ul>
                 </li>
@@ -83,55 +83,47 @@
         <!-- End Side Bar -->
         <!-- Container/Content -->
         <div id="content">
+            <!-- Container -->
             <div class="container">
-                <h3>Profile</h3>
-                <h4>Data Ketua Kelompok</h4>
-                <table class="table table-borderless">
-                    <tbody>
-                        <tr>
-                            <td>Nama Lengkap: </td>
-                            <td>Ibnu Mualim</td>
-                        </tr>
-                        <tr>
-                            <td>Npm : </td>
-                            <td>140810160022</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h4>Data Anggota Kelompok</h4>
-                <button type="button" data-toggle="modal" data-target="#tambahAnggotaModal" class="btn btn-custom">Tambahkan Anggota</button>
-                <!-- Modal -->
-                <div class="modal fade" id="tambahAnggotaModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambahkan Anggota</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="#" method="POST">
-                                    <div class="form-group">
-                                      <label for="exampleInputEmail1">NPM: </label>
-                                      <input type="text" class="form-control" id="inputNpmAnggota" aria-describedby="emailHelp" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword1">Nama Lengkap:</label>
-                                      <input type="text" class="form-control" id="inputNamaLengkapAnggota" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-custom">Tambahkan</button>
-                                </div>
-                            </form>
+                <ul class="timeline-horizontal" id="timeline">
+                    <li class="li">
+                        <div class="icon-alur-container text-center konsultasiDosen">
+                            <img src="../img/kosuldosbim.png" alt="Konsultasi Dosen">
+                            <br>
+                            <span class="status done-status">Konsultasi <br> Dosen <br> Pendamping</span>
                         </div>
-                    </div>
-                </div>
-                <!-- End Modal -->
+                    </li>
+                    <li class="li">
+                        <div class="icon-alur-container text-center uploadProposal">
+                            <img src="../img/uploadProposal.png" alt="Upload Proposal">
+                            <br>
+                            <span class="status active-status">Upload Proposal</span>
+                        </div>
+                    </li>
+                    <li class="li">
+                        <div class="icon-alur-container text-center coaching">
+                            <img src="../img/coaching.png" alt="Coachings">
+                            <br>
+                            <span class="status disabled-status">Coaching</span>
+                        </div>
+                    </li>
+                    <li class="li">
+                        <div class="icon-alur-container text-center uploadFinal">
+                            <img src="../img/uploadFinal.png" alt="Upload Finals">
+                            <br>
+                            <span class="status disabled-status">Upload Final</span>
+                        </div>
+                    </li>
+                    <li class="li">
+                        <div class="icon-alur-container text-center akun">
+                            <img src="../img/akunSibelmawa.png" alt="Akun Simbelmawa">
+                            <br>
+                            <span class="status disabled-status">Akun</span>
+                        </div>
+                    </li>
+                </ul>
             </div>
+            <!-- End Contanier -->
         </div>
         <!-- End Container/Content -->
     </div>
