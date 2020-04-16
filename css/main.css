@@ -19,6 +19,10 @@
   font-family: Opensans-Bold;
   src: url('../fonts/opensans/OpenSans-Bold.ttf');
 }
+@font-face {
+  font-family: Opensans-Semibold;
+  src: url('../fonts/opensans/OpenSans-Semibold.ttf');
+}
 
 @font-face {
   font-family: NunitoSans-Regular;

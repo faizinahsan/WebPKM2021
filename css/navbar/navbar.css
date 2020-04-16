@@ -61,7 +61,7 @@ body {
 .carousel-caption {
     position: absolute;
     top: 55%;
-    text-transform: uppercase;
+    text-transform: uppercase;  
 
     font-weight: bold;
     font-stretch: normal;
@@ -79,7 +79,7 @@ body {
     margin-left: 50px;
     background-color: #ffffff;
 }
-.btn-dropdown:focus{
+.btn-dropdown:focus{    
     border-color: #ffffff;  box-shadow: none; -webkit-box-shadow: none;
 }
 .dropdown-menu{
