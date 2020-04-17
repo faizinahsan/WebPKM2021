@@ -1,12 +1,12 @@
-.container-status-dosen{
+.container-konsultasi-dosen{
     margin-left: 101px;
     margin-top: 90px;
 }
-.container-status-dosen h3{
+.container-konsultasi-dosen h3{
     color: #f9ca48;
     font-family: Opensans-Semibold;
 }
-.status-dosen-pendamping {
+.dosen-pendamping {
     min-width: 835px;
     min-height: 200px;
     background-color: #ffffff;
@@ -14,7 +14,7 @@
     font-family: Opensans-Regular;
     /* margin-left: 90px; */
 }
-.status-dosen-pendamping h5{
+.dosen-pendamping h5{
     font-size: 18px;
 }
 .status-header{
@@ -29,3 +29,21 @@
     padding-right: 50px !important;
     font-size: 16px;
 }
+.form-bimbingan{
+    margin-left: 50px;
+    margin-top: 25px;
+    padding-bottom: 15px;
+}
+.form-group{
+    margin-bottom: 50px !important;
+}
+
+.form-control:focus{
+    border-color: #f9ca48;  box-shadow: none; -webkit-box-shadow: none;
+  }
+  .has-error .form-control:focus{box-shadow: none; -webkit-box-shadow: none;}
+
+  .hasil-diskusi{
+      margin-left: 50px;
+      margin-top: 30px;
+  }

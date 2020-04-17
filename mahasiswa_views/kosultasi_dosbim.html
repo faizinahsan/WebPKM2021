@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../css/navbar/sidebar.css">
     <link rel="stylesheet" href="../css/mahasiswa/tahapanPkm.css">
     <link rel="stylesheet" href="../css/mahasiswa/konsultasi_dosbim.css">
+    <!-- datepicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <script src="https://kit.fontawesome.com/3d79b0331b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -64,7 +66,7 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tahapan
                         PKM</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li class="active" >
+                        <li class="active">
                             <a href="kosultasi_dosbim.html">Konsultasi Dosen Pendamping</a>
                         </li>
                         <li>
@@ -127,10 +129,11 @@
                 </ul>
             </div>
             <!-- End Contanier -->
-            <!-- Container Status Dosen -->
-            <div class="container container-status-dosen">
+            <!-- Container Dosen -->
+            <div class="container container-konsultasi-dosen">
+                <!-- Status Dosen -->
                 <h3>Konsultasi Dosen Pendamping</h3>
-                <div class="status-dosen-pendamping">
+                <div class="dosen-pendamping">
                     <div class="row status-header">
                         <div class="col-md-4">
                             <h5>Status Dosen Pendamping</h5>
@@ -147,24 +150,73 @@
                         </tr>
                     </table>
                 </div>
+                <!-- End Status Dosen -->
 
-                <div class="status-dosen-pendamping">
+                <!-- Kegiatan Dosen -->
+                <div class="dosen-pendamping">
                     <div class="row status-header">
-                        <div class="col-md-4">
-                            <h5>Status Dosen Pendamping</h5>
-                        </div>
-                        <div class="col-md-5">
-                            <button class="btn btn-custom">Tambahkan</button>
-                        </div>
+                        <h5>Kegiatan Bimbingan</h5>
                     </div>
-                    <table class="info-dosen">
+                    <form class="form-bimbingan">
+                        <div class="form-group row">
+                            <label for="selectTanggal" class="col-sm-2 col-form-label">Tanggal</label>
+                            <div class="col-sm-7">
+                                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+                            </div>
+                            <div class="col-sm-2">
+                                <i class="fas fa-calendar-week fa-2x" style="color: #f9ca48;"></i>
+                            </div>
+                            <!-- <div class='col-8 input-group date'>
+                                <input type='text' class="form-control"  id='date' name="date"/>
+                                <span class="input-group-addon">
+                                    <span class="fas fa-calendar-week fa-2x" style="color: #f9ca48;"></span>
+                                </span>
+                            </div> -->
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputHasilDiskusi" class="col-sm-2 col-form-label">Hasil Diskusi</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" name="hasilDiskusi" id="hasilDiskusi" cols="30"
+                                    rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-custom" style="width: 160px;">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- End Kegiatan Dosen -->
+
+                <!-- Riwayat Bimbingan -->
+                <div class="dosen-pendamping">
+                    <div class="row status-header">
+                        <h5>Riwayat Bimbingan</h5>
+                    </div>
+                    <table class="table hasil-diskusi">
+                        <thead class="text-center">
+                            <th>Tanggal</th>
+                            <th>Hasil Diskusi</th>
+                        </thead>
                         <tr>
-                            <td>Dr. Setiawan Hadi, M.Sc.CS.</td>
-                            <td>196207011993021001 </td>
-                            <td>FMIPA</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </table>
+                    <div class="row">
+                        <div class="col-sm-10 d-flex justify-content-end">
+                            <button type="button" class="btn btn-custom" style="width:160px;">Print</button>
+
+                        </div>
+                    </div>
                 </div>
+                <!-- End Riwayat Bimbingan -->
+
             </div>
             <!-- End Container Status Dosen -->
 
@@ -184,6 +236,8 @@
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
     </script>
 
+    <!-- DatePicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
@@ -191,6 +245,20 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function(){
+          var date_input=$('input[name="date"]'); //our date input has the name "date"
+          var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+          var options={
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+          };
+          date_input.datepicker(options);
+        })
+    </script>
+
 </body>
 
 </html>
