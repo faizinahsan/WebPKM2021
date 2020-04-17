@@ -26,7 +26,7 @@ body {
 }
 
 .icon-alur-container {
-    margin-top: 55px;
+    margin-top: 40px;
     padding-right: 100px;
     font-family: Opensans-Bold, 'sans-serif';
     font-size: 20px;
@@ -36,11 +36,11 @@ body {
     letter-spacing: normal;
     color: #f9ca48;
 
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
     /* margin-left: -70px;
     margin-right: 90px; */
 }
@@ -71,8 +71,8 @@ body {
     width: 60px;
     height: 60px;
     position: absolute;
-    left: 20%;
-    bottom: -35px;
+    left: 15%;
+    bottom: -30px;
     transition: all 200ms ease-in;
 }
 .active-status:before{
@@ -114,18 +114,4 @@ body {
 }
 .icon-alur-container img {
     margin-bottom: 10px;
-}
-
-.elipse {
-    margin-left: 40px;
-    width: 60px;
-    height: 60px;
-    color: #fff;
-    background-color: #f9ca48;
-    border: solid 5px #f9ca48;
-    border-top-right-radius: 50%;
-    border-top-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    font-size: 24px;
 }

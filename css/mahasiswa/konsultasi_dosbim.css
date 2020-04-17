@@ -1,0 +1,31 @@
+.container-status-dosen{
+    margin-left: 101px;
+    margin-top: 90px;
+}
+.container-status-dosen h3{
+    color: #f9ca48;
+    font-family: Opensans-Semibold;
+}
+.status-dosen-pendamping {
+    min-width: 835px;
+    min-height: 200px;
+    background-color: #ffffff;
+    margin-top: 22px;
+    font-family: Opensans-Regular;
+    /* margin-left: 90px; */
+}
+.status-dosen-pendamping h5{
+    font-size: 18px;
+}
+.status-header{
+    padding-top: 50px;
+    padding-left: 47px;
+}
+.info-dosen{
+    margin-left: 50px !important;
+    margin-top: 52px;
+}
+.info-dosen td{
+    padding-right: 50px !important;
+    font-size: 16px;
+}

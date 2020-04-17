@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Mahasiswa</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Konsultasi Dosen Pendamping</title>
+
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/navbar/navbar.css">
     <link rel="stylesheet" href="../css/navbar/sidebar.css">
     <link rel="stylesheet" href="../css/mahasiswa/tahapanPkm.css">
+    <link rel="stylesheet" href="../css/mahasiswa/konsultasi_dosbim.css">
     <script src="https://kit.fontawesome.com/3d79b0331b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -49,19 +53,18 @@
         </nav>
         <!-- End Navbar -->
     </div>
-    <!-- Row For Spliting Side Bar and Content -->
     <div class="wrapper">
-        <!-- Side Bar -->
+        <!-- Sidebar  -->
         <nav id="sidebar">
             <ul class="list-unstyled components">
-                <li class="">
+                <li>
                     <a href="profile.html">Profile</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tahapan
                         PKM</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li class="active">
+                        <li class="active" >
                             <a href="kosultasi_dosbim.html">Konsultasi Dosen Pendamping</a>
                         </li>
                         <li>
@@ -71,17 +74,17 @@
                             <a href="coaching.html">Coaching Dosen Reviewer</a>
                         </li>
                         <li>
-                            <a href="upload_proposal.html">Upload Proposal Final</a>
+                            <a href="upload_final.html">Upload Proposal Final</a>
                         </li>
                         <li>
-                            <a href="akun_simbelmawa.html">Akun Simbelmawa</a>
+                            <a href="akun_simbelmawa.html">Akun Simbelawa</a>
                         </li>
                     </ul>
                 </li>
             </ul>
         </nav>
-        <!-- End Side Bar -->
-        <!-- Container/Content -->
+
+        <!-- Page Content  -->
         <div id="content">
             <!-- Container -->
             <div class="container">
@@ -124,36 +127,68 @@
                 </ul>
             </div>
             <!-- End Contanier -->
-        </div>
-        <!-- End Container/Content -->
-    </div>
-    <!-- End Row For Spliting Side Bar and Content -->
-    <div class="footer">
-        <h1>PKM UNPAD</h1>
-        <h3>Dibuat Oleh</h3>
-        <div class="row nama-developer">
-            <div class="col-md-2">
-                <h4>Intan Pratiwi</h4>
+            <!-- Container Status Dosen -->
+            <div class="container container-status-dosen">
+                <h3>Konsultasi Dosen Pendamping</h3>
+                <div class="status-dosen-pendamping">
+                    <div class="row status-header">
+                        <div class="col-md-4">
+                            <h5>Status Dosen Pendamping</h5>
+                        </div>
+                        <div class="col-md-5">
+                            <button class="btn btn-custom">Tambahkan</button>
+                        </div>
+                    </div>
+                    <table class="info-dosen">
+                        <tr>
+                            <td>Dr. Setiawan Hadi, M.Sc.CS.</td>
+                            <td>196207011993021001 </td>
+                            <td>FMIPA</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="status-dosen-pendamping">
+                    <div class="row status-header">
+                        <div class="col-md-4">
+                            <h5>Status Dosen Pendamping</h5>
+                        </div>
+                        <div class="col-md-5">
+                            <button class="btn btn-custom">Tambahkan</button>
+                        </div>
+                    </div>
+                    <table class="info-dosen">
+                        <tr>
+                            <td>Dr. Setiawan Hadi, M.Sc.CS.</td>
+                            <td>196207011993021001 </td>
+                            <td>FMIPA</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="col-md-3">
-                <h4>Mochamad Fa'izin Ahsan</h4>
-            </div>
+            <!-- End Container Status Dosen -->
+
         </div>
     </div>
 
-    <script src="../js/jquery.js"></script>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
     </script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function () {
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
-
         });
     </script>
 </body>

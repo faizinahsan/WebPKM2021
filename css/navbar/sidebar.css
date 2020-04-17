@@ -1,26 +1,79 @@
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
 .wrapper {
     display: flex;
     width: 100%;
     align-items: stretch;
 }
-.wrapper {
-    display: flex;
-    align-items: stretch;
-}
 
 #sidebar {
-    min-width: 318px;
+    padding-top: 90px;
+    min-width: 250px;
     max-width: 250px;
+    background: #fff;
+    color: #000000;
+    transition: all 0.3s;
+    font-family: Opensans-Reguler;
 }
 
 #sidebar.active {
     margin-left: -250px;
 }
-#sidebar {
-    min-width: 318px;
-    max-width: 250px;
-    min-height: 100vh;
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #fff;
 }
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul p {
+    color: #000000;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    background: rgba(249, 202, 72, 0.4);
+}
+
+#sidebar ul li.active>a {
+    color: #000000;
+    background: rgba(249, 202, 72, 0.4);
+    border-top-right-radius: 20%;
+    border-bottom-right-radius: 20%;
+}
+
 a[data-toggle="collapse"] {
     position: relative;
 }
@@ -32,6 +85,40 @@ a[data-toggle="collapse"] {
     right: 20px;
     transform: translateY(-50%);
 }
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
@@ -39,77 +126,7 @@ a[data-toggle="collapse"] {
     #sidebar.active {
         margin-left: 0;
     }
-}
-
-p {
-    font-family: Opensans;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: black;
-}
-
-a, a:hover, a:focus {
-    font-family: Opensans;
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.3s;
-}
-
-#sidebar {
-    /* don't forget to add all the previously mentioned styles here too */
-    background: #ffffff;
-    color: black;
-    transition: all 0.3s;
-    font-family: Opensans-Regular;
-
-}
-
-#sidebar .sidebar-header {
-    padding: 20px;
-}
-
-#sidebar ul.components {
-    padding: 20px 0;
-}
-
-#sidebar ul p {
-    color: #fff;
-    padding: 10px;
-    font-family: Opensans-Regular;
-
-}
-#sidebar ul li a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 29px;
-    font-size: 1.1em;
-    display: block;
-    font-family: Opensans-Regular;
-}
-#sidebar ul li a:hover {
-    color: #f9ca48;
-    background: #fff;
-}
-
-/* #sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: black;
-    background: rgba(249, 202, 72, 0.4);
-    border-top-right-radius: 20%;
-    border-bottom-right-radius: 20%;
-} */
-#sidebar ul li.active > a {
-    color: black;
-    background: rgba(249, 202, 72, 0.4);
-    border-top-right-radius: 20%;
-    border-bottom-right-radius: 20%;
-}
-ul ul a {
-    font-size: 0.9em !important;
-    font-family: Opensans;
-    padding-left: 76px !important;
-    background: #ffffff;
+    #sidebarCollapse span {
+        display: none;
+    }
 }

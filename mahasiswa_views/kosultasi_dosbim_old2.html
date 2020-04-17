@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/navbar/navbar.css">
     <link rel="stylesheet" href="../css/navbar/sidebar.css">
     <link rel="stylesheet" href="../css/mahasiswa/tahapanPkm.css">
+    <link rel="stylesheet" href="../css/mahasiswa/konsultasi_dosbim.css">
     <script src="https://kit.fontawesome.com/3d79b0331b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -49,81 +50,40 @@
         </nav>
         <!-- End Navbar -->
     </div>
+    <!-- Row For Spliting Side Bar and Content -->
     <div class="wrapper">
-        <!-- Sidebar  -->
+        <!-- Side Bar -->
         <nav id="sidebar">
             <ul class="list-unstyled components">
-                <li>
+                <li class="">
                     <a href="profile.html">Profile</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tahapan
                         PKM</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
+                        <li class="active">
                             <a href="kosultasi_dosbim.html">Konsultasi Dosen Pendamping</a>
                         </li>
                         <li>
                             <a href="upload_proposal.html">Upload Proposal</a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="coaching.html">Coaching Dosen Reviewer</a>
                         </li>
                         <li>
-                            <a href="upload_final.html">Upload Proposal Final</a>
+                            <a href="upload_proposal.html">Upload Proposal Final</a>
                         </li>
                         <li>
-                            <a href="akun_simbelmawa.html">Akun Simbelawa</a>
+                            <a href="akun_simbelmawa.html">Akun Simbelmawa</a>
                         </li>
                     </ul>
                 </li>
             </ul>
         </nav>
-
-        <!-- Page Content  -->
+        <!-- End Side Bar -->
         <div id="content">
-            <!-- Container -->
             <div class="container">
-                <ul class="timeline-horizontal" id="timeline">
-                    <li class="li">
-                        <div class="icon-alur-container text-center konsultasiDosen">
-                            <img src="../img/kosuldosbim.png" alt="Konsultasi Dosen">
-                            <br>
-                            <span class="status done-status">Konsultasi <br> Dosen <br> Pendamping</span>
-                        </div>
-                    </li>
-                    <li class="li">
-                        <div class="icon-alur-container text-center uploadProposal">
-                            <img src="../img/uploadProposal.png" alt="Upload Proposal">
-                            <br>
-                            <span class="status done-status">Upload Proposal</span>
-                        </div>
-                    </li>
-                    <li class="li">
-                        <div class="icon-alur-container text-center coaching">
-                            <img src="../img/coaching.png" alt="Coachings">
-                            <br>
-                            <span class="status active-status">Coaching</span>
-                        </div>
-                    </li>
-                    <li class="li">
-                        <div class="icon-alur-container text-center uploadFinal">
-                            <img src="../img/uploadFinal.png" alt="Upload Finals">
-                            <br>
-                            <span class="status disabled-status">Upload Final</span>
-                        </div>
-                    </li>
-                    <li class="li">
-                        <div class="icon-alur-container text-center akun">
-                            <img src="../img/akunSibelmawa.png" alt="Akun Simbelmawa">
-                            <br>
-                            <span class="status disabled-status">Akun</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- End Contanier -->
-            <div class="container container-status-dosen">
                 <h3>Konsultasi Dosen Pendamping</h3>
                 <div class="status-dosen-pendamping">
                     <div class="row status-header">
