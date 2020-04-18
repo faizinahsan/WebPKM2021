@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/navbar/navbar.css">
     <link rel="stylesheet" href="../css/navbar/sidebar.css">
     <link rel="stylesheet" href="../css/mahasiswa/tahapanPkm.css">
+    <link rel="stylesheet" href="../css/mahasiswa/upload_proposal.css">
     <script src="https://kit.fontawesome.com/3d79b0331b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -123,25 +124,27 @@
                 </ul>
             </div>
             <!-- End Contanier -->
-            <div class="container container-status-dosen">
-                <h3>Konsultasi Dosen Pendamping</h3>
-                <div class="status-dosen-pendamping">
-                    <div class="row status-header">
-                        <div class="col-md-4">
-                            <h5>Status Dosen Pendamping</h5>
-                        </div>
-                        <div class="col-md-5">
-                            <button class="btn btn-custom">Tambahkan</button>
-                        </div>
-                    </div>
-                    <table class="info-dosen">
-                        <tr>
-                            <td>Dr. Setiawan Hadi, M.Sc.CS.</td>
-                            <td>196207011993021001 </td>
-                            <td>FMIPA</td>
-                        </tr>
-                    </table>
-                </div>
+            <div class="container container-upload-proposal">
+                <h5>Upload Proposal</h5>
+                <p>Pengumpulan Proposal Liga PKM UNPAD dari tanggal 11 Maret - 6 April 2020. Batas pengumpulan proposal
+                    pada pukul 23.59 tanggal 6 April 2020. Harap mengumpulkan proposal dalam format doc.</p>
+                <!-- Upload File -->
+                <!-- CHANGE THE ACTION TO THE PHP SCRIPT THAT WILL PROCESS THE FILE VIA AJAX -->
+                <form id="file-upload-form" action="#">
+                    <input id="file-upload" class="file-upload-class" type="file" name="fileUpload" data-title="" />
+                    <label for="file-upload" id="file-drag">
+                        Tarik dan letakan berkas disini
+                        <br />ATAU
+                        <br /><br /><span id="file-upload-btn" class="button">Tambahkan Berkas</span>
+                    </label>
+
+                    <progress id="file-progress" value="0">
+                        <span>0</span>%
+                    </progress>
+
+                    <output for="file-upload" id="messages"></output>
+                </form>
+                <!-- End Upload File -->
             </div>
         </div>
     </div>
@@ -173,6 +176,123 @@
             });
 
         });
+    </script>
+    <script>
+        (function () {
+            function Init() {
+                var fileSelect = document.getElementById('file-upload'),
+                    fileDrag = document.getElementById('file-drag'),
+                    submitButton = document.getElementById('submit-button');
+
+                fileSelect.addEventListener('change', fileSelectHandler, false);
+
+                // Is XHR2 available?
+                var xhr = new XMLHttpRequest();
+                if (xhr.upload) {
+                    // File Drop
+                    fileDrag.addEventListener('dragover', fileDragHover, false);
+                    fileDrag.addEventListener('dragleave', fileDragHover, false);
+                    fileDrag.addEventListener('drop', fileSelectHandler, false);
+                }
+            }
+
+            function fileDragHover(e) {
+                var fileDrag = document.getElementById('file-drag');
+
+                e.stopPropagation();
+                e.preventDefault();
+
+                fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+            }
+
+            function fileSelectHandler(e) {
+                // Fetch FileList object
+                var files = e.target.files || e.dataTransfer.files;
+
+                // Cancel event and hover styling
+                fileDragHover(e);
+
+                // Process all File objects
+                for (var i = 0, f; f = files[i]; i++) {
+                    parseFile(f);
+                    uploadFile(f);
+                }
+            }
+
+            function output(msg) {
+                var m = document.getElementById('messages');
+                m.innerHTML = msg;
+            }
+
+            function parseFile(file) {
+                output(
+                    '<ul>' +
+                    '<li>Name: <strong>' + encodeURI(file.name) + '</strong></li>' +
+                    '<li>Type: <strong>' + file.type + '</strong></li>' +
+                    '<li>Size: <strong>' + (file.size / (1024 * 1024)).toFixed(2) + ' MB</strong></li>' +
+                    '</ul>'
+                );
+            }
+
+            function setProgressMaxValue(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.max = e.total;
+                }
+            }
+
+            function updateFileProgress(e) {
+                var pBar = document.getElementById('file-progress');
+
+                if (e.lengthComputable) {
+                    pBar.value = e.loaded;
+                }
+            }
+
+            function uploadFile(file) {
+
+                var xhr = new XMLHttpRequest(),
+                    fileInput = document.getElementById('class-roster-file'),
+                    pBar = document.getElementById('file-progress'),
+                    fileSizeLimit = 1024; // In MB
+                if (xhr.upload) {
+                    // Check if file is less than x MB
+                    if (file.size <= fileSizeLimit * 1024 * 1024) {
+                        // Progress bar
+                        pBar.style.display = 'inline';
+                        xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
+                        xhr.upload.addEventListener('progress', updateFileProgress, false);
+
+                        // File received / failed
+                        xhr.onreadystatechange = function (e) {
+                            if (xhr.readyState == 4) {
+                                // Everything is good!
+
+                                // progress.className = (xhr.status == 200 ? "success" : "failure");
+                                // document.location.reload(true);
+                            }
+                        };
+
+                        // Start upload
+                        xhr.open('POST', document.getElementById('file-upload-form').action, true);
+                        xhr.setRequestHeader('X-File-Name', file.name);
+                        xhr.setRequestHeader('X-File-Size', file.size);
+                        xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+                        xhr.send(file);
+                    } else {
+                        output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
+                    }
+                }
+            }
+
+            // Check for the various File API support.
+            if (window.File && window.FileList && window.FileReader) {
+                Init();
+            } else {
+                document.getElementById('file-drag').style.display = 'none';
+            }
+        })();
     </script>
 </body>
 

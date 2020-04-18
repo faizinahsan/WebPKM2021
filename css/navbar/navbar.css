@@ -83,9 +83,13 @@ body {
     border-color: #ffffff;  box-shadow: none; -webkit-box-shadow: none;
 }
 .dropdown-menu{
-    border-color: #f9ca48;
+    border-color: #f9ca48 !important;
 }
 .dropdown-menu a{
     font-family: NunitoSans-Regular;
     font-size: 16px;
+}
+.dropdown-menu a:hover{
+    background-color: 
+    rgba(249, 202, 72, 0.4) !important;
 }
