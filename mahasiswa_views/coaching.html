@@ -144,7 +144,34 @@
                     </table>
                 </div>
                 <!-- File Revisi -->
-                <h5>File Revisi OTW</h5>
+                <div class="container container-upload-revisi">
+                    <h5>File Revisi</h5>
+                    <!-- Upload File -->
+                    <!-- CHANGE THE ACTION TO THE PHP SCRIPT THAT WILL PROCESS THE FILE VIA AJAX -->
+                    <form id="file-upload-form" action="#">
+                        <input id="file-upload" class="file-upload-class" type="file" name="fileUpload" data-title="" />
+                        <label for="file-upload" id="file-drag">
+                            <i class="fas fa-file-word fa-5x" style="color: blue;"></i>
+                            <br /><br /><span id="file-upload-btn" class="button">Perbarui Berkas</span>
+                        </label>
+    
+                        <progress id="file-progress" value="0">
+                            <span>0</span>%
+                        </progress>
+    
+                        <output for="file-upload" id="messages"></output>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="button" class="btn"
+                                    style="background: #ff6b6b; color:white; width: 160px; height: 60px;">Cancel</button>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-custom" style="width: 160px; height: 60px;">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- End Upload File -->
+                </div>
                 <!-- End File Revisi -->
 
                 <!-- Kegiatan Dosen -->
