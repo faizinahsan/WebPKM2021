@@ -37,7 +37,7 @@
 
 /* Upload File */
 .button {
-    background: #f9ca48;
+    background: rgba(249, 202, 72, 0.6);;
     border: none;
     border-radius: 3px;
     color: white;
@@ -60,7 +60,8 @@ input[type="file"] {
 #file-drag {
     border: 2px dashed #555;
     border-radius: 7px;
-    color: #555;
+    color: #565656;
+    background-color: #f9f9f9;
     cursor: pointer;
     display: block;
     margin: 1em 0;
@@ -68,6 +69,8 @@ input[type="file"] {
     text-align: center;
     transition: background 0.3s, color 0.3s;
     font-size: Opensans-Reguler;
+    /* min-width: 800px; */
+    /* min-height: 327px; */
 }
 
 #file-drag:hover {
@@ -79,7 +82,7 @@ input[type="file"] {
     border-color: #f9ca48;
     border-style: solid;
     box-shadow: inset 0 3px 4px #888;
-    color: #000000;
+    color: #565656;
 
 }
 
@@ -94,12 +97,12 @@ input[type="file"] {
 }
 
 #file-upload-btn:hover {
-    background:  rgba(249, 202, 72, 0.4);
+    background:  #f9ca48;
 }
 
 #file-upload-form {
     margin: auto;
-    width: 40%;
+    width: 60%;
 }
 
 progress {
