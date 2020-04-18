@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/navbar/navbar.css">
     <link rel="stylesheet" href="../css/navbar/sidebar.css">
     <link rel="stylesheet" href="../css/mahasiswa/tahapanPkm.css">
+    <link rel="stylesheet" href="../css/mahasiswa/upload_proposal.css">
     <script src="https://kit.fontawesome.com/3d79b0331b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -123,26 +124,43 @@
                 </ul>
             </div>
             <!-- End Contanier -->
-            <div class="container container-status-dosen">
-                <h3>Konsultasi Dosen Pendamping</h3>
-                <div class="status-dosen-pendamping">
-                    <div class="row status-header">
-                        <div class="col-md-4">
-                            <h5>Status Dosen Pendamping</h5>
+            <div class="container container-upload-proposal">
+                <h5>Upload Proposal Final</h5>
+                <p>Pengumpulan proposal PKM Final agar diseleksi kembali oleh reviewer untuk dapat username dan password
+                    simbelmawa pada tanggal 3 September - 17 September 2020. Batas pengumpulan proposal pada pukul 23.59
+                    tanggal 17 September 2020. Harap mengumpulkan proposal dalam format doc.</p>
+                <!-- Upload File -->
+                <!-- CHANGE THE ACTION TO THE PHP SCRIPT THAT WILL PROCESS THE FILE VIA AJAX -->
+                <form id="file-upload-form" action="#">
+                    <label for="judulProposalFinal">Judul Proposal:</label>
+                    <input type="text" name="judulProposalFinal" id="judulProposalFinal" class="form-control">
+                    <label for="fileProposal" class="mt-3">File Proposal:</label>
+                    <input id="file-upload" class="file-upload-class" type="file" name="fileUpload" data-title="" />
+                    <label for="file-upload" id="file-drag">
+                        Tarik dan letakan berkas disini
+                        <br />ATAU
+                        <br /><br /><span id="file-upload-btn" class="button">Tambahkan Berkas</span>
+                    </label>
+
+                    <progress id="file-progress" value="0">
+                        <span>0</span>%
+                    </progress>
+
+                    <output for="file-upload" id="messages"></output>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn"
+                                style="background: #ff6b6b; color:white; width: 160px; height: 60px;">Cancel</button>
                         </div>
-                        <div class="col-md-5">
-                            <button class="btn btn-custom">Tambahkan</button>
+                        <div class="col-md-6 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-custom"
+                                style="width: 160px; height: 60px;">Submit</button>
                         </div>
                     </div>
-                    <table class="info-dosen">
-                        <tr>
-                            <td>Dr. Setiawan Hadi, M.Sc.CS.</td>
-                            <td>196207011993021001 </td>
-                            <td>FMIPA</td>
-                        </tr>
-                    </table>
-                </div>
+                </form>
+                <!-- End Upload File -->
             </div>
+
         </div>
     </div>
     <!-- End Row For Spliting Side Bar and Content -->
