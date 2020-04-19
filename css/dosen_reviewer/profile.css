@@ -1,0 +1,119 @@
+body{
+    background-color: #fafbfc;
+}
+
+.container{
+    margin-top: 56px;
+    margin-bottom: 217px;
+    font-family: Opensans-Reguler;
+}
+.daftar-card{
+    margin-bottom: 60px;
+}
+.header-profile{
+    display: flex;
+    font-family: Opensans-Bold !important;
+    font-size: 24px;
+    color: #f9ca48;
+    margin-bottom: 60px;
+}
+.header-profile a{
+    /* margin-left: 479px; */
+}
+.card-ketua{
+    width: 730px;
+    height: 118px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+    padding-top: 20px;
+}
+
+.btn-custom-profile{
+    border-radius: 50px !important;
+    background-color: #f9ca48 !important;
+    color: #ffff !important;
+    font-family: Opensans-Regular !important;
+    font-size: 16px !important;
+    border-color: #f9ca48;  box-shadow: none; -webkit-box-shadow: none !important;
+}
+.container{
+    margin-left: 285px;
+}
+.table-disetujui{
+    background-color: #ffff;
+    padding-right: 38px;
+    padding-left: 38px;
+    padding-bottom: 10px;
+    max-width: 869px;
+    min-height: 491px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+}
+
+.table-disetujui td{
+    border-top: 1px solid black;
+    padding-top: 31px;
+}
+
+.file-proposal{
+    background-color: #ffffff;
+    padding: 50px;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+.file-proposal h5{
+    margin-bottom: 38px;
+}
+.file-proposal img{
+    max-height: 33px;
+    max-width: 21.4px;
+}
+.file-row{
+    display: flex;
+    margin-bottom: 30px;
+}
+.file-row p{
+    margin-right: 184px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.file-row .btn-custom-profile{
+    width: 130px !important;
+    margin-right: 50px;
+}
+
+.status-mahasiswa{
+    background-color: #ffffff;
+    padding: 50px;
+    margin-left: 100px;
+}
+.status-mahasiswa .row{
+    margin-bottom: 50px;
+}
+.status-mahasiswa a{
+    width: 120px;
+    border: solid 1px #f9ca48 !important;
+    background-color: #ffffff !important;
+    color: #f9ca48 !important;
+}
+.status-mahasiswa p{
+    font-size: 16px;
+    font-size: Opensans-Reguler;
+}
+
+.riwayat-bimbingan{
+    background-color: #ffff;
+    font-family: Opensans-Reguler;
+    padding: 50px;
+    max-width: 975px;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+.riwayat-bimbingan td{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.riwayat-bimbingan table{
+    margin-top: 30px;
+    margin-bottom: 120px;
+}
