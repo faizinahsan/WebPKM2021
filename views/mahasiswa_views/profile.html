@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Mahasiswa</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/navbar/navbar.css">
-    <link rel="stylesheet" href="../css/navbar/sidebar.css">
-    <link rel="stylesheet" href="../css/mahasiswa/profile.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/navbar/navbar.css">
+    <link rel="stylesheet" href="../../css/navbar/sidebar.css">
+    <link rel="stylesheet" href="../../css/mahasiswa/profile.css">
     <script src="https://kit.fontawesome.com/3d79b0331b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -41,7 +41,7 @@
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="#">Ibnu, Mahasiswa</a>
-                            <a class="dropdown-item" href="../index.html">Logout</a>
+                            <a class="dropdown-item" href="../../index.html">Logout</a>
                         </div>
                     </div>
                 </ul>
@@ -86,7 +86,7 @@
             <div class="container">
                 <h3>Profile</h3>
                 <h4>Data Ketua Kelompok</h4>
-                <table class="table table-borderless">
+                <table class="table table-borderless data-ketua">
                     <tbody>
                         <tr>
                             <td>Nama Lengkap: </td>
@@ -101,6 +101,42 @@
 
                 <h4>Data Anggota Kelompok</h4>
                 <button type="button" data-toggle="modal" data-target="#tambahAnggotaModal" class="btn btn-custom">Tambahkan Anggota</button>
+                
+                <table class="table table-borderless data-anggota">
+                    <tbody>
+                        <tr>
+                            <td>Intan Pratiwi</td>
+                            <td>140810160011</td>
+                            <td>
+                                <button class="btn btn-custom" style="width: 70px;">Edit</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-custom" style="width: 70px;">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Faizin Ahsan</td>
+                            <td>140810160032</td>
+                            <td>
+                                <button class="btn btn-custom" style="width: 70px;">Edit</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-custom" style="width: 70px;">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ahsan Nurrijal</td>
+                            <td>140810160004</td>
+                            <td>
+                                <button class="btn btn-custom" style="width: 70px;">Edit</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-custom" style="width: 70px;">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 <!-- Modal -->
                 <div class="modal fade" id="tambahAnggotaModal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -149,12 +185,12 @@
         </div>
     </div>
 
-    <script src="../js/jquery.js"></script>
+    <script src="../../js/jquery.js"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
     </script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
 
