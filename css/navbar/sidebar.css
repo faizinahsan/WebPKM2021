@@ -70,8 +70,8 @@ a:focus {
 #sidebar ul li.active>a {
     color: #000000;
     background: rgba(249, 202, 72, 0.4);
-    border-top-right-radius: 20%;
-    border-bottom-right-radius: 20%;
+    /* border-top-right-radius: 20%;
+    border-bottom-right-radius: 20%; */
 }
 
 a[data-toggle="collapse"] {
