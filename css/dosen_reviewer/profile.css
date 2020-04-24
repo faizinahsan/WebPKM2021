@@ -88,7 +88,18 @@ body{
     margin-left: 100px;
 }
 .status-mahasiswa .row{
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
+    margin-top: 50px;
+}
+.status-mahasiswa h5{
+    font-family: OpenSans;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.9px;
+    color: #f9ca48;
 }
 .status-mahasiswa a{
     width: 120px;

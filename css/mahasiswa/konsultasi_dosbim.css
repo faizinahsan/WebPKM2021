@@ -50,3 +50,28 @@
       max-width: 835px;
 
   }
+
+.disabled-style{
+      background: rgba(0, 0, 0, 0.03);
+      color: #565656;
+}
+.disabled-style .btn{
+    background: #c4c4c4 !important;
+    color: #565656 !important;
+}
+.disabled-style .fas{
+    color: #c4c4c4 !important;
+}
+.btn-request{
+    border-radius: 30px;
+    background-color: #f9ca48;
+    color: #ffffff;
+    width: 120px;
+}
+.btn-accepted{
+    border: 1px solid #f9ca48;
+    color: #f9ca48;
+    background-color: #ffffff;
+    width: 120px;
+    border-radius: 30px;
+}
