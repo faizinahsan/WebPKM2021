@@ -202,3 +202,27 @@ section h5 {
 .form-akun {
     margin-left: 50px;
 }
+
+.daftar-mahasiswa{
+    margin-right: 32px;
+    margin-left: 19px;
+}
+
+.daftar-mahasiswa td{
+    border-top: 1px solid black !important;
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-top: 29px;
+    padding-bottom: 29px;
+}
+.daftar-mahasiswa a{
+    margin-right: 20px;
+}
+.daftar-mahasiswa img{
+    width: 21.4px !important;
+    height: 33px !important;
+    margin-right: 10px;
+}
+.nama-proposal{
+    display: flex;
+}
