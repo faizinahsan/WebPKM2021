@@ -1,0 +1,34 @@
+body{
+    background-color: #fafbfc;
+}
+
+.container{
+    background-color: #ffff;
+    padding: 50px;
+}
+.container h3{
+    color: #f9ca48;
+    font-family: Opensans-SemiBold;
+}
+.container .form-timeline{
+    margin-left: 50px;
+    margin-top: 32px;
+    font-family: Opensans-Reguler;
+}
+
+.container .form-control{
+    margin-bottom: 25px;
+}
+
+.container-table{
+    margin-top: 14px;
+}
+.striped-section{
+    background-color: rgba(249, 202, 72, 0.2);
+}
+
+.container-table td{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    max-width: 265px;
+}

@@ -1,0 +1,39 @@
+.container{
+  margin-bottom: 127px;
+}
+.select-akun{
+    background-image:
+    linear-gradient(45deg, transparent 50%, #ffffff 50%),
+    linear-gradient(135deg, #ffffff 50%, transparent 50%),
+    linear-gradient(to right, #F9CA48, #F9CA48);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    100% 0;
+  background-size:
+    5px 5px,
+    5px 5px,
+    2.5em 2.5em;
+  background-repeat: no-repeat;
+  border-color: black;
+  max-width: 402px;
+  max-height: 40px;
+}
+
+.container{
+    margin-top: 80px;
+}
+.container h1{
+    font-family: OpenSans;
+    color: #F9CA48;
+    margin-bottom: 57px;
+}
+.introduction{
+    margin-top: 57px;
+}
+.btn-filter{
+    background: #F9CA48;
+    border-radius: 100px;
+    color: #ffffff;
+    width: 133px;
+}

@@ -1,0 +1,20 @@
+.signup-img{
+    background: rgba(249, 202, 72, 0.15);
+    mix-blend-mode: normal;
+    border-radius: 0px 20px 20px 0px;
+    padding-bottom: 30px;
+}
+.signup-img img{
+    width: 100%;
+    padding: 151px 0px 152px 0px;
+}
+.signup-btn{
+    background: #F9CA48;
+    border: 3px solid #F9CA48;
+    border-radius: 5px;
+    color: #FFFFFF;
+    width: 402px;
+    height: 50px;
+    margin-top: 20px;
+}
+.signup-btn:focus{border-color: #f9ca48;  box-shadow: none; -webkit-box-shadow: none;} 

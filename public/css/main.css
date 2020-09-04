@@ -1,0 +1,81 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+  font-family: QuickSand-Regular;
+  src: url('../fonts/quicksand/Quicksand-Regular.otf');
+}
+
+@font-face {
+  font-family: QuickSand-Bold;
+  src: url('../fonts/quicksand/Quicksand-Bold.otf');
+}
+
+@font-face {
+  font-family: Opensans-Regular;
+  src: url('../fonts/opensans/OpenSans-Regular.ttf');
+}
+@font-face {
+  font-family: Opensans-Bold;
+  src: url('../fonts/opensans/OpenSans-Bold.ttf');
+}
+@font-face {
+  font-family: Opensans-Semibold;
+  src: url('../fonts/opensans/OpenSans-Semibold.ttf');
+}
+
+@font-face {
+  font-family: NunitoSans-Regular;
+  src: url('../fonts/nunitosans/NunitoSans-Regular.ttf');
+}
+
+.btn-custom {
+  border-radius: 8px !important;
+  background-color: #f9ca48 !important;
+  color: #ffff !important;
+  font-family: Opensans-Regular !important;
+  font-size: 16px !important;
+  border-color: #f9ca48;  box-shadow: none; -webkit-box-shadow: none !important;
+}
+
+.footer {
+  background-color: #f9ca48;
+  height: 246px;
+  color: #ffffff;
+
+}
+
+.footer h1 {
+  font-family: Quicksand;
+  font-size: 36px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -2.52px;
+  padding-top: 50px;
+  padding-left: 99px;
+}
+
+.footer h3 {
+  padding-left: 149px;
+  padding-top: 20px;
+  font-family: Quicksand;
+  font-size: 24px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.nama-developer {
+  padding-left: 199px;
+  font-family: Quicksand;
+  font-size: 24px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}

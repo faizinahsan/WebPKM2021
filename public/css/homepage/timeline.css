@@ -1,0 +1,21 @@
+.border-custom{
+    border-left: 6px solid black;
+     height: 76px;
+}
+.timeline-badge{
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border: solid 5px #f9ca48;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    font-size: 16px;
+}
+.container h1{
+    margin-top: 60px;
+    margin-bottom: 50px;
+    color: #f9ca48;
+    font-family: OpenSans;
+}

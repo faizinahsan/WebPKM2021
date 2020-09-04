@@ -1,0 +1,160 @@
+body {
+    background-color: #fafbfc;
+}
+
+.timeline-horizontal {
+    outline: 1px dashed rgba(255, 0, 0, 0);
+}
+
+@media screen and (max-width: 500px) {
+    .timeline-horizontal {
+        border-left: 2px solid #3498DB;
+        margin-left: 25px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .timeline-horizontal {
+        border-top: 2px solid #CECECE;
+        border: 2px solid red;
+        padding-top: 20px;
+        margin-top: 40px;
+        margin-left: 16.65%;
+        margin-right: 16.65%;
+    }
+}
+
+.timeline-horizontal:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.tahap-satu,
+.tahap-dua,
+.tahap-tiga {
+    outline: 1px dashed rgba(0, 128, 0, 0);
+    font-family: Opensans-Bold;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #f9ca48;
+    border: 2px solid red;
+}
+
+@media screen and (max-width: 500px) {
+
+    .tahap-satu,
+    .tahap-dua,
+    .tahap-tiga {
+        margin-left: -25px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+
+    .tahap-satu,
+    .tahap-dua,
+    .tahap-tiga {
+        float: left;
+        width: 33%;
+        margin-top: -50px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .tahap-satu,
+    .tahap-dua {
+        padding-bottom: 40px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .tahap-satu {
+        margin-left: -16.65%;
+        margin-right: 16.65%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .tahap-tiga {
+        margin-bottom: -100%;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .tahap-tiga {
+        margin-left: 16.65%;
+        margin-right: -16.65%;
+    }
+}
+
+.tahap-img {
+    display: block;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 500px) {
+    .tahap-img {
+        float: left;
+        margin-right: 20px;
+    }
+}
+
+.tahap-nama,
+.tahap-deskripsi {
+    margin: 0;
+}
+
+@media screen and (min-width: 500px) {
+    .tahap-nama {
+        text-align: center;
+    }
+}
+
+.tahap-deskripsi {
+    overflow: hidden;
+}
+
+@media screen and (min-width: 500px) {
+    .tahap-deskripsi {
+        text-align: center;
+    }
+}
+
+.icon-alur-container {
+    margin-top: 55px;
+    padding-right: 40px;
+    font-family: Opensans-Bold, 'sans-serif';
+    font-size: 20px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #f9ca48;
+}
+
+.icon-alur-container img {
+    margin-bottom: 10px;
+}
+
+.elipse {
+    margin-left: 40px;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    background-color: #f9ca48;
+    border: solid 5px #f9ca48;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    font-size: 24px;
+}

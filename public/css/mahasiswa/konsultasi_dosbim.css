@@ -1,0 +1,77 @@
+.container-konsultasi-dosen{
+    margin-left: 101px;
+    margin-top: 90px;
+}
+.container-konsultasi-dosen h3{
+    color: #f9ca48;
+    font-family: Opensans-Semibold;
+}
+.dosen-pendamping {
+    min-width: 835px;
+    min-height: 200px;
+    background-color: #ffffff;
+    margin-top: 22px;
+    font-family: Opensans-Regular;
+    /* margin-left: 90px; */
+}
+.dosen-pendamping h5{
+    font-size: 18px;
+}
+.status-header{
+    padding-top: 50px;
+    padding-left: 47px;
+}
+.info-dosen{
+    margin-left: 50px !important;
+    margin-top: 52px;
+}
+.info-dosen td{
+    padding-right: 50px !important;
+    font-size: 16px;
+}
+.form-bimbingan{
+    margin-left: 50px;
+    margin-top: 25px;
+    padding-bottom: 15px;
+}
+.form-group{
+    margin-bottom: 50px !important;
+}
+
+.form-control:focus{
+    border-color: #f9ca48;  box-shadow: none; -webkit-box-shadow: none;
+  }
+  .has-error .form-control:focus{box-shadow: none; -webkit-box-shadow: none;}
+
+  .hasil-diskusi{
+      margin-left: 50px;
+      margin-top: 30px;
+      margin-right: 50px;
+      max-width: 835px;
+
+  }
+
+.disabled-style{
+      background: rgba(0, 0, 0, 0.03);
+      color: #565656;
+}
+.disabled-style .btn{
+    background: #c4c4c4 !important;
+    color: #565656 !important;
+}
+.disabled-style .fas{
+    color: #c4c4c4 !important;
+}
+.btn-request{
+    border-radius: 30px;
+    background-color: #f9ca48;
+    color: #ffffff;
+    width: 120px;
+}
+.btn-accepted{
+    border: 1px solid #f9ca48;
+    color: #f9ca48;
+    background-color: #ffffff;
+    width: 120px;
+    border-radius: 30px;
+}
