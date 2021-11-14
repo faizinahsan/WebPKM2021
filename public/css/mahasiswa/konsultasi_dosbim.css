@@ -3,12 +3,13 @@
     margin-top: 90px;
 }
 .container-konsultasi-dosen h3{
-    color: #f9ca48;
+    color: #F6A113;
     font-family: Opensans-Semibold;
 }
 .dosen-pendamping {
-    min-width: 835px;
-    min-height: 200px;
+    /*min-width: 835px;*/
+    max-width: 900px;
+    min-height: 340px;
     background-color: #ffffff;
     margin-top: 22px;
     font-family: Opensans-Regular;
@@ -39,7 +40,7 @@
 }
 
 .form-control:focus{
-    border-color: #f9ca48;  box-shadow: none; -webkit-box-shadow: none;
+    border-color: #F6A113;  box-shadow: none; -webkit-box-shadow: none;
   }
   .has-error .form-control:focus{box-shadow: none; -webkit-box-shadow: none;}
 
@@ -63,15 +64,15 @@
     color: #c4c4c4 !important;
 }
 .btn-request{
-    border-radius: 30px;
-    background-color: #f9ca48;
+    border-radius: 10px;
+    background-color: #F6A113;
     color: #ffffff;
     width: 120px;
 }
 .btn-accepted{
-    border: 1px solid #f9ca48;
-    color: #f9ca48;
+    border: 1px solid #F6A113;
+    color: #F6A113;
     background-color: #ffffff;
     width: 120px;
-    border-radius: 30px;
+    border-radius: 10px;
 }

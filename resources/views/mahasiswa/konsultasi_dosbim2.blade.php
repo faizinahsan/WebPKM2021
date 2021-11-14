@@ -71,10 +71,12 @@
                     <div class="col-md-4">
                         <h5>Status Dosen Pendamping</h5>
                     </div>
+
                     <div class="col-md-5">
                         <!-- <button class="btn btn-custom" type="button"  data-toggle="modal" data-target="#requestDosenPendamping">Tambahkan</button> -->
                         <span class="btn btn-request">Diminta</span>
                     </div>
+                    
                 </div>
                 <table class="info-dosen">
                     <tr>

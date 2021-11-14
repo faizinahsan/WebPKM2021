@@ -23,7 +23,7 @@
             <div class="carousel-item active"
                 style="background:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(img/backgroundhome.png);">
                 <div class="carousel-caption text-center">
-                    <h1>Program Kreatifitas Mahasiswa</h1>
+                    <h1>Program Kreatifitas Mahasiswa 2021</h1>
                     <h2>Universitas Padjadjaran</h2>
                 </div>
             </div>

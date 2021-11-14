@@ -25,6 +25,21 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //custom code
+        Gate::define('isKemahasiswaan', function($user) {
+            return $user->role_id == 1;
+         });
+         Gate::define('isReviewer', function($user) {
+             return $user->role_id == 2;
+         });
+         Gate::define('isPendamping', function($user) {
+             return $user->role_id == 3;
+         });
+         Gate::define('isMahasiswa', function($user) {
+            return $user->role_id == 4;
+        });
+        //  Gate::define('update-post', function ($user, $post) {
+        //      return $user->id === $post->user_id;
+        //  });
     }
 }

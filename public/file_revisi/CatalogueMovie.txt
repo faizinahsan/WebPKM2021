@@ -1,0 +1,23 @@
+Kriteria
+Fitur Aplikasi:
+
+Pencarian film
+Syarat:
+1. Pengguna dapat melakukan pencarian Movies.
+2. Pengguna dapat melakukan pencarian Tv Show.
+
+Widget
+Syarat:
+1. Pengguna dapat menampilkan widget dari film favorite ke halaman utama smartphone.
+2. Tipe widget yang diterapkan adalah StackWidget.
+
+Reminder
+Syarat:
+1. Daily Reminder, mengirimkan notifikasi ke pengguna untuk kembali ke Aplikasi Movie Catalogue. Daily reminder harus selalu berjalan tiap jam 7 pagi.
+2. Release Today Reminder, mengirimkan notifikasi ke pengguna berupa informasi film yang rilis hari ini. Release reminder harus selalu berjalan tiap jam 8 pagi.
+3. Terdapat halaman pengaturan untuk mengaktifkan dan menonaktifkan reminder.
+
+Aplikasi Favorite
+Syarat:
+1. Membuat aplikasi atau modul baru yang menampilkan daftar film favorite.
+2. Menggunakan ContentProvider sebagai mekanisme untuk mengakses data dari satu aplikasi ke aplikasi lain.

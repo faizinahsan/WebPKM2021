@@ -24,34 +24,18 @@
                     <th>NPM</th>
                     <th>Keterangan</th>
                 </thead>
+                @foreach ($daftarMahasiswa as $mahasiswa)
+                
                 <tr>
-                    <td>Ibnu Mualim</td>
-                    <td>1408010160022</td>
+                    <td>{{$mahasiswa->mahasiswa->user->name}}</td>
+                    <td>{{$mahasiswa->npm_mahasiswa}}</td>
                     <td>
-                        <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width: 130px;">View</a>
+                        <a href="{{route('dosen_pendamping-profile_keterangan',['id'=>$mahasiswa->id])}}" class="btn btn-custom-profile" style="width: 130px;">View</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>Ibnu Mualim</td>
-                    <td>1408010160022</td>
-                    <td>
-                        <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width: 130px;">View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ibnu Mualim</td>
-                    <td>1408010160022</td>
-                    <td>
-                        <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width: 130px;">View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ibnu Mualim</td>
-                    <td>1408010160022</td>
-                    <td>
-                        <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width: 130px;">View</a>
-                    </td>
-                </tr>
+
+                @endforeach
+            
             </table>
 
             </div>

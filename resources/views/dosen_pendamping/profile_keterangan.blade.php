@@ -27,10 +27,10 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <p>Ibnu Mualim</p>
+                        <p>{{$mahasiswa->user->name}}</p>
                     </div>
                     <div class="col-md-6">
-                        <p>140810160022</p>
+                        <p>{{$mahasiswa->npm_mahasiswa}}</p>
                     </div>
                 </div>
             </div>
@@ -44,38 +44,20 @@
                         <th>Hasil Diskusi</th>
                         <th>Keterangan</th>
                     </thead>
+                    
+                    @foreach ($mahasiswa->riwayatBimbingan as $riwayatBimbingan)
+                    
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td>{{$riwayatBimbingan->tanggal}}</td>
+                        <td>{{$riwayatBimbingan->hasil_diskusi}}</td>
                         <td>
                             <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile"
                                 style="width: 130px;">Sesuai</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile"
-                                style="width: 130px;">Sesuai</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile"
-                                style="width: 130px;">Sesuai</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile"
-                                style="width: 130px;">Sesuai</a>
-                        </td>
-                    </tr>
+
+                    @endforeach
+
                 </table>
             </div>
             <!-- End Riwayat Bimbingan -->

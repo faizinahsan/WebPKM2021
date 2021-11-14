@@ -61,135 +61,192 @@
             </ul>
         </div>
         <!-- End Contanier -->
-        <!-- Container Dosen -->
-        <div class="container container-konsultasi-dosen">
-            <!-- Status Dosen -->
-            <h3>Konsultasi Dosen Pendamping</h3>
-            <div class="dosen-pendamping">
-                <div class="row status-header">
-                    <div class="col-md-4">
-                        <h5>Status Dosen Pendamping</h5>
-                    </div>
-                    <div class="col-md-5">
-                        <button class="btn btn-custom" type="button" data-toggle="modal"
-                            data-target="#requestDosenPendamping">Tambahkan</button>
-                    </div>
-                </div>
-                <table class="info-dosen">
-                    <tr>
-                        <td style="color: #565656;">None</td>
-                        <!-- <td>Dr. Setiawan Hadi, M.Sc.CS.</td> -->
-                        <!-- <td>196207011993021001 </td> -->
-                        <!-- <td>FMIPA</td> -->
-                    </tr>
-                </table>
-                <!-- Modal -->
-                <div class="modal fade" id="requestDosenPendamping" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Konsultasi Dosen Pendamping</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="kosultasi_dosbim2.html" method="POST">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">NIP: </label>
-                                        <input type="text" class="form-control" id="inputNpmAnggota"
-                                            aria-describedby="emailHelp" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Nama Lengkap:</label>
-                                        <input type="text" class="form-control" id="inputNamaLengkapAnggota"
-                                            placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Fakultas:</label>
-                                        <input type="text" class="form-control" id="inputNamaLengkapAnggota"
-                                            placeholder="">
-                                    </div>
-                            </div>
-                            <div class="modal-footer d-flex justify-content-center">
-                                <button type="submit" class="btn btn-custom">Request</button>
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Modal -->
+<!-- Container Dosen -->
+<div class="container container-konsultasi-dosen">
+    <!-- Status Dosen -->
+    <h3>Konsultasi Dosen Pendamping</h3>
+    <div class="dosen-pendamping">
+        <div class="row status-header">
+            <div class="col-md-4">
+                <h5>Status Dosen Pendamping</h5>
             </div>
-            <!-- End Status Dosen -->
 
-            <!-- Kegiatan Dosen -->
-            <div class="dosen-pendamping disabled-style">
-                <div class="row status-header">
-                    <h5>Kegiatan Bimbingan</h5>
-                </div>
-                <form class="form-bimbingan">
-                    <div class="form-group row">
-                        <label for="selectTanggal" class="col-sm-2 col-form-label">Tanggal</label>
-                        <div class="col-sm-7">
-                            <input readonly class="form-control" id="dateDisabled" name="dateDisabled"
-                                placeholder="MM/DD/YYY" type="text" />
-                        </div>
-                        <div class="col-sm-2">
-                            <i class="fas fa-calendar-week fa-2x" style="color: #f9ca48;"></i>
-                        </div>
-                        <!-- <div class='col-8 input-group date'>
-                            <input type='text' class="form-control"  id='date' name="date"/>
-                            <span class="input-group-addon">
-                                <span class="fas fa-calendar-week fa-2x" style="color: #f9ca48;"></span>
-                            </span>
-                        </div> -->
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputHasilDiskusi" class="col-sm-2 col-form-label">Hasil Diskusi</label>
-                        <div class="col-sm-8">
-                            <textarea readonly class="form-control" name="hasilDiskusi" id="hasilDiskusi" cols="30"
-                                rows="10"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-10 d-flex justify-content-end">
-                            <button disabled type="submit" class="btn btn-custom" style="width: 160px;">Submit</button>
-                        </div>
-                    </div>
-                </form>
+            @if ($requestDosbim == null || $requestDosbim->status===0)
+                
+            <div class="col-md-5">
+                <button class="btn btn-request" type="button"  data-toggle="modal" data-target="#requestDosenPendamping">Tambahkan</button>
             </div>
-            <!-- End Kegiatan Dosen -->
 
-            <!-- Riwayat Bimbingan -->
-            <div class="dosen-pendamping disabled-style">
-                <div class="row status-header">
-                    <h5>Riwayat Bimbingan</h5>
-                </div>
-                <table class="table hasil-diskusi">
-                    <thead class="text-center">
-                        <th>Tanggal</th>
-                        <th>Hasil Diskusi</th>
-                    </thead>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-                <div class="row">
-                    <div class="col-sm-10 d-flex justify-content-end">
-                        <button disabled type="button" class="btn btn-custom" style="width:160px;">Print</button>
-                    </div>
-                </div>
+            @endif
+            {{-- @if ($requestDosbim != null && $requestDosbim->status == 0)
+                
+            <div class="col-md-5">
+                <button class="btn btn-request" type="button"  data-toggle="modal" data-target="#requestDosenPendamping">Tambahkan</button>
             </div>
-            <!-- End Riwayat Bimbingan -->
+
+            @endif  --}}
+
 
         </div>
-        <!-- End Container Status Dosen -->
+
+        <table class="info-dosen">
+            <tr>
+                @if ($requestDosbim == null)
+
+                    <td style="color: #565656;">Kosong</td>
+                @else
+
+                    @if ($requestDosbim->status === null)
+        
+                        <td style="color: #565656;">Diminta</td>
+                    
+                    @else
+                        @if ($requestDosbim->status===0)
+                            <td>Permintaan Anda Ditolak Oleh Dosen Terkait, Silahkan Cari Dosen Lain</td>
+                        @else
+                            <td>{{$requestDosbim->pendamping->user->name}}</td>
+                            <td>{{$requestDosbim->pendamping->nip_pendamping}} </td>
+                            <td>FMIPA</td>
+
+                        @endif
+                    @endif
+                
+                @endif
+            </tr>
+        </table>
+    
+        <!-- Modal -->
+        <div class="modal fade" id="requestDosenPendamping" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Konsultasi Dosen Pendamping</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{-- Start Form --}}
+                        <form action="{{route('request-pendamping')}}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect2">Pilih Dosen Pendamping</label>
+                                <select multiple class="custom-select select-akun" id="nipPendamping" name="nipPendamping">
+                                    
+                                    @foreach ($listDosenPendamping as $dosenPendamping)
+                                        <option value="{{$dosenPendamping->nip_pendamping}}">{{$dosenPendamping->nip_pendamping}} {{$dosenPendamping->user->name}}</option>
+                                    @endforeach
+
+                                  </select>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn btn-request">Meminta</button>
+                    </div>
+                    </form>
+                    {{-- End Form --}}
+
+                </div>
+            </div>
+        </div>
+        <!-- End Modal -->
+    </div>
+    <!-- End Status Dosen -->
+
+    <!-- Kegiatan Dosen -->
+
+    @if ($requestDosbim == null || $requestDosbim->status == 0)
+        <div class="dosen-pendamping disabled-style">
+    @else
+        <div class="dosen-pendamping">
+    @endif 
+        <div class="row status-header">
+            <h5>Kegiatan Bimbingan</h5>
+        </div>
+
+        {{-- Start Form --}}
+        <form class="form-bimbingan" action="{{route('mahasiswa-kegiatan_bimbingan')}}" method="POST">
+            @csrf
+
+            <div class="form-group row">
+                <label for="selectTanggal" class="col-sm-2 col-form-label">Tanggal</label>
+                <div class="col-sm-7">
+                    <input class="form-control"
+                    @if ($requestDosbim == null || $requestDosbim->status == 0)
+                        readonly id="dateDisabled" name="dateDisabled" 
+                    @else
+                        id="date" name="date"                        
+                    @endif 
+                     placeholder="MM/DD/YYY" type="text" />
+                </div>
+                <div class="col-sm-2">
+                    <i class="fas fa-calendar-week fa-2x" style="color: #f9ca48;"></i>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputHasilDiskusi" class="col-sm-2 col-form-label">Hasil Diskusi</label>
+                <div class="col-sm-8">
+                    <textarea name="inputHasilDiskusi"
+                    @if ($requestDosbim == null || $requestDosbim->status == 0)
+                        readonly 
+                    @endif 
+                    class="form-control" name="hasilDiskusi" id="hasilDiskusi" cols="30"
+                        rows="10"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 d-flex justify-content-end">
+                    <button 
+                    @if ($requestDosbim == null || $requestDosbim->status == 0)
+                        disabled 
+                    @endif
+                    type="submit" class="btn btn-custom" style="width: 95px;">Kirim</button>
+                </div>
+            </div>
+        </form>
+        {{-- End Form --}}
+    </div>
+    <!-- End Kegiatan Dosen -->
+
+    <!-- Riwayat Bimbingan -->
+    @if ($requestDosbim == null || $requestDosbim->status == 0)
+        <div class="dosen-pendamping disabled-style">
+    @else
+        <div class="dosen-pendamping">
+    @endif
+        <div class="row status-header">
+            <h5>Riwayat Bimbingan</h5>
+        </div>
+        <table class="table hasil-diskusi">
+            <thead class="text-center">
+                <th>Tanggal</th>
+                <th>Hasil Diskusi</th>
+            </thead>
+            @foreach ($riwayatBimbingan as $riwayat)
+
+            <tr>
+                <td>{{$riwayat->tanggal}}</td>
+                <td>{{$riwayat->hasil_diskusi}}</td>
+            </tr>
+                
+            @endforeach
+        </table>
+        <div class="row">
+            <div class="col-sm-10 d-flex justify-content-end">
+                <button 
+                @if ($requestDosbim == null || $requestDosbim->status == 0)
+                    disabled 
+                @endif
+                type="button" class="btn btn-custom" style="width:110px;">Unduh</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Riwayat Bimbingan -->
+
+</div>
+<!-- End Container Status Dosen -->
 
     </div>
 </div>

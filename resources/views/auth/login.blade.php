@@ -11,7 +11,10 @@
 <body>
     <div class="container login-card">
         <div class="row">
-            <form class="col-md-6 login-form" action="views/mahasiswa_views/profile.html">
+            <form class="col-md-6 login-form" action="{{route('login')}}" method="POST">
+
+                @csrf
+                
                 <div class="form-group">
                     <h1 class="login-header">PKM UNPAD</h1>
                 </div>
@@ -29,12 +32,12 @@
                       </select>
                 </div>
                 <div class="form-group">
-                    <label for="NPMatauNIP">NPM atau NIP</label>
-                    <input type="text" class="form-control" id="npmAtauNip" aria-describedby="npmAtauNip" placeholder="Enter your npm/nip">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="npmAtauNip" placeholder="Enter your Email" name="email">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
                     <div class="text-right p-t-12">
                         <a class="txt2" href="#">
                             Forgot Password?
@@ -50,7 +53,7 @@
                     </span>
                 </div>
                 <div class="text-center p-t-12">
-                    <a class="txt2" href="signup.html">
+                    <a class="txt2" href="{{route('register')}}">
                         Register
                     </a>
                 </div>

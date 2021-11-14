@@ -70,19 +70,30 @@
                 </div>
                 <table class="info-dosen">
                     <tr>
-                        <td>Dr Cukup Mulyana, MS</td>
+                        <td>
+                            @if ($mahasiswa->nip_reviewer !=null)
+                                <p>{{$reviewer->user->name}}</p>
+                            @else
+                                <p>Anda belum ditugaskan Reviewer</p>
+                            @endif
+                        </td>
+                        {{-- <td>Dr Cukup Mulyana, MS</td>
                         <td>195502091986011001 </td>
                         <td>FMIPA</td>
-                        <td>cukupmulyana@gmail.com</td>
+                        <td>cukupmulyana@gmail.com</td> --}}
                     </tr>
                 </table>
             </div>
+
             <!-- File Revisi -->
             <div class="container container-upload-revisi">
                 <h5>File Revisi</h5>
                 <!-- Upload File -->
                 <!-- CHANGE THE ACTION TO THE PHP SCRIPT THAT WILL PROCESS THE FILE VIA AJAX -->
-                <form id="file-upload-form" action="#">
+                <form id="file-upload-form" action="{{route('mahasiswa-upload_file_revisi')}}" method="POST" enctype="multipart/form-data">
+                    
+                    {{ csrf_field() }}
+
                     <input id="file-upload" class="file-upload-class" type="file" name="fileUpload" data-title="" />
                     <label for="file-upload" id="file-drag">
                         <i class="fas fa-file-word fa-5x" style="color: blue;"></i>
@@ -113,26 +124,26 @@
                 <div class="row status-header">
                     <h5>Kegiatan Coaching</h5>
                 </div>
-                <form class="form-bimbingan">
+                {{-- Start Form --}}
+                <form class="form-bimbingan" method="POST" action="{{route('mahasiswa-kegiatan_coaching')}}">
+                    @csrf
                     <div class="form-group row">
+                     
                         <label for="selectTanggal" class="col-sm-2 col-form-label">Tanggal</label>
+                     
                         <div class="col-sm-7">
                             <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
                         </div>
+                     
                         <div class="col-sm-2">
                             <i class="fas fa-calendar-week fa-2x" style="color: #f9ca48;"></i>
                         </div>
-                        <!-- <div class='col-8 input-group date'>
-                                            <input type='text' class="form-control"  id='date' name="date"/>
-                                            <span class="input-group-addon">
-                                                <span class="fas fa-calendar-week fa-2x" style="color: #f9ca48;"></span>
-                                            </span>
-                                        </div> -->
+                     
                     </div>
                     <div class="form-group row">
                         <label for="inputHasilDiskusi" class="col-sm-2 col-form-label">Hasil Diskusi</label>
                         <div class="col-sm-8">
-                            <textarea class="form-control" name="hasilDiskusi" id="hasilDiskusi" cols="30"
+                            <textarea class="form-control" name="inputHasilDiskusi" id="hasilDiskusi" cols="30"
                                 rows="10"></textarea>
                         </div>
                     </div>
@@ -142,6 +153,8 @@
                         </div>
                     </div>
                 </form>
+                {{-- End Form --}}
+
             </div>
             <!-- End Kegiatan Dosen -->
 
@@ -155,14 +168,14 @@
                         <th>Tanggal Pertemuan</th>
                         <th>Hasil Diskusi dan Komentar</th>
                     </thead>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
+
+                    @foreach ($riwayatCoaching as $riwayat)
+                        <tr>
+                            <td>{{$riwayat->tanggal}}</td>
+                            <td>{{$riwayat->hasil_diskusi}}</td>
+                        </tr>
+                    @endforeach
+
                 </table>
                 <div class="row">
                     <div class="col-sm-10 d-flex justify-content-end">
@@ -193,5 +206,139 @@
 
     });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        var options = {
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        };
+        date_input.datepicker(options);
+    })
+
+</script>
+
+<script>
+    (function () {
+        function Init() {
+            var fileSelect = document.getElementById('file-upload'),
+                fileDrag = document.getElementById('file-drag'),
+                submitButton = document.getElementById('submit-button');
+
+            fileSelect.addEventListener('change', fileSelectHandler, false);
+
+            // Is XHR2 available?
+            var xhr = new XMLHttpRequest();
+            if (xhr.upload) {
+                // File Drop
+                fileDrag.addEventListener('dragover', fileDragHover, false);
+                fileDrag.addEventListener('dragleave', fileDragHover, false);
+                fileDrag.addEventListener('drop', fileSelectHandler, false);
+            }
+        }
+
+        function fileDragHover(e) {
+            var fileDrag = document.getElementById('file-drag');
+
+            e.stopPropagation();
+            e.preventDefault();
+
+            fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body file-upload');
+        }
+
+        function fileSelectHandler(e) {
+            // Fetch FileList object
+            var files = e.target.files || e.dataTransfer.files;
+
+            // Cancel event and hover styling
+            fileDragHover(e);
+
+            // Process all File objects
+            for (var i = 0, f; f = files[i]; i++) {
+                parseFile(f);
+                uploadFile(f);
+            }
+        }
+
+        function output(msg) {
+            var m = document.getElementById('messages');
+            m.innerHTML = msg;
+        }
+
+        function parseFile(file) {
+            output(
+                '<ul>' +
+                '<li>Name: <strong>' + encodeURI(file.name) + '</strong></li>' +
+                '<li>Type: <strong>' + file.type + '</strong></li>' +
+                '<li>Size: <strong>' + (file.size / (1024 * 1024)).toFixed(2) + ' MB</strong></li>' +
+                '</ul>'
+            );
+        }
+
+        function setProgressMaxValue(e) {
+            var pBar = document.getElementById('file-progress');
+
+            if (e.lengthComputable) {
+                pBar.max = e.total;
+            }
+        }
+
+        function updateFileProgress(e) {
+            var pBar = document.getElementById('file-progress');
+
+            if (e.lengthComputable) {
+                pBar.value = e.loaded;
+            }
+        }
+
+        function uploadFile(file) {
+
+            var xhr = new XMLHttpRequest(),
+                fileInput = document.getElementById('class-roster-file'),
+                pBar = document.getElementById('file-progress'),
+                fileSizeLimit = 1024; // In MB
+            if (xhr.upload) {
+                // Check if file is less than x MB
+                if (file.size <= fileSizeLimit * 1024 * 1024) {
+                    // Progress bar
+                    pBar.style.display = 'inline';
+                    xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
+                    xhr.upload.addEventListener('progress', updateFileProgress, false);
+
+                    // File received / failed
+                    xhr.onreadystatechange = function (e) {
+                        if (xhr.readyState == 4) {
+                            // Everything is good!
+
+                            // progress.className = (xhr.status == 200 ? "success" : "failure");
+                            // document.location.reload(true);
+                        }
+                    };
+
+                    // Start upload
+                    xhr.open('POST', document.getElementById('file-upload-form').action, true);
+                    xhr.setRequestHeader('X-File-Name', file.name);
+                    xhr.setRequestHeader('X-File-Size', file.size);
+                    xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+                    xhr.send(file);
+                } else {
+                    output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
+                }
+            }
+        }
+
+        // Check for the various File API support.
+        if (window.File && window.FileList && window.FileReader) {
+            Init();
+        } else {
+            document.getElementById('file-drag').style.display = 'none';
+        }
+    })();
+</script>
+
 @endsection
 

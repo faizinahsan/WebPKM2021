@@ -24,51 +24,33 @@
                 <tbody>
                     <tr>
                         <td>Nama Lengkap: </td>
-                        <td>Ibnu Mualim</td>
+                        <td>{{$user->name}}</td>
                     </tr>
                     <tr>
                         <td>Npm : </td>
-                        <td>140810160022</td>
+                        <td>{{$user->mahasiswa->npm_mahasiswa}}</td>
                     </tr>
                 </tbody>
             </table>
 
             <h4>Data Anggota Kelompok</h4>
-            <button type="button" data-toggle="modal" data-target="#tambahAnggotaModal"
-                class="btn btn-custom">Tambahkan Anggota</button>
+            <button type="button" data-toggle="modal" data-target="#tambahAnggotaModal" class="btn btn-custom">Tambahkan
+                Anggota</button>
 
             <table class="table table-borderless data-anggota">
                 <tbody>
+                    @foreach ($anggotas as $anggota)
                     <tr>
-                        <td>Intan Pratiwi</td>
-                        <td>140810160011</td>
+                        <td>{{$anggota->nama_anggota}}</td>
+                        <td>{{$anggota->npm_anggota}}</td>
                         <td>
                             <button class="btn btn-custom" style="width: 70px;">Edit</button>
                         </td>
                         <td>
                             <button class="btn btn-custom" style="width: 70px;">Delete</button>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>Faizin Ahsan</td>
-                        <td>140810160032</td>
-                        <td>
-                            <button class="btn btn-custom" style="width: 70px;">Edit</button>
-                        </td>
-                        <td>
-                            <button class="btn btn-custom" style="width: 70px;">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ahsan Nurrijal</td>
-                        <td>140810160004</td>
-                        <td>
-                            <button class="btn btn-custom" style="width: 70px;">Edit</button>
-                        </td>
-                        <td>
-                            <button class="btn btn-custom" style="width: 70px;">Delete</button>
-                        </td>
-                    </tr>
+                    </tr>                        
+                    @endforeach
                 </tbody>
             </table>
 
@@ -84,22 +66,26 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="#" method="POST">
+                        {{-- Start Form --}}
+                        <form action="{{route('tambah-anggota')}}" method="POST">
+                            @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">NPM: </label>
-                                    <input type="text" class="form-control" id="inputNpmAnggota"
+                                    <input type="text" class="form-control" id="inputNpmAnggota" name="inputNpmAnggota"
                                         aria-describedby="emailHelp" placeholder="">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Nama Lengkap:</label>
-                                    <input type="text" class="form-control" id="inputNamaLengkapAnggota"
-                                        placeholder="">
+                                    <input type="text" class="form-control" id="inputNamaLengkapAnggota" placeholder="" name="inputNamaLengkapAnggota">
                                 </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button type="submit" class="btn btn-custom">Tambahkan</button>
                         </div>
+
                         </form>
+                        {{-- End Form --}}
+
                     </div>
                 </div>
             </div>
@@ -128,5 +114,3 @@
 
 </script>
 @endsection
-
-

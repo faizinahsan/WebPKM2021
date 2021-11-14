@@ -16,10 +16,10 @@ class RelasiForeignMahasiswaUsers extends Migration
         //
         Schema::table('tb_mahasiswa', function (Blueprint $table) {
     
-            // $table->foreign('nip_dosenpendamping')->references('nip_pendamping')->on('tb_dosen_pendamping')
-            //     ->onUpdate('cascade')->onDelete('cascade');
-            // $table->foreign('nip_dosenreviewer')->references('nip_reviewer')->on('tb_dosen_reviewer')
-            //     ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('nip_pendamping')->references('nip_pendamping')->on('tb_dosen_pendamping')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('nip_reviewer')->references('nip_reviewer')->on('tb_dosen_reviewer')
+                ->onUpdate('cascade')->onDelete('cascade');
 
         });
     }

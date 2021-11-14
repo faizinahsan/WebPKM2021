@@ -20,7 +20,7 @@
 <div class="wrapper">
     <!-- Sidebar  -->
     @include('layouts.sidenavkemahasiswaan')
-    
+
 
     <!-- Page Content  -->
     <div id="content">
@@ -44,11 +44,11 @@
                     <tbody>
                         <tr>
                             <td>Nama Ketua: </td>
-                            <td>Ibnu Mualim</td>
+                            <td>{{$mahasiswa->user->name}}</td>
                         </tr>
                         <tr>
                             <td>NPM Ketua: </td>
-                            <td>140810160022</td>
+                            <td>{{$mahasiswa->npm_mahasiswa}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -58,18 +58,12 @@
                             <td>Nama Anggota</td>
                             <td>NPM Anggota</td>
                         </tr>
+                        @foreach ($anggotas as $anggota)
                         <tr>
-                            <td>Shoffiyah Nadhiroh </td>
-                            <td>140810160057</td>
+                            <td>{{$anggota->nama_anggota}}</td>
+                            <td>{{$anggota->npm_anggota}}</td>
                         </tr>
-                        <tr>
-                            <td>Dzakia Rayhana</td>
-                            <td>140810160015</td>
-                        </tr>
-                        <tr>
-                            <td>Fajar Adiyansyah Rahiq</td>
-                            <td>140810160006</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
 
@@ -81,83 +75,133 @@
                     <tbody>
                         <tr>
                             <td>Nama Lengkap: </td>
-                            <td>Dr. Setiawan Hadi, M.Sc.CS.</td>
+                            <td>{{$pendamping->user->name}}</td>
                         </tr>
                         <tr>
                             <td>NIP : </td>
-                            <td>196207011993021001 </td>
-                        </tr>
-                        <tr>
-                            <td>Fakultas : </td>
-                            <td>FMIPA </td>
+                            <td>{{$pendamping->nip_pendamping}}</td>
                         </tr>
                     </tbody>
                 </table>
+                {{-- Dosen Reviewer --}}
                 <h5>Informasi Dosen Reviewer</h5>
+                @if ($mahasiswa->nip_reviewer == null)
                 <table class="data-ketua">
                     <tbody>
                         <tr>
-                            <td>Nama Lengkap: </td>
-                            <td>Dr Cukup Mulyana, MS</td>
+                            <td>Dosen Reviewer Belum Ditugaskan</td>
                         </tr>
                         <tr>
-                            <td>NIP : </td>
-                            <td>195502091986011001</td>
-                        </tr>
-                        <tr>
-                            <td>Fakultas : </td>
-                            <td>FMIPA </td>
+                            <td>
+                                <div class="col-md-5">
+                                    <button class="btn btn-custom" type="button"  data-toggle="modal" data-target="#requestDosenPendamping">Tambahkan</button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-
-            </section>
-
-            <section id="content3" class="tab-content">
-                <div class="row">
-                    <div class="col-md-12 d-flex justify-content-center">
-                        <div class="download-proposal text-center">
-                            <img src="../../img/doc.png" alt="Doc File">
-                            <p>PKM KC_Pengolahan Pupuk Menjadi Tanaman Obat.doc</p>
-                            <button class="btn btn-custom">Download</button>
-                        </div>
+    
+                 <!-- Modal -->
+        <div class="modal fade" id="requestDosenPendamping" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Daftar Dosen Reviewer</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </div>
+                    <div class="modal-body">
+                        {{-- Start Form --}}
+                <form action="{{route('kemahasiswaan-tugaskan_reviewer')}}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <input type="hidden" name="id_proposal" value="{{$proposal->id_file_proposal}}">
+                        <label for="exampleFormControlSelect2">Pilih Dosen Reviewer</label>
+                        <select multiple class="custom-select select-akun" id="nipReviewer" name="nipReviewer">
 
-            </section>
+                            @foreach ($reviewers as $reviewer)
+                            <option value="{{$reviewer->nip_reviewer}}">{{$reviewer->nip_reviewer}}
+                                {{$reviewer->user->name}}</option>
+                            @endforeach
 
-            <section id="content4" class="tab-content">
-                <h5>Akun Simbelmawa</h5>
-                <div class="row">
-                    <div class="col-md-8">
-                        <form action="#" class="form-akun">
-                            <div class="form-group row">
-                                <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputNip" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="">
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-custom">Submit</button>
-
-                            </div>
-                        </form>
+                        </select>
                     </div>
+                    <button type="submit" class="btn btn-custom">Tugaskan</button>
+                </form>
+        {{-- End Form --}}
+                    {{-- End Form --}}
+
                 </div>
-
-            </section>
-
-
+            </div>
         </div>
+        <!-- End Modal -->
+                
+        @else
+
+        <table class="data-ketua">
+            <tbody>
+                <tr>
+                    <td>Nama Lengkap: </td>
+                    <td>{{$reviewer->user->name}}</td>
+                </tr>
+                <tr>
+                    <td>NIP : </td>
+                    <td>{{$reviewer->nip_reviewer}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        @endif
+
+        </section>
+
+        <section id="content3" class="tab-content">
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <div class="download-proposal text-center">
+                        <img src="../../img/doc.png" alt="Doc File">
+                        <p>{{$proposal->file_proposal}}</p>
+                        <button class="btn btn-custom">Download</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="content4" class="tab-content">
+            <h5>Akun Simbelmawa</h5>
+            <div class="row">
+                <div class="col-md-8">
+                    <form action="#" class="form-akun">
+                        <div class="form-group row">
+                            <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputNip" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="inputPassword" placeholder="">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-custom">Submit</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+
     </div>
-    <!-- End Page Content -->
-</div>    
+</div>
+<!-- End Page Content -->
+</div>
 @endsection
 
 @section('jslinks')
@@ -177,7 +221,7 @@
             $('#sidebar').toggleClass('active');
         });
     });
+
 </script>
 
 @endsection
-

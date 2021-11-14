@@ -66,7 +66,19 @@
                 pada pukul 23.59 tanggal 6 April 2020. Harap mengumpulkan proposal dalam format doc.</p>
             <!-- Upload File -->
             <!-- CHANGE THE ACTION TO THE PHP SCRIPT THAT WILL PROCESS THE FILE VIA AJAX -->
-            <form id="file-upload-form" action="#">
+                @if(count($errors) > 0)
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                        {{ $error }} <br/>
+                        @endforeach
+                    </div>
+                @endif
+           
+            @if (Auth::user()->mahasiswa->proposal == null)
+            <form id="file-upload-form" action="{{route('mahasiswa-proses_upload_proposal')}}" method="POST" enctype="multipart/form-data">
+            
+                {{ csrf_field() }}
+
                 <input id="file-upload" class="file-upload-class" type="file" name="fileUpload" data-title="" />
                 <label for="file-upload" id="file-drag">
                     Tarik dan letakan berkas disini
@@ -90,6 +102,13 @@
                 </div>
             </form>
             <!-- End Upload File -->
+            @else
+                <h1>Proposal Telah di Upload</h1>
+                <h3>Nama File Proposal: </h3>
+                <h4>{{$proposal->file_proposal}}</h4>
+            @endif
+
+
         </div>
 
     </div>

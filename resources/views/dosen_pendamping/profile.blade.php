@@ -18,80 +18,38 @@
                 <a href="{{route('dosen_pendamping-profile1')}}" class="btn btn-custom-profile"> Daftar Disetujui</a>
             </div>
 
+            @foreach ($requestMahasiswa as $request)
+            
             <div class="daftar-card d-flex justify-content-center">
                 <div class="card card-ketua">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <h6>Ibnu Mualim</h6>
-                                <h6>140810160022</h6>
+                                <h6>{{$request->mahasiswa->user->name}}</h6>
+                                <h6>{{$request->npm_mahasiswa}}</h6>
                             </div>
                             <div class="col-md-3">
-                                <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width:130px;">Terima</a href="{{route('dosen_pendamping-profile_keterangan')}}">
+                                <form action="{{route('terima-mahasiswa')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="npm_mahasiswa" value="{{$request->npm_mahasiswa}}">
+                                    <button type="submit" class="btn btn-custom-profile" style="width:130px;">Terima</button>
+                                </form>
                             </div>
                             <div class="col-md-3">
-                                <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width:130px;">Tolak</a href="{{route('dosen_pendamping-profile_keterangan')}}">
+                                <form action="{{route('tolak-mahasiswa')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="npm_mahasiswa" value="{{$request->npm_mahasiswa}}">
+                                    <button type="submit" class="btn btn-custom-profile" style="width:130px;">Tolak</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="daftar-card d-flex justify-content-center">
-                <div class="card card-ketua">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6>Ibnu Mualim</h6>
-                                <h6>140810160022</h6>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width:130px;">Terima</a href="{{route('dosen_pendamping-profile_keterangan')}}">
-                            </div>
-                            <div class="col-md-3">
-                                <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width:130px;">Tolak</a href="{{route('dosen_pendamping-profile_keterangan')}}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            @endforeach
 
-            <div class="daftar-card d-flex justify-content-center">
-                <div class="card card-ketua">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6>Ibnu Mualim</h6>
-                                <h6>140810160022</h6>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width:130px;">Terima</a href="{{route('dosen_pendamping-profile_keterangan')}}">
-                            </div>
-                            <div class="col-md-3">
-                                <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width:130px;">Tolak</a href="{{route('dosen_pendamping-profile_keterangan')}}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="daftar-card d-flex justify-content-center">
-                <div class="card card-ketua">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6>Ibnu Mualim</h6>
-                                <h6>140810160022</h6>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width:130px;">Terima</a href="{{route('dosen_pendamping-profile_keterangan')}}">
-                            </div>
-                            <div class="col-md-3">
-                                <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile" style="width:130px;">Tolak</a href="{{route('dosen_pendamping-profile_keterangan')}}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
         </div>
     </div>

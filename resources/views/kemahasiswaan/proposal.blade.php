@@ -31,39 +31,20 @@
                         <th>Proposal</th>
                         <th>Keterangan</th>
                     </tr>
+                    @foreach ($proposal_list as $proposal)
                     <tr>
-                        <td>Ibnu Mualim </td>
+                        <td>{{$proposal->mahasiswa->user->name}}</td>
                         <td class="nama-proposal">
                             <img src="../../img/doc.png" alt="Doc File">
-                            <p>Proposal PKM-P.doc</p>
+                            <p>{{$proposal->file_proposal}}</p>
                         </td>
                         <td>
                             <a class="btn btn-custom">Download</a>
-                            <a href="{{route('kemahasiswaan-proposal2')}}" class="btn btn-custom">Detail</a>
+                            <a href="{{route('kemahasiswaan-detail_proposal',['id'=>$proposal->id_file_proposal])}}" class="btn btn-custom">Detail</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Ibnu Mualim </td>
-                        <td class="nama-proposal">
-                            <img src="../../img/doc.png" alt="Doc File">
-                            <p>Proposal PKM-P.doc</p>
-                        </td>
-                        <td>
-                            <a class="btn btn-custom">Download</a>
-                            <a href="{{route('kemahasiswaan-proposal2')}}" class="btn btn-custom">Detail</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ibnu Mualim </td>
-                        <td class="nama-proposal">
-                            <img src="../../img/doc.png" alt="Doc File">
-                            <p>Proposal PKM-P.doc</p>
-                        </td>
-                        <td>
-                            <a class="btn btn-custom">Download</a>
-                            <a href="{{route('kemahasiswaan-proposal2')}}" class="btn btn-custom">Detail</a>
-                        </td>
-                    </tr>
+                    @endforeach
+
                 </tbody>
             </table>
         </div>
