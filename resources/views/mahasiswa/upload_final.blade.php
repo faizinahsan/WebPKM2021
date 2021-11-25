@@ -72,6 +72,17 @@
 
                 <label for="judulProposalFinal">Judul Proposal:</label>
                 <input type="text" name="judulProposalFinal" id="judulProposalFinal" class="form-control">
+
+                <label for="kategori">Kategori Proposal</label>
+                <div class="form-group">
+                    <select class="custom-select select-akun">
+                        <option selected>Pilih Kategori PKM</option>
+                        @foreach ($kategoriPKM as $kategoriItem)
+                            <option>{{$kategoriItem->kategori_name}}</option>
+                        @endforeach
+                      </select>
+                </div>
+
                 <label for="fileProposal" class="mt-3">File Proposal:</label>
                 <input id="file-upload" class="file-upload-class" type="file" name="fileUpload" data-title="" />
                 <label for="file-upload" id="file-drag">

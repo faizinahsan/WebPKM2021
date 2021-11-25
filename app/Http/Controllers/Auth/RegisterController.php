@@ -4,7 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+
+use App\User;
+use App\Models\Mahasiswa;
+use App\Models\Kemahasiswaan;
+use App\Models\DosenPendamping;
+use App\Models\DosenReviewer;
+
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -53,6 +59,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role_id'=> ['required','string','max:20'],
         ]);
     }
 
@@ -64,10 +71,62 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        if ($data['role_id']==1) {
+            # code...
+            $user = User::create([
+                        'name' => $data['name'],
+                        'email' => $data['email'],
+                        'password' => Hash::make($data['password']),
+                        'role_id'=>$data['role_id'],
+                    ]);
+            $kemahasiswaan = Kemahasiswaan::create([
+                'nip_kemahasiswaan'=>$data['npmNip'],
+                'nip_reviewer'=>null,
+                'users_id'=>$user->id,
+            ]);
+            return $user;
+        }else if ($data['role_id']==2){
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role_id'=>$data['role_id'],
+            ]);
+    
+            $reviewer = DosenReviewer::create([
+                'nip_reviewer'=>$data['npmNip'],
+                'users_id'=>$user->id,
+            ]);
+            return $user;
+        }else if ($data['role_id']==3) {
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role_id'=>$data['role_id'],
+            ]);
+    
+            $pendamping = DosenPendamping::create([
+                'nip_pendamping'=>$data['npmNip'],
+                'users_id'=>$user->id,
+            ]);
+            return $user;
+        }else if($data['role_id']==4){
+             # code...
+             $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role_id'=>$data['role_id'],
+            ]);
+    
+            $mahasiswa = Mahasiswa::create([
+                'npm_mahasiswa'=>$data['npmNip'],
+                'nip_pendamping'=>null,
+                'nip_reviewer'=>null,
+                'users_id'=>$user->id,
+            ]);
+            return $user;
+        }
     }
 }

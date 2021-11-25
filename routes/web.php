@@ -63,13 +63,10 @@ Route::group(['middleware' => ['can:isMahasiswa']], function () {
     Route::post('/mahasiswa/coaching/uploadFileRevisi','MahasiswaControllers\CoachingController@uploadFileRevisi')->name('mahasiswa-upload_file_revisi');
     
     
-    Route::get('/mahasiswa/upload_final',function(){
-        return view('mahasiswa.upload_final');
-    })->name('mahasiswa-upload_final');
+    Route::get('/mahasiswa/upload_final','MahasiswaControllers\UploadProposalController@uploadProposalFinalView')->name('mahasiswa-upload_final');
+    Route::post('/mahasiswa/upload_final/proses','MahasiswaControllers\UploadProposalController@uploadProposalFinal')->name('mahasiswa-proses_upload_final');
     
-    Route::get('/mahasiswa/akun_simbelmawa',function(){
-        return view('mahasiswa.akun_simbelmawa');
-    })->name('mahasiswa-akun_simbelmawa');
+    Route::get('/mahasiswa/akun_simbelmawa','MahasiswaControllers\AkunSimbelmawaController@index')->name('mahasiswa-akun_simbelmawa');
     
     Route::get('/mahasiswa/akun_simbelmawa2',function(){
         return view('mahasiswa.akun_simbelmawa2');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MahasiswaControllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Proposal;
+use App\Models\KategoriPKM;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +16,8 @@ class UploadProposalController extends Controller
     {
         $npm_mahasiswa = Auth::user()->mahasiswa->npm_mahasiswa;
         $proposal = Proposal::where('npm_mahasiswa',$npm_mahasiswa)->latest('created_at')->first();
-        return view('mahasiswa.upload_proposal',['proposal'=>$proposal]);
+        $kategoriPKM= KategoriPKM::all();
+        return view('mahasiswa.upload_proposal',['proposal'=>$proposal,'kategoriPKM'=>$kategoriPKM]);
     }
     public function proses_upload(Request $request)
     {
@@ -59,6 +61,14 @@ class UploadProposalController extends Controller
         //     'npm_mahasiswa'=>$npm_mahasiswa
         // ]);
         return redirect('/mahasiswa/upload_proposal')->with('success','Data telah disimpan');
+    }
+
+    public function uploadProposalFinalView(Request $request)
+    {
+        $npm_mahasiswa = Auth::user()->mahasiswa->npm_mahasiswa;
+        $proposal = Proposal::where('npm_mahasiswa',$npm_mahasiswa)->latest('created_at')->first();
+        $kategoriPKM= KategoriPKM::all();
+        return view('mahasiswa.upload_final',['proposal'=>$proposal,'kategoriPKM'=>$kategoriPKM]);
     }
 
     public function uploadProposalFinal(Request $request)
