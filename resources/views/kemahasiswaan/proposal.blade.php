@@ -29,6 +29,7 @@
                     <tr>
                         <th>Nama</th>
                         <th>Proposal</th>
+                        <th>Status</th>
                         <th>Keterangan</th>
                     </tr>
                     @foreach ($proposal_list as $proposal)
@@ -37,6 +38,13 @@
                         <td class="nama-proposal">
                             <img src="../../img/doc.png" alt="Doc File">
                             <p>{{$proposal->judul_proposal}}</p>
+                        </td>
+                        <td>
+                            @if ($proposal->mahasiswa->nip_reviewer == null)
+                                <p>Reviewer Belum ditugaskan</p>
+                            @else
+                                <p>Reviewer Sudah ditugaskan</p>
+                            @endif
                         </td>
                         <td>
                             <a class="btn btn-custom">Download</a>

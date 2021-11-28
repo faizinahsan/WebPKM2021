@@ -98,7 +98,11 @@
                     
                     {{ csrf_field() }}
 
-                    <input id="file-upload" class="file-upload-class" type="file" name="fileUpload" data-title=""/>
+                    <input id="file-upload" class="file-upload-class" type="file" name="fileUpload" data-title="" 
+                    @if ($mahasiswa->nip_reviewer == null)
+                        onclick="disableUpload()"
+                    @endif
+                    />
                     <label for="file-upload" id="file-drag">
                         <i class="fas fa-file-word fa-5x" style="color: blue;"></i>
                         <br /><br /><span id="file-upload-btn" 
@@ -236,6 +240,11 @@
 </script>
 <script src="../../js/bootstrap.min.js"></script>
 <script>
+    function disableUpload() {
+        document.getElementById("file-upload").disabled = true;
+    }
+</script>
+<script>
     $(document).ready(function () {
 
         $('#sidebarCollapse').on('click', function () {
@@ -256,8 +265,9 @@
             autoclose: true,
         };
         date_input.datepicker(options);
-
-        document.getElementById("file-upload").disabled = true;
+        
+        // disabled onClick saat reviewer tidak ditugaskan
+        // document.getElementById("file-upload").disabled = true;
     })
 
 </script>

@@ -24,10 +24,10 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <p>Ibnu Mualim</p>
+                        <p>{{$mahasiswa->user->name}}</p>
                     </div>
                     <div class="col-md-6">
-                        <p>140810160022</p>
+                        <p>{{$mahasiswa->npm_mahasiswa}}</p>
                     </div>
                 </div>
             </div>
@@ -36,12 +36,18 @@
             <!-- File Revisi Proposal -->
             <div class="file-proposal">
                 <h5>File Proposal</h5>
+
+                @foreach ($daftarFileRevisi as $fileRevisi)
+                    
                 <div class="file-row">
                     <img src="../../img/doc.png" alt="Doc File">
-                    <p>Perbaikan Proposal PKM.doc</p>
+                    <p>{{$fileRevisi->file_revisi}}</p>
                     <a href="#" class="btn btn-custom-profile">Download</a>
                     <a href="#" class="btn btn-custom-profile">Upload</a>
                 </div>
+
+                @endforeach
+
                 <div class="file-row">
                     <img src="../../img/doc.png" alt="Doc File">
                     <p>Perbaikan Proposal PKM.doc</p>
@@ -66,14 +72,18 @@
                         <th>Hasil Diskusi</th>
                         <th>Keterangan</th>
                     </thead>
+
+                    @foreach ($daftarRiwayatCoaching as $riwayatCoaching)
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td>{{$riwayatCoaching->tanggal}}</td>
+                        <td>{{$riwayatCoaching->hasil_diskusi}}</td>
                         <td>
                             <a href="profile_keterangan.html" class="btn btn-custom-profile"
                                 style="width: 130px;">Sesuai</a>
                         </td>
-                    </tr>
+                    </tr>                        
+                    @endforeach
+
                     <tr>
                         <td></td>
                         <td></td>
@@ -102,7 +112,6 @@
             </div>
             <!-- End Riwayat Bimbingan -->
         </div>
-
     </div>
     <!-- End Content -->
 @endsection

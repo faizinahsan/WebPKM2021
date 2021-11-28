@@ -24,38 +24,17 @@
                     <th>NPM</th>
                     <th>Keterangan</th>
                 </thead>
-                <tr>
-                    <td>Ibnu Mualim</td>
-                    <td>1408010160022</td>
-                    <td>
-                        <a href="{{route('dosen_reviewer-profile_keterangan')}}" class="btn btn-custom-profile" style="width: 130px;">View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ibnu Mualim</td>
-                    <td>1408010160022</td>
-                    <td>
-                        <a href="{{route('dosen_reviewer-profile_keterangan')}}" class="btn btn-custom-profile" style="width: 130px;">View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ibnu Mualim</td>
-                    <td>1408010160022</td>
-                    <td>
-                        <a href="{{route('dosen_reviewer-profile_keterangan')}}" class="btn btn-custom-profile" style="width: 130px;">View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ibnu Mualim</td>
-                    <td>1408010160022</td>
-                    <td>
-                        <a href="{{route('dosen_reviewer-profile_keterangan')}}" class="btn btn-custom-profile" style="width: 130px;">View</a>
-                    </td>
-                </tr>
+                @foreach ($daftarMahasiswa as $mahasiswa)
+                    <tr>
+                        <td>{{$mahasiswa->user->name}}</td>
+                        <td>{{$mahasiswa->npm_mahasiswa}}</td>
+                        <td>
+                            <a href="{{route('dosen_reviewer-profile_keterangan',['id'=>$mahasiswa->npm_mahasiswa])}}" class="btn btn-custom-profile" style="width: 130px;">View</a>
+                        </td>
+                    </tr>
+                @endforeach
             </table>
-
             </div>
-
         </div>
     </div>
     <!-- End Content -->

@@ -109,62 +109,83 @@
                         </tr>
                     </tbody>
                 </table>
-    
-                 <!-- Modal -->
-        <div class="modal fade" id="requestDosenPendamping" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Daftar Dosen Reviewer</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        {{-- Start Form --}}
-                <form action="{{route('kemahasiswaan-tugaskan_reviewer')}}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <input type="hidden" name="id_proposal" value="{{$proposal->id_file_proposal}}">
-                        <label for="exampleFormControlSelect2">Pilih Dosen Reviewer</label>
-                        <select multiple class="custom-select select-akun" id="nipReviewer" name="nipReviewer">
 
-                            @foreach ($reviewers as $reviewer)
-                            <option value="{{$reviewer->nip_reviewer}}">{{$reviewer->nip_reviewer}}
-                                {{$reviewer->user->name}}</option>
-                            @endforeach
 
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-custom">Tugaskan</button>
-                </form>
-        {{-- End Form --}}
-                    {{-- End Form --}}
-
-                </div>
-            </div>
-        </div>
-        <!-- End Modal -->
+                @else
+                <table class="data-ketua">
+                    <tbody>
+                        <tr>
+                            <td>Nama Lengkap: </td>
+                            <td>{{$reviewer->user->name}}</td>
+                        </tr>
+                        <tr>
+                            <td>NIP : </td>
+                            <td>{{$reviewer->nip_reviewer}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                @endif
                 
-        @else
+                {{-- Riwayat Pelatihan --}}
+                <h5>Riwayat Pelatihan</h5>
+                <table class="table hasil-diskusi">
+                    <thead class="text-center">
+                        <th>Tanggal Pertemuan</th>
+                        <th>Hasil Diskusi dan Komentar</th>
+                    </thead>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <div class="row">
+                    <div class="col-sm-10 d-flex justify-content-end">
+                        <button type="button" class="btn btn-custom" style="width:160px;"
+                        @if ($mahasiswa->nip_reviewer == null)
+                            disabled
+                        @endif
+                        >Print</button>
+                    </div>
+                </div>
+                {{-- End Riwayat Pelatihan --}}
 
-        <table class="data-ketua">
-            <tbody>
-                <tr>
-                    <td>Nama Lengkap: </td>
-                    <td>{{$reviewer->user->name}}</td>
-                </tr>
-                <tr>
-                    <td>NIP : </td>
-                    <td>{{$reviewer->nip_reviewer}}</td>
-                </tr>
-            </tbody>
-        </table>
+                {{-- Modal Tambah Reviewer harus di akhir section --}}
+                <div class="modal fade" id="requestDosenPendamping" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Daftar Dosen Reviewer</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{-- Start Form --}}
+                        <form action="{{route('kemahasiswaan-tugaskan_reviewer')}}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <input type="hidden" name="id_proposal" value="{{$proposal->id_file_proposal}}">
+                                <label for="exampleFormControlSelect2">Pilih Dosen Reviewer</label>
+                                <select multiple class="custom-select select-akun" id="nipReviewer" name="nipReviewer">
 
-        @endif
+                                    @foreach ($reviewers as $reviewer)
+                                    <option value="{{$reviewer->nip_reviewer}}">{{$reviewer->nip_reviewer}}
+                                        {{$reviewer->user->name}}</option>
+                                    @endforeach
 
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-custom">Tugaskan</button>
+                        </form>
+                        {{-- End Form --}}
+                        </div>
+                    </div>
+                </div>
+                {{-- End Modal Tambah Reviewer --}}
         </section>
+        {{-- End Section Reviewer --}}
+
+        
 
         <section id="content3" class="tab-content">
             <div class="row">
@@ -206,9 +227,9 @@
 
         </section>
 
-
     </div>
 </div>
+
 <!-- End Page Content -->
 </div>
 @endsection

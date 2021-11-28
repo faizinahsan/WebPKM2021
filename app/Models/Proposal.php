@@ -18,4 +18,9 @@ class Proposal extends Model
         return $this->belongsTo('App\Models\Mahasiswa','npm_mahasiswa');
     }
 
+    public function kategori()
+    {
+        return $this->belongsTo('App\Models\KategoriPKM','kategori_id');
+    }
+
 }

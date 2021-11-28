@@ -18,7 +18,7 @@ class ReviewerController extends Controller
     public function index(Request $request)
     {
         $reviewer = Auth::user()->reviewer;
-        $daftarMahasiswa = Mahasiswa::where('nip_reviewer',$reviewer->nip_reviewer);
+        $daftarMahasiswa = Mahasiswa::where('nip_reviewer',$reviewer->nip_reviewer)->get();
 
         return view('dosen_reviewer.profile',['reviewer'=>$reviewer,'daftarMahasiswa'=>$daftarMahasiswa]);
     }
@@ -26,8 +26,11 @@ class ReviewerController extends Controller
     public function keteranganPage(Request $request)
     {
         // Placeholder npm sementara
-        $npmMahasiswa = "140810160001";
-        $mahasiswa = Mahasiswa::where('npm_mahasiswa',$npmMahasiswa)->get();
-        return view('dosen_reviewer.profile_keterangan',['mahasiswa'=>$mahasiswa]);
+        $npmMahasiswa = $request->id;
+        $mahasiswa = Mahasiswa::where('npm_mahasiswa',$npmMahasiswa)->get()->first();
+        $daftarFileRevisi = FileRevisi::where('npm_mahasiswa',$npmMahasiswa)->get();
+        $daftarRiwayatCoaching = RiwayatCoaching::where('npm_mahasiswa',$npmMahasiswa)->get();
+
+        return view('dosen_reviewer.profile_keterangan',['mahasiswa'=>$mahasiswa,'daftarFileRevisi'=>$daftarFileRevisi,'daftarRiwayatCoaching'=>$daftarRiwayatCoaching]);
     }
 }

@@ -122,6 +122,9 @@
                     <br><br>
                     Judul Proposal :
                     {{$proposal->judul_proposal}}
+                    <br><br>
+                    Kategori Proposal :
+                    {{$proposal->kategori->kategori_name}}
                 </p>
             @endif
 

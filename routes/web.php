@@ -92,7 +92,7 @@ Route::group(['middleware' => ['can:isPendamping']], function () {
 Route::group(['middleware' => ['can:isReviewer']], function () {
     Route::get('/dosen_reviewer/profile','ReviewerControllers\ReviewerController@index')->name('dosen_reviewer-profile');
     
-    Route::get('/dosen_reviewer/profile_keterangan','ReviewerControllers\ReviewerController@keteranganPage')->name('dosen_reviewer-profile_keterangan');
+    Route::get('/dosen_reviewer/profile_keterangan/{id?}','ReviewerControllers\ReviewerController@keteranganPage')->name('dosen_reviewer-profile_keterangan');
 });
 
 /** Kemahasiswaan */
