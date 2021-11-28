@@ -19,6 +19,7 @@ class KonsultasiPendamping extends Controller
     public function index()
     {
         $user = Auth::user();
+        $mahasiswa = $user->mahasiswa;
         $npmMahasiswa = $user->mahasiswa->npm_mahasiswa;
         $listDosenPendamping = DosenPendamping::all();
         $requestDosbim = RequestDosbim::where('npm_mahasiswa',$npmMahasiswa)->get()->first();
@@ -26,7 +27,7 @@ class KonsultasiPendamping extends Controller
 
         $riwayatBimbingan = RiwayatBimbingan::where('npm_mahasiswa',$npmMahasiswa)->get();
         // dd($riwayatBimbingan);
-        return view('mahasiswa.konsultasi_dosbim',['requestDosbim'=>$requestDosbim,'riwayatBimbingan'=>$riwayatBimbingan,'listDosenPendamping'=>$listDosenPendamping]);
+        return view('mahasiswa.konsultasi_dosbim',['mahasiswa'=>$mahasiswa,'requestDosbim'=>$requestDosbim,'riwayatBimbingan'=>$riwayatBimbingan,'listDosenPendamping'=>$listDosenPendamping]);
     }
 
     //

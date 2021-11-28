@@ -21,7 +21,6 @@ class CoachingController extends Controller
         $mahasiswa = Auth::user()->mahasiswa;
         $reviewer = DosenReviewer::find($mahasiswa->nip_reviewer);
         $riwayatCoaching = RiwayatCoaching::all();
-        // dd($reviewer);
         return view('mahasiswa.coaching',['mahasiswa'=>$mahasiswa,'reviewer'=>$reviewer,'riwayatCoaching'=>$riwayatCoaching]);
     }
 

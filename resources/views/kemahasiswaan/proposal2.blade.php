@@ -72,17 +72,26 @@
             <section id="content2" class="tab-content">
                 <h5>Informasi Dosen Pembimbing</h5>
                 <table class="data-ketua">
-                    <tbody>
-                        <tr>
-                            <td>Nama Lengkap: </td>
-                            <td>{{$pendamping->user->name}}</td>
-                        </tr>
-                        <tr>
-                            <td>NIP : </td>
-                            <td>{{$pendamping->nip_pendamping}}</td>
-                        </tr>
-                    </tbody>
+                    @if ($pendamping!= null)
+                        <tbody>
+                            <tr>
+                                <td>Nama Lengkap: </td>
+                                <td>{{$pendamping->user->name}}</td>
+                            </tr>
+                            <tr>
+                                <td>NIP : </td>
+                                <td>{{$pendamping->nip_pendamping}}</td>
+                            </tr>
+                        </tbody>
+                    @else
+                        <tbody>
+                            <tr>
+                                <td>Mahasiswa Belum Memilih Pendamping</td>
+                            </tr>
+                        </tbody>
+                    @endif
                 </table>
+                
                 {{-- Dosen Reviewer --}}
                 <h5>Informasi Dosen Reviewer</h5>
                 @if ($mahasiswa->nip_reviewer == null)

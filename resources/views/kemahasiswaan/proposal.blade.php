@@ -36,7 +36,7 @@
                         <td>{{$proposal->mahasiswa->user->name}}</td>
                         <td class="nama-proposal">
                             <img src="../../img/doc.png" alt="Doc File">
-                            <p>{{$proposal->file_proposal}}</p>
+                            <p>{{$proposal->judul_proposal}}</p>
                         </td>
                         <td>
                             <a class="btn btn-custom">Download</a>

@@ -86,7 +86,11 @@
             </div>
 
             <!-- File Revisi -->
-            <div class="container container-upload-revisi">
+            @if ($mahasiswa->nip_reviewer == null)
+                <div class="container container-upload-revisi disabled-style ">
+            @else
+                <div class="container container-upload-revisi ">
+            @endif
                 <h5>File Revisi</h5>
                 <!-- Upload File -->
                 <!-- CHANGE THE ACTION TO THE PHP SCRIPT THAT WILL PROCESS THE FILE VIA AJAX -->
@@ -94,10 +98,16 @@
                     
                     {{ csrf_field() }}
 
-                    <input id="file-upload" class="file-upload-class" type="file" name="fileUpload" data-title="" />
+                    <input id="file-upload" class="file-upload-class" type="file" name="fileUpload" data-title=""/>
                     <label for="file-upload" id="file-drag">
                         <i class="fas fa-file-word fa-5x" style="color: blue;"></i>
-                        <br /><br /><span id="file-upload-btn" class="button">Perbarui Berkas</span>
+                        <br /><br /><span id="file-upload-btn" 
+                        @if ($mahasiswa->nip_reviewer == null)
+                            class="button disabled-style"
+                        @else
+                            class="button"
+                        @endif    
+                        >Perbarui Berkas</span>
                     </label>
 
                     <progress id="file-progress" value="0">
@@ -111,7 +121,11 @@
                                 style="background: #ff6b6b; color:white; width: 160px; height: 60px;">Cancel</button>
                         </div>
                         <div class="col-md-6 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-custom" style="width: 160px; height: 60px;">Submit</button>
+                            <button type="submit" class="btn btn-custom" style="width: 160px; height: 60px;" 
+                            @if ($mahasiswa->nip_reviewer == null)
+                                disabled
+                            @endif    
+                            >Submit</button>
                         </div>
                     </div>
                 </form>
@@ -120,7 +134,11 @@
             <!-- End File Revisi -->
 
             <!-- Kegiatan Dosen -->
-            <div class="dosen-reviewer">
+        @if ($mahasiswa->nip_reviewer == null)
+            <div class="dosen-reviewer disabled-style">
+        @else
+            <div class="dosen-reviewer ">
+        @endif
                 <div class="row status-header">
                     <h5>Kegiatan Coaching</h5>
                 </div>
@@ -132,7 +150,11 @@
                         <label for="selectTanggal" class="col-sm-2 col-form-label">Tanggal</label>
                      
                         <div class="col-sm-7">
-                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" 
+                            @if ($mahasiswa->nip_reviewer == null)
+                                readonly
+                            @endif
+                            />
                         </div>
                      
                         <div class="col-sm-2">
@@ -144,12 +166,20 @@
                         <label for="inputHasilDiskusi" class="col-sm-2 col-form-label">Hasil Diskusi</label>
                         <div class="col-sm-8">
                             <textarea class="form-control" name="inputHasilDiskusi" id="hasilDiskusi" cols="30"
-                                rows="10"></textarea>
+                                rows="10" 
+                                @if ($mahasiswa->nip_reviewer == null)
+                                    readonly
+                                @endif
+                                ></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-custom" style="width: 160px;">Submit</button>
+                            <button type="submit" class="btn btn-custom" style="width: 160px;" 
+                            @if ($mahasiswa->nip_reviewer == null)
+                                disabled
+                            @endif
+                            >Submit</button>
                         </div>
                     </div>
                 </form>
@@ -159,7 +189,11 @@
             <!-- End Kegiatan Dosen -->
 
             <!-- Riwayat Bimbingan -->
-            <div class="dosen-reviewer">
+            @if ($mahasiswa->nip_reviewer == null)
+                <div class="dosen-reviewer disabled-style">
+            @else
+                <div class="dosen-reviewer">
+            @endif
                 <div class="row status-header">
                     <h5>Riwayat Coaching</h5>
                 </div>
@@ -179,7 +213,11 @@
                 </table>
                 <div class="row">
                     <div class="col-sm-10 d-flex justify-content-end">
-                        <button type="button" class="btn btn-custom" style="width:160px;">Print</button>
+                        <button type="button" class="btn btn-custom" style="width:160px;"
+                        @if ($mahasiswa->nip_reviewer == null)
+                            disabled
+                        @endif
+                        >Print</button>
                     </div>
                 </div>
             </div>
@@ -218,6 +256,8 @@
             autoclose: true,
         };
         date_input.datepicker(options);
+
+        document.getElementById("file-upload").disabled = true;
     })
 
 </script>

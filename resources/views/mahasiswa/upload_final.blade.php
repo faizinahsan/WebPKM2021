@@ -64,7 +64,10 @@
             <p>Pengumpulan proposal PKM Final agar diseleksi kembali oleh reviewer untuk dapat username dan password
                 simbelmawa pada tanggal 3 September - 17 September 2020. Batas pengumpulan proposal pada pukul 23.59
                 tanggal 17 September 2020. Harap mengumpulkan proposal dalam format doc.</p>
-            <!-- Upload File -->
+                @if ($mahasiswa->nip_reviewer == null)
+                <p>Anda Belum Ditugaskan Reviewer</p>
+                @else
+                                <!-- Upload File -->
             <!-- CHANGE THE ACTION TO THE PHP SCRIPT THAT WILL PROCESS THE FILE VIA AJAX -->
             <form id="file-upload-form" action="{{route('mahasiswa-upload_proposal')}}" method="POST" enctype="multipart/form-data">
                 
@@ -108,6 +111,8 @@
                 </div>
             </form>
             <!-- End Upload File -->
+                @endif
+
         </div>
 
     </div>

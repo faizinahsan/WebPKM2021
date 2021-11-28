@@ -78,13 +78,16 @@
             <form id="file-upload-form" action="{{route('mahasiswa-proses_upload_proposal')}}" method="POST" enctype="multipart/form-data">
             
                 {{ csrf_field() }}
+
+                <label for="judulProposal">Judul Proposal:</label>
+                <input type="text" name="judulProposal" id="judulProposal" class="form-control">
                 
                 <label for="kategori">Kategori Proposal</label>
                 <div class="form-group">
-                    <select class="custom-select select-akun">
+                    <select class="custom-select kategoriPKM", name="kategoriPKM">
                         <option selected>Pilih Kategori PKM</option>
                         @foreach ($kategoriPKM as $kategoriItem)
-                            <option>{{$kategoriItem->kategori_name}}</option>
+                            <option value="{{$kategoriItem->id}}">{{$kategoriItem->kategori_name}}</option>
                         @endforeach
                       </select>
                 </div>
@@ -113,9 +116,13 @@
             </form>
             <!-- End Upload File -->
             @else
-                <h1>Proposal Telah di Upload</h1>
-                <h3>Nama File Proposal: </h3>
-                <h4>{{$proposal->file_proposal}}</h4>
+                <h5>Proposal Telah di Upload</h1>
+                <p>Nama File Proposal: 
+                    {{$proposal->file_proposal}}
+                    <br><br>
+                    Judul Proposal :
+                    {{$proposal->judul_proposal}}
+                </p>
             @endif
 
 

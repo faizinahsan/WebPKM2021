@@ -24,6 +24,10 @@ class UploadProposalController extends Controller
         $this->validate($request,[
             'fileUpload' => 'required',
         ]);
+        // Judul proposal
+        $judulProposal = $request->input('judulProposal');
+        // Kategori proposal PKM
+        $kategoriPKM = $request->input('kategoriPKM');
 
         // menyimpan data file yang diupload ke variabel $file
         $file_proposal = $request->file('fileUpload');
@@ -44,31 +48,26 @@ class UploadProposalController extends Controller
             $proposal = Proposal::where('npm_mahasiswa',$npm_mahasiswa)->get();
         }else{
             Proposal::create([
+            'judul_proposal'=>$judulProposal,
             'file_proposal'=>$nama_file,
             'file_path'=>$tujuan_upload,
+            'kategori_id'=>$kategoriPKM,
             'npm_mahasiswa'=>$npm_mahasiswa
         ]);
 
+
         }
 
-        // $npm_mahasiswa = Auth::user()->mahasiswa->npm_mahasiswa;
-
-
-
-        // Proposal::create([
-        //     'file_proposal'=>$nama_file,
-        //     'file_path'=>$tujuan_upload,
-        //     'npm_mahasiswa'=>$npm_mahasiswa
-        // ]);
         return redirect('/mahasiswa/upload_proposal')->with('success','Data telah disimpan');
     }
 
     public function uploadProposalFinalView(Request $request)
     {
-        $npm_mahasiswa = Auth::user()->mahasiswa->npm_mahasiswa;
+        $mahasiswa = Auth::user()->mahasiswa;
+        $npm_mahasiswa = $mahasiswa->npm_mahasiswa;
         $proposal = Proposal::where('npm_mahasiswa',$npm_mahasiswa)->latest('created_at')->first();
         $kategoriPKM= KategoriPKM::all();
-        return view('mahasiswa.upload_final',['proposal'=>$proposal,'kategoriPKM'=>$kategoriPKM]);
+        return view('mahasiswa.upload_final',['mahasiswa'=>$mahasiswa,'proposal'=>$proposal,'kategoriPKM'=>$kategoriPKM]);
     }
 
     public function uploadProposalFinal(Request $request)

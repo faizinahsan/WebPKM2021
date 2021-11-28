@@ -11,7 +11,7 @@ class Proposal extends Model
     protected $table = 'tb_proposal';
     protected $primaryKey = 'id_file_proposal';
 
-    protected $fillable = ['file_proposal','file_path','npm_mahasiswa'];
+    protected $fillable = ['judul_proposal','file_proposal','file_path','kategori_id','npm_mahasiswa'];
 
     public function mahasiswa()
     {

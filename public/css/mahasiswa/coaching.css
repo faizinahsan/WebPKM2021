@@ -51,6 +51,18 @@
       max-width: 835px;
 
   }
+
+.disabled-style{
+    background: rgba(0, 0, 0, 0.03) !important;
+    color: #565656 !important;
+}
+.disabled-style .btn{
+  background: #c4c4c4 !important;
+  color: #565656 !important;
+}
+.disabled-style .fas{
+  color: #c4c4c4 !important;
+}
 /* Upload File Revisi */
 
   .container-upload-revisi {

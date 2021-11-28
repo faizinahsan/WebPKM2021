@@ -288,6 +288,11 @@
                 autoclose: true,
             };
             date_input.datepicker(options);
+
+            
+            $(".list-unstyled li.disabled a").click(function() {
+                return false;
+            });
         })
 
     </script>

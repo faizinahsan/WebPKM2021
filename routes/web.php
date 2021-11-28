@@ -90,13 +90,9 @@ Route::group(['middleware' => ['can:isPendamping']], function () {
 
 /**Dosen Reviewer */
 Route::group(['middleware' => ['can:isReviewer']], function () {
-    Route::get('/dosen_reviewer/profile',function(){
-        return view('dosen_reviewer.profile');
-    })->name('dosen_reviewer-profile');
+    Route::get('/dosen_reviewer/profile','ReviewerControllers\ReviewerController@index')->name('dosen_reviewer-profile');
     
-    Route::get('/dosen_reviewer/profile_keterangan',function(){
-        return view('dosen_reviewer.profile_keterangan');
-    })->name('dosen_reviewer-profile_keterangan');
+    Route::get('/dosen_reviewer/profile_keterangan','ReviewerControllers\ReviewerController@keteranganPage')->name('dosen_reviewer-profile_keterangan');
 });
 
 /** Kemahasiswaan */
