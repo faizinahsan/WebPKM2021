@@ -149,6 +149,8 @@
             $('#sidebar').toggleClass('active');
         });
 
+       
+
     });
 </script>
 <script>

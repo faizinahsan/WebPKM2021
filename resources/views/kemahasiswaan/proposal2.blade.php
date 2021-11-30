@@ -186,35 +186,83 @@
         {{-- End Section Reviewer --}}
 
         
-
+        {{-- Detail Proposal --}}
         <section id="content3" class="tab-content">
             <div class="row">
                 <div class="col-md-12 d-flex justify-content-center">
                     <div class="download-proposal text-center">
+                        @if ($message = Session::get('error'))
+                            <div class="alert alert-warning">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
+
                         <img src="../../img/doc.png" alt="Doc File">
+                        <p>{{$proposal->judul_proposal}}</p>
+                        <p>{{$proposal->kategori->kategori_name}}</p>
                         <p>{{$proposal->file_proposal}}</p>
-                        <button class="btn btn-custom">Download</button>
+                        <a href="{{route('download-proposal',['filename'=>$proposal->file_proposal])}}" class="btn btn-custom">Download</a>
                     </div>
                 </div>
             </div>
 
         </section>
+        {{--End Detail Proposal --}}
 
         <section id="content4" class="tab-content">
             <h5>Akun Simbelmawa</h5>
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+            @if ($message = Session::get('error'))
+                <div class="alert alert-warning">
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+            
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if ($akunSimbelmawa!= null)
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-8">
+                    <table class="info-akun">
+                        <tr>
+                            <td>Username:</td>
+                            <td>{{$akunSimbelmawa->username}}</td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td>{{$akunSimbelmawa->password}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            @else
             <div class="row">
                 <div class="col-md-8">
-                    <form action="#" class="form-akun">
+                    <form action="{{route('kemahasiswaan-akun_simbelmawa',['npm_mahasiswa'=>$mahasiswa->npm_mahasiswa])}}" class="form-akun" method="POST">
+                        {{ csrf_field() }}
                         <div class="form-group row">
                             <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNip" placeholder="">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword" placeholder="">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end">
@@ -224,6 +272,7 @@
                     </form>
                 </div>
             </div>
+            @endif
 
         </section>
 

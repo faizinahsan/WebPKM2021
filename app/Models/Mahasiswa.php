@@ -43,6 +43,12 @@ class Mahasiswa extends Model
         return $this->hasOne('App\Models\FileRevisi', 'npm_mahasiswa');
     }
 
+    public function file_revisi_reviewer()
+    {
+        return $this->hasMany('App\Models\FileRevisiReviewer', 'npm_mahasiswa');
+    }
+
+
     public function AkunSimbelmawa()
     {
         return $this->hasOne('App\Models\AkunSimbelmawa', 'npm_mahasiswa');

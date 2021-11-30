@@ -19,4 +19,8 @@ class DosenReviewer extends Model
         return $this->belongsTo('App\User', 'users_id');
     }
 
+    public function file_revisi_reviewer()
+    {
+        return $this->hasMany('App\Models\FileRevisiReviewer', 'nip_reviewer');
+    }
 }

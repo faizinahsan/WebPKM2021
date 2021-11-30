@@ -11,7 +11,7 @@ class Proposal extends Model
     protected $table = 'tb_proposal';
     protected $primaryKey = 'id_file_proposal';
 
-    protected $fillable = ['judul_proposal','file_proposal','file_path','kategori_id','npm_mahasiswa'];
+    protected $fillable = ['judul_proposal','file_proposal','file_path','kategori_id','npm_mahasiswa','id_file_revisi_reviewer'];
 
     public function mahasiswa()
     {
@@ -21,6 +21,11 @@ class Proposal extends Model
     public function kategori()
     {
         return $this->belongsTo('App\Models\KategoriPKM','kategori_id');
+    }
+
+    public function file_revisi_reviewer()
+    {
+        return $this->belongsTo('App\Models\FileRevisiReviewer','id_file_revisi_reviewer');
     }
 
 }

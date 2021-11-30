@@ -32,7 +32,7 @@ class UploadProposalController extends Controller
         // menyimpan data file yang diupload ke variabel $file
         $file_proposal = $request->file('fileUpload');
         
-        $nama_file = time()."_".$file_proposal->getClientOriginalName();
+        $nama_file = $file_proposal->getClientOriginalName();
  
       	        // isi dengan nama folder tempat kemana file diupload
 		$tujuan_upload = 'file_proposal';
@@ -53,9 +53,7 @@ class UploadProposalController extends Controller
             'file_path'=>$tujuan_upload,
             'kategori_id'=>$kategoriPKM,
             'npm_mahasiswa'=>$npm_mahasiswa
-        ]);
-
-
+            ]);
         }
 
         return redirect('/mahasiswa/upload_proposal')->with('success','Data telah disimpan');

@@ -20,7 +20,7 @@ class CoachingController extends Controller
     {
         $mahasiswa = Auth::user()->mahasiswa;
         $reviewer = DosenReviewer::find($mahasiswa->nip_reviewer);
-        $riwayatCoaching = RiwayatCoaching::all();
+        $riwayatCoaching = RiwayatCoaching::where('npm_mahasiswa',$mahasiswa->npm_mahasiswa);
         return view('mahasiswa.coaching',['mahasiswa'=>$mahasiswa,'reviewer'=>$reviewer,'riwayatCoaching'=>$riwayatCoaching]);
     }
 
@@ -76,7 +76,7 @@ class CoachingController extends Controller
             ]);
         }
 
-        return redirect('/mahasiswa/coaching/uploadFileRevisi')->with('success','Data telah disimpan');
+        return redirect('/mahasiswa/coaching')->with('success','Data telah disimpan');
     }
 
 }

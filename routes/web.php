@@ -93,6 +93,12 @@ Route::group(['middleware' => ['can:isReviewer']], function () {
     Route::get('/dosen_reviewer/profile','ReviewerControllers\ReviewerController@index')->name('dosen_reviewer-profile');
     
     Route::get('/dosen_reviewer/profile_keterangan/{id?}','ReviewerControllers\ReviewerController@keteranganPage')->name('dosen_reviewer-profile_keterangan');
+    Route::get('/dosen_reviewer/downloadProposal/{filename?}','ReviewerControllers\ReviewerController@downloadProposal')->name('reviewer-download_proposal');
+    Route::get('/dosen_reviewer/downloadRevisi/{filename?}','ReviewerControllers\ReviewerController@downloadRevisi')->name('reviewer-download_revisi');
+
+    Route::post('/dosen_reviewer/uploadRevisiReviewer','ReviewerControllers\ReviewerController@uploadRevisiReviewer')->name('reviewer-upload_revisi');
+
+
 });
 
 /** Kemahasiswaan */
@@ -102,6 +108,8 @@ Route::group(['middleware' => ['can:isKemahasiswaan']], function () {
     
     Route::get('/kemahasiswaan/proposal/{id?}','KemahasiswaanControllers\ProposalKemahasiswaanController@detailProposal')->name('kemahasiswaan-detail_proposal');
     Route::post('kemahasiswaan/proposal/tugaskanReviewer', 'KemahasiswaanControllers\ProposalKemahasiswaanController@tugaskanReviewer')->name('kemahasiswaan-tugaskan_reviewer');
+    Route::get('kemahasiswaan/downloadProposal/{filename?}','KemahasiswaanControllers\ProposalKemahasiswaanController@downloadProposal')->name('download-proposal');
+    Route::post('kemahasiswaan/proposal/akunSimbelmawa/{npm_mahasiswa?}', 'KemahasiswaanControllers\ProposalKemahasiswaanController@akunSimbelmawa')->name('kemahasiswaan-akun_simbelmawa');
 
     Route::get('/kemahasiswaan/berkas',function(){
         return view('kemahasiswaan.berkas');
@@ -114,6 +122,7 @@ Route::group(['middleware' => ['can:isKemahasiswaan']], function () {
     Route::get('/kemahasiswaan/timeline',function(){
         return view('kemahasiswaan.timeline');
     })->name('kemahasiswaan-timeline');
+
 });
 
 // Auth::routes();

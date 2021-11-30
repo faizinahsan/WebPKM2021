@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/navbar/navbar_homepage.css">
 <script src="https://kit.fontawesome.com/3d79b0331b.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 @endsection
 
 @section('navcontent')
@@ -283,6 +285,7 @@
 
 @section('jslinks')
 <script src="js/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
