@@ -143,6 +143,11 @@
             <!-- Riwayat Bimbingan -->
             <div class="riwayat-bimbingan">
                 <h5>Riwayat Coaching</h5>
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
                 <table class="table table-borderless text-center">
                     <thead>
                         <th>Tanggal</th>
@@ -155,8 +160,18 @@
                         <td>{{$riwayatCoaching->tanggal}}</td>
                         <td>{{$riwayatCoaching->hasil_diskusi}}</td>
                         <td>
-                            <a href="profile_keterangan.html" class="btn btn-custom-profile"
-                                style="width: 130px;">Sesuai</a>
+                            <form action="{{route('reviewer-verifikasiRiwayatCoaching')}}" method="post">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="idRiwayatCoaching" value="{{$riwayatCoaching->id_riwayat_coaching}}">
+                                <input type="submit"class="btn btn-custom-profile"
+                                    style="width: 130px;" name="sesuaiInput" 
+                                    @if ($riwayatCoaching->verifikasi == true)
+                                    disabled
+                                    value="Telah Sesuai"
+                                    @endif
+                                    value="Sesuai"
+                                    >
+                            </form>
                         </td>
                     </tr>                        
                     @endforeach

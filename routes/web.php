@@ -97,6 +97,7 @@ Route::group(['middleware' => ['can:isReviewer']], function () {
     Route::get('/dosen_reviewer/downloadRevisi/{filename?}','ReviewerControllers\ReviewerController@downloadRevisi')->name('reviewer-download_revisi');
 
     Route::post('/dosen_reviewer/uploadRevisiReviewer','ReviewerControllers\ReviewerController@uploadRevisiReviewer')->name('reviewer-upload_revisi');
+    Route::post('/dosen_reviewer/verifikasiRiwayatCoaching','ReviewerControllers\ReviewerController@verifikasiRiwayatCoaching')->name('reviewer-verifikasiRiwayatCoaching');
 
 
 });

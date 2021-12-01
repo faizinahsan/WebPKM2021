@@ -128,4 +128,16 @@ class ReviewerController extends Controller
             // echo('File Not Found');
         }
     }
+    public function verifikasiRiwayatCoaching(Request $request)
+    {
+        $sesuai = false;
+        if ($request->input('sesuaiInput')=='Sesuai') {
+            $sesuai = true;
+        }
+        $id_riwayat_coaching = $request->input('idRiwayatCoaching');
+        $riwayatCoaching = RiwayatCoaching::where('id_riwayat_coaching',$id_riwayat_coaching)->get()->first();
+        $riwayatCoaching->verifikasi = $sesuai;
+        $riwayatCoaching->save();
+        return back()->with('Success','Riwayat Coaching Sesuai');
+    }
 }
