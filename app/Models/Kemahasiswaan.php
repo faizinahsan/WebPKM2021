@@ -12,4 +12,5 @@ class Kemahasiswaan extends Model
     protected $primaryKey = 'nip_kemahasiswaan';
     
     protected $fillable = ['nip_kemahasiswaan','nip_reviewer','users_id'];
+
 }

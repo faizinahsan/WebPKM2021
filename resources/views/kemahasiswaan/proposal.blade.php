@@ -47,7 +47,7 @@
                             @endif
                         </td>
                         <td>
-                            <a class="btn btn-custom">Download</a>
+                            <a class="btn btn-custom" href="{{route('download-proposal',['filename'=>$proposal->file_proposal])}}">Download</a>
                             <a href="{{route('kemahasiswaan-detail_proposal',['id'=>$proposal->id_file_proposal])}}" class="btn btn-custom">Detail</a>
                         </td>
                     </tr>

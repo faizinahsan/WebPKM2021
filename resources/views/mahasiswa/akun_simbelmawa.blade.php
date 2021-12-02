@@ -71,21 +71,24 @@
                     <div class="col-md-5">
                     </div>
                 </div>
-
-                <p>Selamat anda sudah menyelesaikan semua tahap PKM UNPAD 2021. Bagi proposal yang dirasa layak oleh
-                    pihak reviewer akan mendapatkan username dan password pada tanggal 2 November 2020 untuk
-                    nantinya dapat didaftarkan ke simbelmawa.</p>
-
-                    <!-- <table class="info-akun">
+                {{-- Kasih tanggal yang bisa diubah oleh kemahasiswaan --}}
+                @if ($akunSimbelmawa==null)
+                    <p>Selamat anda sudah menyelesaikan semua tahap PKM UNPAD 2021. Bagi proposal yang dirasa layak oleh
+                        pihak reviewer akan mendapatkan username dan password pada tanggal 2 November 2020 untuk
+                        nantinya dapat didaftarkan ke simbelmawa.</p>                    
+                @else
+                    <table class="info-akun">
                         <tr>
                             <td>Username:</td>
-                            <td>ibnumualim12345</td>
+                            <td>{{$akunSimbelmawa->username}}</td>
                         </tr>
                         <tr>
                             <td>Password:</td>
-                            <td>2384832hrjfewur</td>
+                            <td>{{$akunSimbelmawa->password}}</td>
                         </tr>
-                    </table> -->
+                    </table>                     
+                @endif
+
             </div>
         </div>
     </div>

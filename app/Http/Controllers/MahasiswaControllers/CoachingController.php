@@ -11,7 +11,12 @@ use App\Models\Mahasiswa;
 use App\Models\DosenReviewer;
 use App\Models\RiwayatCoaching;
 use App\Models\FileRevisi;
+use App\Models\FileRevisiReviewer;
 use Carbon\Carbon;
+use Response;
+
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RiwayatCoachingExport;
 
 class CoachingController extends Controller
 {
@@ -20,8 +25,9 @@ class CoachingController extends Controller
     {
         $mahasiswa = Auth::user()->mahasiswa;
         $reviewer = DosenReviewer::find($mahasiswa->nip_reviewer);
-        $riwayatCoaching = RiwayatCoaching::where('npm_mahasiswa',$mahasiswa->npm_mahasiswa);
-        return view('mahasiswa.coaching',['mahasiswa'=>$mahasiswa,'reviewer'=>$reviewer,'riwayatCoaching'=>$riwayatCoaching]);
+        $riwayatCoaching = RiwayatCoaching::where('npm_mahasiswa',$mahasiswa->npm_mahasiswa)->get();
+        $daftarFileRevisiReviewer = FileRevisiReviewer::where('npm_mahasiswa',$mahasiswa->npm_mahasiswa)->get();
+        return view('mahasiswa.coaching',['mahasiswa'=>$mahasiswa,'reviewer'=>$reviewer,'riwayatCoaching'=>$riwayatCoaching,'daftarFileRevisiReviewer'=>$daftarFileRevisiReviewer]);
     }
 
     public function kegiatanCoaching(Request $request)
@@ -76,7 +82,26 @@ class CoachingController extends Controller
             ]);
         }
 
-        return redirect('/mahasiswa/coaching')->with('success','Data telah disimpan');
+        return redirect('/mahasiswa/coaching')->with('success','File Revisi telah disimpan');
     }
 
+    public function downloadFileRevisiReviewer(Request $request, $filename)
+    {
+        $file = public_path(). '/file_revisi_reviewer/' .$filename;
+        $headers = ['Content-Type: file/pdf'];
+
+        if (file_exists($file)) {
+            return Response::download($file, $filename,$headers);
+        }else{
+            return back()
+            ->with('error','Cannot Download Because File Not Found');
+            // echo('File Not Found');
+        }
+    }
+
+    public function exportRiwayatCoaching()
+    {
+        $npm_mahasiswa = Auth::user()->mahasiswa->npm_mahasiswa;
+        return Excel::download(new RiwayatCoachingExport($npm_mahasiswa), 'RiwayatCoaching.xlsx');
+    }
 }

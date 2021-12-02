@@ -12,12 +12,14 @@ use App\Models\DosenReviewer;
 use App\Models\DosenPendamping;
 use App\Models\Kemahasiswaan;
 use App\Models\AkunSimbelmawa;
+use App\Models\RiwayatCoaching;
 use Illuminate\Support\Facades\Storage;
 use Response;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RiwayatCoachingExport;
 
 class ProposalKemahasiswaanController extends Controller
 {
@@ -37,6 +39,7 @@ class ProposalKemahasiswaanController extends Controller
         $reviewer = DosenReviewer::where('nip_reviewer',$mahasiswa->nip_reviewer)->get()->first();
         $pendamping = DosenPendamping::where('nip_pendamping',$mahasiswa->nip_pendamping)->get()->first();
         $akunSimbelmawa = AkunSimbelmawa::where('npm_mahasiswa',$mahasiswa->npm_mahasiswa)->get()->first();
+        $riwayatCoaching = RiwayatCoaching::where('npm_mahasiswa',$mahasiswa->npm_mahasiswa)->get();
         // dd($reviewer);
 
         return view('kemahasiswaan.proposal2',[
@@ -46,8 +49,13 @@ class ProposalKemahasiswaanController extends Controller
             'reviewers'=>$reviewers,
             'reviewer'=>$reviewer,
             'pendamping'=>$pendamping,
-            'akunSimbelmawa'=>$akunSimbelmawa
+            'akunSimbelmawa'=>$akunSimbelmawa,
+            'riwayatCoaching'=>$riwayatCoaching,
             ]);
+    }
+    public function exportRiwayatCoaching($npm_mahasiswa)
+    {
+        return Excel::download(new RiwayatCoachingExport($npm_mahasiswa), 'RiwayatCoaching.xlsx');
     }
 
     public function tugaskanReviewer(Request $request)

@@ -133,18 +133,20 @@
                         <th>Tanggal Pertemuan</th>
                         <th>Hasil Diskusi dan Komentar</th>
                     </thead>
+                    @foreach ($riwayatCoaching as $riwayat)
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td>{{$riwayat->tanggal}}</td>
+                        <td>{{$riwayat->hasil_diskusi}}</td>
                     </tr>
+                    @endforeach
                 </table>
                 <div class="row">
                     <div class="col-sm-10 d-flex justify-content-end">
-                        <button type="button" class="btn btn-custom" style="width:160px;"
+                        <a type="button" href="{{route('kemahasiswaan-exportRiwayatCoaching',['npm_mahasiswa'=>$mahasiswa->npm_mahasiswa])}}" class="btn btn-custom" style="width:160px;"
                         @if ($mahasiswa->nip_reviewer == null)
                             disabled
                         @endif
-                        >Print</button>
+                        >Print</a>
                     </div>
                 </div>
                 {{-- End Riwayat Pelatihan --}}

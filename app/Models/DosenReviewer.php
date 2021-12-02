@@ -12,11 +12,15 @@ class DosenReviewer extends Model
     protected $table = 'tb_dosen_reviewer';
     protected $primaryKey = 'nip_reviewer';
     
-    protected $fillable = ['nip_reviewer','users_id'];
+    protected $fillable = ['nip_reviewer','fakultas','reviewer_picture','users_id'];
 
     public function user()
     {
         return $this->belongsTo('App\User', 'users_id');
+    }
+    public function fakultas()
+    {
+        return $this->belongsTo('App\Models\Fakultas', 'fakultas_id');
     }
 
     public function file_revisi_reviewer()

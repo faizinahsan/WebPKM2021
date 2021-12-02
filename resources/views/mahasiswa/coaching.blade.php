@@ -69,19 +69,29 @@
                     </div>
                 </div>
                 <table class="info-dosen">
+                    @if ($mahasiswa->nip_reviewer !=null)
                     <tr>
-                        <td>
-                            @if ($mahasiswa->nip_reviewer !=null)
-                                <p>{{$reviewer->user->name}}</p>
-                            @else
-                                <p>Anda belum ditugaskan Reviewer</p>
-                            @endif
-                        </td>
-                        {{-- <td>Dr Cukup Mulyana, MS</td>
-                        <td>195502091986011001 </td>
-                        <td>FMIPA</td>
-                        <td>cukupmulyana@gmail.com</td> --}}
+                        <td>Nama Reviewer </td>
+                        <td>: {{$reviewer->user->name}}</td>
                     </tr>
+                    <tr>
+                        <td>NIP Reviewer </td>
+                        <td>: {{$reviewer->nip_reviewer}}</td>
+                    </tr>
+                    <tr>
+                        <td>Fakultas Reviewer </td>
+                        <td>: {{$reviewer->fakultas}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email Reviewer </td>
+                        <td>: {{$reviewer->user->email}}</td>
+                    </tr>
+                    @else
+                        <td>
+                            Anda belum ditugaskan Reviewer
+                        </td>
+                    </tr>
+                    @endif
                 </table>
             </div>
 
@@ -93,6 +103,11 @@
             @endif
                 <h5>File Revisi</h5>
                 <!-- Upload File -->
+                @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                @endif
                 <!-- CHANGE THE ACTION TO THE PHP SCRIPT THAT WILL PROCESS THE FILE VIA AJAX -->
                 <form id="file-upload-form" action="{{route('mahasiswa-upload_file_revisi')}}" method="POST" enctype="multipart/form-data">
                     
@@ -134,6 +149,25 @@
                     </div>
                 </form>
                 <!-- End Upload File -->
+                <div class="file-proposal">
+                    <h5>File Revisi Dosen</h5>
+                    @if ($message = Session::get('error'))
+                        <div class="alert alert-warning">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                    @foreach ($daftarFileRevisiReviewer as $fileRevisi)
+                    <div class="row file-row d-flex justify-content-center p-2">
+                        <img src="../../img/doc.png" alt="Doc File">
+                        <div class="col-md-8" style="word-wrap:break-word">
+                            <p>{{$fileRevisi->file_revisi}}</p>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{{route('mahasiswa-downloadFileRevisiReviewer',['filename'=>$fileRevisi->file_revisi])}}" class="btn btn-custom">Download</a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
             </div>
             <!-- End File Revisi -->
 
@@ -208,7 +242,7 @@
                     </thead>
 
                     @foreach ($riwayatCoaching as $riwayat)
-                        <tr>
+                        <tr class="text-center">
                             <td>{{$riwayat->tanggal}}</td>
                             <td>{{$riwayat->hasil_diskusi}}</td>
                         </tr>
@@ -217,11 +251,11 @@
                 </table>
                 <div class="row">
                     <div class="col-sm-10 d-flex justify-content-end">
-                        <button type="button" class="btn btn-custom" style="width:160px;"
+                        <a type="button" href="{{route('mahasiswa-exportRiwayatCoaching')}}" class="btn btn-custom" style="width:160px;"
                         @if ($mahasiswa->nip_reviewer == null)
                             disabled
                         @endif
-                        >Print</button>
+                        >Print</a>
                     </div>
                 </div>
             </div>

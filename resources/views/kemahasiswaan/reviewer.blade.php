@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../../css/navbar/navbar.css">
 <link rel="stylesheet" href="../../css/navbar/sidebar.css">
 <link rel="stylesheet" href="../../css/kemahasiswaan/reviewer.css">
+<link rel="stylesheet" href="../../css/kemahasiswaan/search.css">
 <!-- datepicker -->
 <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
@@ -26,41 +27,40 @@
         <!-- Container Timeline -->
         <div class="container">
             <h3>Reviewer</h3>
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
             <!-- Timeline -->
-            <form class="form-timeline" action="#" method="POST">
+            <form class="form-timeline" action="{{route('kemahasiswaan-addReviewerInfo')}}" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <div class="form-group row">
-                    <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
+                    <label for="inputFoto" class="col-sm-2 col-form-label">Pilih Reviewer</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputNama" placeholder="">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputNip" class="col-sm-2 col-form-label">NIP</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputNip" placeholder="">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        <input type="text" class="boxSearch form-control" placeholder="Ketik Nama Dosen Reviewer" />
+                        <select multiple class="custom-select listSearch" name="dosenReviewer">
+                            @foreach ($daftarDosenReviewerFakultas as $dosenReviewer)
+                                <option value="{{$dosenReviewer->nip_reviewer}}">{{$dosenReviewer->user->name}}</option>                        
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="selectFakultas" class="col-sm-2 col-form-label">Fakultas</label>
                     <div class="form-group col-sm-10">
-                        <select class="custom-select select-akun">
+                        <select class="custom-select select-akun" name="fakultas">
                             <option selected>Fakultas</option>
-                            <option value="1">FMIPA</option>
-                            <option value="2">FISIP</option>
-                            <option value="3">PSIKOLOGI</option>
+                            @foreach ($daftarFakultas as $fakultas)
+                                <option value="{{$fakultas->id}}">{{$fakultas->fakultas_name}}</option>
+                            @endforeach
                           </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputFoto" class="col-sm-2 col-form-label">Foto</label>
                     <div class="col-sm-10">
-                        <input type="file" class="form-control" id="inputFoto" placeholder="">
+                        <input type="file" name="reviewer_picture" class="form-control" id="inputFoto" accept="image/*" placeholder="">
                     </div>
                 </div>
 
@@ -85,16 +85,24 @@
                     <th></th>
                 </thead>
                 <tbody>
+                    @foreach ($daftarDosenReviewer as $dosenReviewer)
                     <tr>
-                        <td>Dr Cukup Mulyana, MS</td>
-                        <td>195502091986011001</td>
-                        <td>FMIPA</td>
-                        <td>cukupmulyana@gmail.com</td>
-                        <td><img src="../../img/cukup1.jpg"></td>
+                        <td>{{$dosenReviewer->user->name}}</td>
+                        <td>{{$dosenReviewer->nip_reviewer}}</td>
+                        @if ($dosenReviewer->fakultas !=null)
+                        <td>{{$dosenReviewer->fakultas->fakultas_name}}</td>
+                        <td>{{$dosenReviewer->user->email}}</td>
+                        <td><img src="{{asset('/storage/images/'.$dosenReviewer->reviewer_picture)}}"></td>
+                        @else
+                        <td>Belum Dimasukan</td>
+                        <td>{{$dosenReviewer->user->email}}</td>
+                        <td><img src="{{asset('/storage/images/'.$dosenReviewer->reviewer_picture)}}"></td>
+                        @endif
                         <td>
-                            <a href="" class="btn btn-custom">Delete</a>
+                            <a href="{{route('kemahasiswaan-deleteReviewerInfo',['nip_reviewer'=>$dosenReviewer->nip_reviewer])}}" class="btn btn-custom">Delete</a>
                         </td>
                     </tr>
+                    @endforeach
                     <tr class="striped-section">
                         <td>Dra. Erna Susiati, M.Pd</td>
                         <td>195612241986092001</td>
@@ -206,6 +214,25 @@
 
 <!-- DatePicker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function($){
+        $('.listSearch option').each(function(){
+            $(this).attr('searchData', $(this).text().toLowerCase());
+        });
+        $('.boxSearch').on('keyup', function(){
+        var dataList = $(this).val().toLowerCase();
+            $('.listSearch option').each(function(){
+                if ($(this).filter('[searchData *= ' + dataList + ']').length > 0 || dataList.length < 1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+
+    });
 </script>
 <script type="text/javascript">
     $(document).ready(function () {

@@ -61,6 +61,8 @@ Route::group(['middleware' => ['can:isMahasiswa']], function () {
     Route::get('/mahasiswa/coaching','MahasiswaControllers\CoachingController@index')->name('mahasiswa-coaching');
     Route::post('/mahasiswa/coaching/kegiatanCoaching','MahasiswaControllers\CoachingController@kegiatanCoaching')->name('mahasiswa-kegiatan_coaching');
     Route::post('/mahasiswa/coaching/uploadFileRevisi','MahasiswaControllers\CoachingController@uploadFileRevisi')->name('mahasiswa-upload_file_revisi');
+    Route::get('/mahasiswa/coaching/downloadFileRevisiReviewer/{filename?}','MahasiswaControllers\CoachingController@downloadFileRevisiReviewer')->name('mahasiswa-downloadFileRevisiReviewer');
+    Route::get('/mahasiswa/coaching/exportRiwayatCoaching','MahasiswaControllers\CoachingController@exportRiwayatCoaching')->name('mahasiswa-exportRiwayatCoaching');
     
     
     Route::get('/mahasiswa/upload_final','MahasiswaControllers\UploadProposalController@uploadProposalFinalView')->name('mahasiswa-upload_final');
@@ -68,9 +70,7 @@ Route::group(['middleware' => ['can:isMahasiswa']], function () {
     
     Route::get('/mahasiswa/akun_simbelmawa','MahasiswaControllers\AkunSimbelmawaController@index')->name('mahasiswa-akun_simbelmawa');
     
-    Route::get('/mahasiswa/akun_simbelmawa2',function(){
-        return view('mahasiswa.akun_simbelmawa2');
-    })->name('mahasiswa-akun_simbelmawa2');
+
 });
 
 
@@ -111,18 +111,18 @@ Route::group(['middleware' => ['can:isKemahasiswaan']], function () {
     Route::post('kemahasiswaan/proposal/tugaskanReviewer', 'KemahasiswaanControllers\ProposalKemahasiswaanController@tugaskanReviewer')->name('kemahasiswaan-tugaskan_reviewer');
     Route::get('kemahasiswaan/downloadProposal/{filename?}','KemahasiswaanControllers\ProposalKemahasiswaanController@downloadProposal')->name('download-proposal');
     Route::post('kemahasiswaan/proposal/akunSimbelmawa/{npm_mahasiswa?}', 'KemahasiswaanControllers\ProposalKemahasiswaanController@akunSimbelmawa')->name('kemahasiswaan-akun_simbelmawa');
+    Route::get('/kemahasiswaan/proposal/exportRiwayatCoaching/{npm_mahasiswa?}','KemahasiswaanControllers\ProposalKemahasiswaanController@exportRiwayatCoaching')->name('kemahasiswaan-exportRiwayatCoaching');
+
+    
+    Route::get('/kemahasiswaan/reviewer','KemahasiswaanControllers\ReviewerKemahasiswaanController@index')->name('kemahasiswaan-reviewer');
+    Route::post('/kemahasiswaan/addReviewerInfo','KemahasiswaanControllers\ReviewerKemahasiswaanController@addReviewerInfo')->name('kemahasiswaan-addReviewerInfo');
+    Route::get('/kemahasiswaan/deleteReviewerInfo/{nip_reviewer?}','KemahasiswaanControllers\ReviewerKemahasiswaanController@deleteReviewerInfo')->name('kemahasiswaan-deleteReviewerInfo');
 
     Route::get('/kemahasiswaan/berkas',function(){
         return view('kemahasiswaan.berkas');
     })->name('kemahasiswaan-berkas');
     
-    Route::get('/kemahasiswaan/reviewer',function(){
-        return view('kemahasiswaan.reviewer');
-    })->name('kemahasiswaan-reviewer');
-    
-    Route::get('/kemahasiswaan/timeline',function(){
-        return view('kemahasiswaan.timeline');
-    })->name('kemahasiswaan-timeline');
+    Route::get('/kemahasiswaan/timeline','KemahasiswaanControllers\TimelineController@index')->name('kemahasiswaan-timeline');
 
 });
 
