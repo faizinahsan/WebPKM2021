@@ -80,7 +80,7 @@
                     </tr>
                     <tr>
                         <td>Fakultas Reviewer </td>
-                        <td>: {{$reviewer->fakultas}}</td>
+                        <td>: {{$reviewer->fakultas->fakultas_name}}</td>
                     </tr>
                     <tr>
                         <td>Email Reviewer </td>
@@ -188,7 +188,7 @@
                         <label for="selectTanggal" class="col-sm-2 col-form-label">Tanggal</label>
                      
                         <div class="col-sm-7">
-                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" 
+                            <input class="date form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" 
                             @if ($mahasiswa->nip_reviewer == null)
                                 readonly
                             @endif
@@ -273,38 +273,16 @@
     integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
 </script>
 <script src="../../js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script>
+    $('.date').datepicker({  
+       format: 'yyyy-mm-dd'
+     });
     function disableUpload() {
         document.getElementById("file-upload").disabled = true;
     }
 </script>
-<script>
-    $(document).ready(function () {
 
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var date_input = $('input[name="date"]'); //our date input has the name "date"
-        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-        var options = {
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        };
-        date_input.datepicker(options);
-        
-        // disabled onClick saat reviewer tidak ditugaskan
-        // document.getElementById("file-upload").disabled = true;
-    })
-
-</script>
 
 <script>
     (function () {

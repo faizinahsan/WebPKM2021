@@ -14,7 +14,8 @@ class ProfileMahasiswaController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $anggotas = Anggota::all();
+        $mahasiswa = $user->mahasiswa;
+        $anggotas = Anggota::where('npm_mahasiswa',$mahasiswa->npm_mahasiswa)->get();
   
         return view('mahasiswa.profile',['user'=>$user,'anggotas'=>$anggotas]);
     }
@@ -30,5 +31,27 @@ class ProfileMahasiswaController extends Controller
         ]);
         $anggota->save();
         return redirect('/mahasiswa/profile')->with('success', 'anggota saved!');
+    }
+    public function editAnggota(Request $request)
+    {
+        $npm_anggota = $request->input('npm_anggota_old');
+        $npm_anggota_new = $request->input('inputNpmAnggota');
+        $nama_anggota= $request->input('inputNamaLengkapAnggota');
+        $anggota = Anggota::where('npm_anggota',$npm_anggota)->get()->first();
+        $anggota->update([
+            'nama_anggota'=>$nama_anggota,
+            'npm_anggota'=>$npm_anggota_new
+        ]);
+    }
+
+    public function deleteAnggota(Request $request)
+    {
+        $this->validate($request,[
+            'npm_anggota'=>'required'
+        ]);
+        $npm_anggota = $request->input('npm_anggota');
+        $deleteAnggota = Anggota::where('npm_anggota',$npm_anggota)->get()->first();
+        $deleteAnggota->delete();
+        return back()->with('success','Anggota telah dihapus');
     }
 }

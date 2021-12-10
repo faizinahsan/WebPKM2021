@@ -48,4 +48,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\DosenReviewer', 'users_id');
     }
+    public function kemahasiswaan()
+    {
+        return $this->hasOne('App\Models\Kemahasiswaan', 'users_id');
+    }
 }

@@ -26,12 +26,28 @@
         <!-- Container Timeline -->
         <div class="container">
             <h3>Timeline</h3>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+
             <!-- Timeline -->
-            <form class="form-timeline" action="#" method="POST">
+            <form class="form-timeline" action="{{route('kemahasiswaan-addTimeline')}}" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <div class="form-group row">
                     <label for="selectTanggal" class="col-sm-2 col-form-label">Tanggal</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+                        <input class="form-control date" id="date" name="date" placeholder="YYYY-MM-DD" type="text" />
                     </div>
                     <div class="col-sm-2">
                         <i class="fas fa-calendar-week fa-2x" style="color: #f9ca48;"></i>
@@ -46,14 +62,14 @@
                 <div class="form-group row">
                     <label for="kegiatan" class="col-sm-2 col-form-label">Kegiatan</label>
                     <div class="col-sm-8">
-                        <input type="text" name="kegiatan" id="kegiatan" class="form-control">
+                        <input type="text" name="nama_timeline" id="nama_timeline" class="form-control">
 
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputHasilDiskusi" class="col-sm-2 col-form-label">Deskripsi</label>
                     <div class="col-sm-8">
-                        <textarea class="form-control" name="hasilDiskusi" id="hasilDiskusi" cols="30"
+                        <textarea class="form-control" name="deskripsi" id="deskripsi" cols="30"
                             rows="10"></textarea>
                     </div>
                 </div>
@@ -78,85 +94,100 @@
                     <th>Keterangan</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>11 Maret 2020</td>
-                        <td>Upload Proposal Liga</td>
-                        <td>Pengumpulan Proposal Liga PKM UNPAD dari tanggal 11 Maret - 6 April 2020</td>
-                        <td>
-                            <a href="" class="btn btn-custom mr-3">Edit</a>
-                            <a href="" class="btn btn-custom">Delete</a>
-                        </td>
-                    </tr>
-                    <tr class="striped-section">
-                        <td>8 April 2020</td>
-                        <td>Upload Proposal Non Liga</td>
-                        <td>Pengumpulan Proposal Non Liga PKM UNPAD dari tanggal 8 April - 20 April 2020</td>
-                        <td>
-                            <a href="" class="btn btn-custom mr-3">Edit</a>
-                            <a href="" class="btn btn-custom">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>22 April 2020</td>
-                        <td>Evaluasi/Penilaian Proposal</td>
-                        <td>Proposal yang sudah diupload akan dilakukan evaluasi dan penilaian terlebih dahulu dari tanggal 22 April - 30 April 2020</td>
-                        <td>
-                            <a href="" class="btn btn-custom mr-3">Edit</a>
-                            <a href="" class="btn btn-custom">Delete</a>
-                        </td>
-                    </tr>
-                    <tr class="striped-section">
-                        <td>4 Mei 2020</td>
-                        <td>Pengumuman Pemenang Liga</td>
-                        <td>Pengumuman 10 proposal terbaik Liga PKM UNPAD pada tanggal 4 Mei 2020</td>
-                        <td>
-                            <a href="" class="btn btn-custom mr-3">Edit</a>
-                            <a href="" class="btn btn-custom">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>22 Juni 2020</td>
-                        <td>Coaching dengan Reviewer</td>
-                        <td>Tahap ini dilakukan dengan diskusi dan beretemu dosen reviewer untuk merevisi proposal, tahap coaching dilakukan dari tanggal 22 Juni - 24 Agustus 2020</td>
-                        <td>
-                            <a href="" class="btn btn-custom mr-3">Edit</a>
-                            <a href="" class="btn btn-custom">Delete</a>
-                        </td>
-                    </tr>
-                    <tr class="striped-section">
-                        <td>3 September 2020</td>
-                        <td>Upload Propsal Final</td>
-                        <td>Pengumpulan proposal PKM Final agar diseleksi kembali oleh reviewer untuk dapat username dan password simbelmawa pada tanggal 3 September - 17 September 2020</td>
-                        <td>
-                            <a href="" class="btn btn-custom mr-3">Edit</a>
-                            <a href="" class="btn btn-custom">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2 November 2020</td>
-                        <td>Akun Simbelmawa</td>
-                        <td>Proposal yang sudah layak akan diberi akun pada tanggal 2 November 2020</td>
-                        <td>
-                            <a href="" class="btn btn-custom mr-3">Edit</a>
-                            <a href="" class="btn btn-custom">Delete</a>
-                        </td>
-                    </tr>
-                    <tr class="striped-section">
-                        <td>13 November 2020</td>
-                        <td>Upload Simbelmawa</td>
-                        <td>Upload Proposal ke akun Simbelmawa dari tanggal 13 November - 2 Desember 2020</td>
-                        <td>
-                            <a href="" class="btn btn-custom mr-3">Edit</a>
-                            <a href="" class="btn btn-custom">Delete</a>
-                        </td>
-                    </tr>
-                    
+                    @foreach ($dayAndMonth as ["day"=>$day,"month"=>$month,"year"=>$year,"tanggal"=>$tanggal,"id_timeline"=>$id_timeline,"nama_timeline"=>$nama_timeline,"deskripsi"=>$deskripsi])
+                        <tr>
+                            <td>{{$day." ".$month." ".$year}}</td>
+                            <td>{{$nama_timeline}}</td>
+                            <td>{{$deskripsi}}</td>
+                            <td>
+                                <a class="editTimelineBtn btn btn-custom mr-3" data-toggle="modal" data-target="#editTimelineModal" data-nama_timeline="{{$nama_timeline}}" data-tanggal={{$tanggal}} data-deskripsi="{{$deskripsi}}" data-id_timeline ="{{$id_timeline}}">Edit</a>
+                                <a href="" data-toggle="modal" data-target="#deleteTimelineModal" data-id_timeline="{{$id_timeline}}" class="deleteTimelineBtn btn btn-custom">Delete</a>
+                            </td>
+                        </tr>    
+                    @endforeach
+                              
                     
                 </tbody>
             </table>
             <!-- End Tabel Timeline -->
         </div>
         <!-- End Container Tabel Timeline -->
+        <div class="modal edit-modal fade" tabindex="-1" role="dialog" id="editTimelineModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Edit Timeline</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Timeline -->
+                    <form class="form-timeline" action="{{route('kemahasiswaan-editTimeline')}}" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="form-group row">
+                            <input type="hidden" name="id_timeline" id="id_timeline">
+
+                            <label for="selectTanggal" class="col-sm-2 col-form-label">Tanggal</label>
+                            <div class="col-sm-7">
+                                <input class="form-control date" id="date" name="date" placeholder="YYYY-MM-DD" type="text" />
+                            </div>
+                            <div class="col-sm-2">
+                                <i class="fas fa-calendar-week fa-2x" style="color: #f9ca48;"></i>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="kegiatan" class="col-sm-2 col-form-label">Kegiatan</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="nama_timeline" id="nama_timeline" class="form-control">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputHasilDiskusi" class="col-sm-2 col-form-label">Deskripsi</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" name="deskripsi" id="deskripsi" cols="30"
+                                    rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-custom" style="width: 160px;">Tambahkan</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- End Timeline -->
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade delete-modal" tabindex="-1" id="deleteTimelineModal" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">WARNING</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Apakah anda yakin ingin menghapus timeline?</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="{{route('kemahasiswaan-deleteTimeline')}}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="id_timeline" id="id_timeline">
+                        <button type="submit" class="btn btn-primary">IYA DELETE THEM</button>
+                    </form>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">TIDAK</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
     </div>
 </div>
@@ -174,24 +205,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">
 </script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        var date_input = $('input[name="date"]'); //our date input has the name "date"
-        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-        var options = {
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        };
-        date_input.datepicker(options);
-    })
-</script>
+    $('.date').datepicker({  
+       format: 'yyyy-mm-dd'
+     });
+     $(document).on("click",".editTimelineBtn",function() {
+         var nama_timeline = $(this).data('nama_timeline');
+         var id_timeline = $(this).data('id_timeline');
+         var tanggal = $(this).data('tanggal');
+         var deskripsi = $(this).data('deskripsi');
+         $(".edit-modal #nama_timeline").val(nama_timeline);
+         $(".edit-modal #id_timeline").val(id_timeline);
+         $(".edit-modal #date").val(tanggal);
+         $(".edit-modal #deskripsi").val(deskripsi);
+     });
+     $(document).on("click",".deleteTimelineBtn",function() {
+         var id_timeline = $(this).data('id_timeline');
+         $(".delete-modal #id_timeline").val(id_timeline);
+     });
+</script> 
 
 @endsection

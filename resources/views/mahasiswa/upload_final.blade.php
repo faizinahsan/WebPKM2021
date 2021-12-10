@@ -67,21 +67,36 @@
                 @if ($mahasiswa->nip_reviewer == null)
                 <p>Anda Belum Ditugaskan Reviewer</p>
                 @else
+                
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                                 <!-- Upload File -->
             <!-- CHANGE THE ACTION TO THE PHP SCRIPT THAT WILL PROCESS THE FILE VIA AJAX -->
-            <form id="file-upload-form" action="{{route('mahasiswa-upload_proposal')}}" method="POST" enctype="multipart/form-data">
+            <form id="file-upload-form" action="{{route('mahasiswa-proses_upload_final')}}" method="POST" enctype="multipart/form-data">
                 
                 {{ csrf_field() }}
 
+                <input type="hidden" name="idProposal" value="{{$proposal->id_file_proposal}}">
                 <label for="judulProposalFinal">Judul Proposal:</label>
                 <input type="text" name="judulProposalFinal" id="judulProposalFinal" class="form-control">
-
                 <label for="kategori">Kategori Proposal</label>
                 <div class="form-group">
-                    <select class="custom-select select-akun">
+                    <select class="custom-select select-akun" name="kategoriPKMFinal">
                         <option selected>Pilih Kategori PKM</option>
                         @foreach ($kategoriPKM as $kategoriItem)
-                            <option>{{$kategoriItem->kategori_name}}</option>
+                            <option value="{{$kategoriItem->id}}">{{$kategoriItem->kategori_name}}</option>
                         @endforeach
                       </select>
                 </div>

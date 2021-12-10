@@ -16,20 +16,20 @@
     <div class="row text-center d-flex justify-content-center">
         <div class="col-md-4">
             <div class="form-group">
-                <select class="custom-select select-akun mx-auto">
-                    <option selected>Filter by Fakultas</option>
-                    <option value="1">FMIPA</option>
-                    <option value="2">Psikologi</option>
-                    <option value="3">FISIP</option>
-                    <option value="4">FIB</option>
-                    <option value="5">FAPERTA</option>
-                    <option value="6">FIKOM</option>
+                <select class="custom-select select-akun mx-auto" id="select-fakultas">
+                    <option selected value="">Filter by Fakultas</option>
+                    @foreach ($daftarFakultas as $fakultas)
+                        <option value="{{$fakultas->fakultas_name}}">{{$fakultas->fakultas_name}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
         <div class="col-md-1">
-            <button class="btn btn-filter">Filter</button>
+            <input type="button" class="btn btn-filter" value="Filter" id="filter_btn">
         </div>
+    </div>
+    <div>
+        {{-- <input type="text" class="boxSearch"> --}}
     </div>
 
     <!-- Start Introduction Section -->
@@ -49,80 +49,25 @@
                             <th scope="col">Foto</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="listSearch">
+                        @foreach ($daftarReviewer as $reviewer)
                         <tr>
-                            <td>Dr Cukup Mulyana, MS</td>
-                            <td>195502091986011001</td>
-                            <td>FMIPA</td>
-                            <td>cukupmulyana@gmail.com</td>
-                            <td><img src="img/cukup1.jpg"></td>
+                            <td>{{$reviewer->user->name}}</td>
+                            <td>{{$reviewer->nip_reviewer}}</td>
+                            @if ($reviewer->fakultas != null)
+                            <td>{{$reviewer->fakultas->fakultas_name}}</td>
+                            <td>{{$reviewer->user->name}}</td>
+                            <td><img src="{{asset('/storage/images/'.$reviewer->reviewer_picture)}}"></td>                                
+                            @else
+                            <td>Informasi Reviewer Belum Dimasukan</td>
+                            <td>{{$reviewer->user->name}}</td>
+                            <td><img src=""></td>
+                            @endif
                         </tr>
-                        <tr class="table-warning">
-                            <td>Dra. Erna Susiati, M.Pd</td>
-                            <td>195612241986092001</td>
-                            <td>Psikologi</td>
-                            <td>erna.susiati@unpad.ac.id</td>
-                            <td><img src="img/erna.jpg"></td>
-                        </tr>
-                        <tr>
-                            <td>Dr. Yus Nugraha, MA</td>
-                            <td>196007091986011002</td>
-                            <td>Psikologi</td>
-                            <td>yus.nugraha@unpad.ac.id</td>
-                            <td><img src="img/yus.jpg"></td>
-                        </tr>
-                        <tr class="table-warning">
-                            <td>Rudiana, S.IP., M.Si.</td>
-                            <td>197411242003121001</td>
-                            <td>FISIP</td>
-                            <td>rudiana1974@gmail.com</td>
-                            <td><img src="img/rudi.jpg"></td>
-                        </tr>
-                        <tr>
-                            <td>Dr. Fitrilawati, MSc</td>
-                            <td>196502081994122001 </td>
-                            <td>FMIPA</td>
-                            <td>firi@gmail.com</td>
-                            <td><img src="img/fitri.jpg"></td>
-                        </tr>
-                        <tr class="table-warning">
-                            <td>Dra. Nurul Yanuarti, M.Si</td>
-                            <td>196001241987012001</td>
-                            <td>Psikologi</td>
-                            <td>nurul.yanuarti@unpad.ac.id</td>
-                            <td><img src="img/nurul.jpg"></td>
-                        </tr>
-                        <tr>
-                            <td>Nowo Riveli, Ph.D</td>
-                            <td>198211292016044001</td>
-                            <td>FMIPA</td>
-                            <td>nowo@gmail.com</td>
-                            <td><img src="img/nowo.jpg"></td>
-                        </tr>
-                        <tr class="table-warning">
-                            <td>Dr. Zainal Abidin, M.Si</td>
-                            <td>196209221992031001</td>
-                            <td>Psikologi</td>
-                            <td>zainal.abidin@unpad.ac.id</td>
-                            <td><img src="img/zainal.jpg"></td>
-                        </tr>
-                        <tr>
-                            <td>Idil Akbar, S.IP., M.IP.</td>
-                            <td>19810813 201404 1 001</td>
-                            <td>FISIP</td>
-                            <td>idil.akbar@gmail.com</td>
-                            <td><img src="img/idil.jpg"></td>
-                        </tr>
-                        <tr class="table-warning">
-                            <td>Dr. Neneng Yani Yuni</td>
-                            <td>197512282005022001</td>
-                            <td>FISIP</td>
-                            <td>nenengyany@yahoo.co.id</td>
-                            <td><img src="img/neng.jpg"></td>
-                        </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
-
             </div>
             <div class="col-md-1">
 
@@ -135,6 +80,26 @@
 
 @section('jslinks')
 <script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>    
+<script src="js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+        $(document).ready(function($){
+        $('.listSearch tr').each(function(){
+            $(this).attr('searchData', $(this).text().toLowerCase());
+        });
+        // read selected option
+        $('#filter_btn').click(function(){
+            var fakultas = $('#select-fakultas').val();
+            var dataList = fakultas.toLowerCase();
+            $('.listSearch tr').each(function(){
+                if ($(this).filter('[searchData *= ' + dataList + ']').length > 0 || dataList.length < 1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
 @endsection
 

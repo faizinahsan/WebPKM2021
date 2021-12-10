@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/navbar/navbar_homepage.css">
 <script src="https://kit.fontawesome.com/3d79b0331b.js" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 @endsection
 
@@ -75,7 +74,7 @@
         <!-- End Introduction Section -->
     </div>
     <!-- End Container Section -->
-    <!-- Start Article Section -->
+    {{-- <!-- Start Article Section -->
     <div class="article">
         <h1 class="text-center">Seputar PKM UNPAD</h1>
         <div class="">
@@ -169,15 +168,15 @@
             </div>
         </div>
     </div>
-    <!-- End Article Section -->
+    <!-- End Article Section --> --}}
 
     <!-- Start Timeline Section-->
     <div class="container">
         <div class="wrap">
             <div class="timeline">
                 <div class="year">
-                    <div class="evt">
 
+                    <div class="evt">
                         <div class="in">
                             <span class="date fas fa-clock" style="font-size: 60px; border: 0px; color: #f9ca48;"></span>
                             <!-- <span class="date">
@@ -185,95 +184,19 @@
                         </div>
                     </div>
 
-                    <div class="evt">
-
-                        <div class="in">
-                            <span class="date">
-                                <span class="day">11</span>
-                                <span class="month">Mar</span>
-                            </span>
-                            <h2>Upload Proposal Liga</h2>
-                            <p class="data">Pengumpulan Proposal Liga PKM UNPAD dari tanggal 11 Maret - 6 April 2020</p>
-                        </div>
-                    </div>
-
+                    @foreach ($dayAndMonth as ["day"=>$day,"month"=>$month,"nama_timeline"=>$nama_timeline,"deskripsi"=>$deskripsi])
+                    
                     <div class="evt">
                         <div class="in">
                             <span class="date">
-                                <span class="day">8</span>
-                                <span class="month">Apr</span>
+                                <span class="day">{{$day}}</span>
+                                <span class="month">{{$month}}</span>
                             </span>
-                            <h2>Upload Proposal Non Liga</h2>
-                            <p class="data">Pengumpulan Proposal Non Liga PKM UNPAD dari tanggal 8 April - 20 April 2020
-                            </p>
+                            <h2>{{$nama_timeline}}</h2>
+                            <p class="data">{{$deskripsi}}</p>
                         </div>
-                    </div>
-
-                </div>
-                <div class="evt">
-                    <div class="in">
-                        <span class="date">
-                            <span class="day">22</span>
-                            <span class="month">Apr</span>
-                        </span>
-                        <h2>Evaluasi / Penilaian Proposal</h2>
-                        <p class="data">Proposal yang sudah diupload akan dilakukan evaluasi dan penilaian terlebih
-                            dahulu dari tanggal 22 April - 30 April 2020</p>
-                    </div>
-                </div>
-                <div class="evt">
-                    <div class="in">
-                        <span class="date">
-                            <span class="day">4</span>
-                            <span class="month">Mei</span>
-                        </span>
-                        <h2>Pengumuman Pemenang Liga</h2>
-                        <p class="data">Pengumuman 10 proposal terbaik Liga PKM UNPAD pada tanggal 4 Mei 2020</p>
-                    </div>
-                </div>
-
-                <div class="evt">
-                    <div class="in">
-                        <span class="date">
-                            <span class="day">22</span>
-                            <span class="month">Jun</span>
-                        </span>
-                        <h2>Coaching Dengan Reviewer</h2>
-                        <p class="data">Tahap ini dilakukan dengan diskusi dan beretemu dosen reviewer untuk merevisi proposal, tahap coaching dilakukan dari tanggal 22 Juni - 24 Agustus 2020</p>
-                    </div>
-                </div>
-
-                <div class="evt">
-                    <div class="in">
-                        <span class="date">
-                            <span class="day">3</span>
-                            <span class="month">Sept</span>
-                        </span>
-                        <h2>Upload Propsal Final</h2>
-                        <p class="data">Pengumpulan proposal PKM Final agar diseleksi kembali oleh reviewer untuk dapat username dan password simbelmawa pada tanggal 3 September - 17 September 2020</p>
-                    </div>
-                </div>
-
-                <div class="evt">
-                    <div class="in">
-                        <span class="date">
-                            <span class="day">2</span>
-                            <span class="month">Nov</span>
-                        </span>
-                        <h2>Akun Simbelmawa</h2>
-                        <p class="data">Proposal yang sudah layak akan diberi akun pada tanggal 2 November 2020</p>
-                    </div>
-                </div>
-
-                <div class="evt">
-                    <div class="in">
-                        <span class="date">
-                            <span class="day">13</span>
-                            <span class="month">Nov</span>
-                        </span>
-                        <h2>Upload Simbelmawa</h2>
-                        <p class="data">Upload Proposal ke akun Simbelmawa dari tanggal 13 November - 2 Desember 2020</p>
-                    </div>
+                    </div>                        
+                    @endforeach
                 </div>
 
             </div>

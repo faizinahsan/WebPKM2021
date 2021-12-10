@@ -33,6 +33,27 @@
                         <p>{{$mahasiswa->npm_mahasiswa}}</p>
                     </div>
                 </div>
+
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-warning">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+                <div class="row file-row">
+                    <img src="../../img/doc.png" alt="Doc File">
+                    <div class="col-md-6" style="word-wrap:break-word">
+                        <p>{{$proposal->judul_proposal}}</p>
+                        <p>{{$proposal->kategori->kategori_name}}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{{route('dosen_pendamping-download_proposal',['filename'=>$proposal->file_proposal])}}" class="btn btn-custom-profile">Download</a>
+                    </div>
+                </div>     
             </div>
             <!-- End Status Mahasiswa -->
             <!-- Riwayat Bimbingan -->
@@ -74,4 +95,5 @@
     integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
 </script>
 <script src="../../js/bootstrap.min.js"></script>
+
 @endsection

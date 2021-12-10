@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Timeline;
+use App\Models\DosenReviewer;
+use App\Models\Fakultas;
+use App\Models\Berkas;
+use Carbon\Carbon;
+use Response;
+
 
 class HomeController extends Controller
 {
@@ -21,8 +28,5 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
+   
 }

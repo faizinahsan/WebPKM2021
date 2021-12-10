@@ -14,24 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 /** Require No Login */
-Route::get('/',function(){
-    return view('index');
-})->name('index');
-Route::get('/alur',function(){
-    return view('alur');
-})->name('alur');
-Route::get('/berkas',function(){
-    return view('berkas');
-})->name('berkas');
+Route::get('/','BerandaController@index')->name('index');
+Route::get('/alur','BerandaController@alur')->name('alur');
+Route::get('/berkas','BerandaController@berkas')->name('berkas');
+Route::get('/berkas/{filename?}','BerandaController@downloadBerkas')->name('berkas-download');
+Route::get('/table','BerandaController@reviewer_info')->name('table');
+
 Route::get('/login',function(){
     return view('login');
 })->name('login');
 Route::get('/signup',function(){
     return view('signup');
 })->name('signup');
-Route::get('/table',function(){
-    return view('table');
-})->name('table');
+
 Route::get('/berita',function(){
     return view('news');
 })->name('berita');
@@ -41,9 +36,12 @@ Route::group(['middleware' => ['can:isMahasiswa']], function () {
     Route::get('/mahasiswa/profile','ProfileMahasiswaController@index')->name('mahasiswa-profile');
     
     Route::post('/mahasiswa/tambah_anggota','ProfileMahasiswaController@tambahAnggota')->name('tambah-anggota');
+    Route::post('/mahasiswa/edit_anggota','ProfileMahasiswaController@editAnggota')->name('edit-anggota');
+    Route::post('/mahasiswa/delete_anggota','ProfileMahasiswaController@deleteAnggota')->name('delete-anggota');
 
     Route::get('/mahasiswa/konsultasi_dosbim','MahasiswaControllers\KonsultasiPendamping@index')->name('mahasiswa-konsultasi_dosbim');
     Route::post('/mahasiswa/konsultasi_dosbim/kegiatan_bimbingan','MahasiswaControllers\KonsultasiPendamping@kegiatanBimbingan')->name('mahasiswa-kegiatan_bimbingan');
+    Route::get('/mahasiswa/konsultasi_dosbim/exportRiwayatBimbingan','MahasiswaControllers\KonsultasiPendamping@exportRiwayatBimbingan')->name('mahasiswa-exportRiwayatBimbingan');
 
     Route::post('/mahasiswa/request_dosbim', 'MahasiswaControllers\KonsultasiPendamping@requestPendamping')->name('request-pendamping');
 
@@ -85,6 +83,7 @@ Route::group(['middleware' => ['can:isPendamping']], function () {
     Route::get('/dosen_pendamping/profile_keterangan/{id?}','DosenPendampingControllers\DosenPendampingController@showKeteranganMahasiswa')->name('dosen_pendamping-profile_keterangan');
     
     Route::get('/dosen_pendamping/profile1','DosenPendampingControllers\DosenPendampingController@showDaftarDisejutui')->name('dosen_pendamping-profile1');
+    Route::get('/dosen_pendamping/downloadProposal/{filename?}','DosenPendampingControllers\DosenPendampingController@downloadProposal')->name('dosen_pendamping-download_proposal');
     
 });
 
@@ -117,12 +116,15 @@ Route::group(['middleware' => ['can:isKemahasiswaan']], function () {
     Route::get('/kemahasiswaan/reviewer','KemahasiswaanControllers\ReviewerKemahasiswaanController@index')->name('kemahasiswaan-reviewer');
     Route::post('/kemahasiswaan/addReviewerInfo','KemahasiswaanControllers\ReviewerKemahasiswaanController@addReviewerInfo')->name('kemahasiswaan-addReviewerInfo');
     Route::get('/kemahasiswaan/deleteReviewerInfo/{nip_reviewer?}','KemahasiswaanControllers\ReviewerKemahasiswaanController@deleteReviewerInfo')->name('kemahasiswaan-deleteReviewerInfo');
-
-    Route::get('/kemahasiswaan/berkas',function(){
-        return view('kemahasiswaan.berkas');
-    })->name('kemahasiswaan-berkas');
     
     Route::get('/kemahasiswaan/timeline','KemahasiswaanControllers\TimelineController@index')->name('kemahasiswaan-timeline');
+    Route::post('/kemahasiswaan/addTimeline','KemahasiswaanControllers\TimelineController@addTimeline')->name('kemahasiswaan-addTimeline');
+    Route::post('/kemahasiswaan/editTimeline','KemahasiswaanControllers\TimelineController@editTimeline')->name('kemahasiswaan-editTimeline');
+    Route::post('/kemahasiswaan/deleteTimeline','KemahasiswaanControllers\TimelineController@deleteTimeline')->name('kemahasiswaan-deleteTimeline');
+    
+    Route::get('/kemahasiswaan/berkas','KemahasiswaanControllers\BerkasController@index')->name('kemahasiswaan-berkas');
+    Route::post('/kemahasiswaan/berkas','KemahasiswaanControllers\BerkasController@uploadBerkas')->name('kemahasiswaan-uploadBerkas');
+    
 
 });
 

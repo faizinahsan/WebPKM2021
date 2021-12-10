@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Timeline extends Model
 {
     use HasFactory;
+    protected $table = 'tb_timeline';
     protected $primaryKey = 'id_timeline';
-    protected $fillable = ['datetime','nama_timeline','deskripsi','nip_kemahasiswaan'];
+    protected $fillable = ['tanggal','nama_timeline','deskripsi','nip_kemahasiswaan'];
 
     public function kemahasiswaan()
     {

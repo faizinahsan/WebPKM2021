@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 use App\Models\RequestDosbim;
 use App\Models\Mahasiswa;
+use App\Models\RiwayatBimbingan;
+use App\Models\Proposal;
+use Response;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class DosenPendampingController extends Controller
@@ -16,14 +21,15 @@ class DosenPendampingController extends Controller
     //
     public function index()
     {
-        // $requestMahasiswa = RequestDosbim::all();
-        $requestMahasiswa = RequestDosbim::where('status',null)->get();
+        $pendamping = Auth::user()->pendamping;
+        $requestMahasiswa = RequestDosbim::where('status',null)->where('nip_pendamping',$pendamping->nip_pendamping)->get();
         return view('dosen_pendamping.profile',['requestMahasiswa'=>$requestMahasiswa]);
     }
 
     public function showDaftarDisejutui()
     {
-        $daftarMahasiswa = RequestDosbim::where('status',$this->TERIMA_MAHASISWA)->get();
+        $pendamping = Auth::user()->pendamping;
+        $daftarMahasiswa = RequestDosbim::where('status',$this->TERIMA_MAHASISWA)->where('nip_pendamping',$pendamping->nip_pendamping)->get();
         return view('dosen_pendamping.profile1',['daftarMahasiswa'=>$daftarMahasiswa]);
     }
 
@@ -55,8 +61,23 @@ class DosenPendampingController extends Controller
     {
         $requestDosbim = RequestDosbim::where('id',$id)->get()->first();
         $dataMahasiswa = $requestDosbim->mahasiswa;
-        // dd($dataMahasiswa->riwayatBimbingan);
-        return view('dosen_pendamping.profile_keterangan',['mahasiswa'=>$dataMahasiswa]);
+        $daftarRiwayatBimbingan = RiwayatBimbingan::where('npm_mahasiswa',$dataMahasiswa->npm_mahasiswa)->get();
+        $proposal = Proposal::where('npm_mahasiswa',$dataMahasiswa->npm_mahasiswa)->get()->first();
+        return view('dosen_pendamping.profile_keterangan',['mahasiswa'=>$dataMahasiswa,'daftarRiwayatBimbingan'=>$daftarRiwayatBimbingan,'proposal'=>$proposal]);
+    }
+
+    public function downloadProposal(Request $request, $filename)
+    {
+        $file = public_path(). '/file_proposal/' .$filename;
+        $headers = ['Content-Type: file/pdf'];
+
+        if (file_exists($file)) {
+            return Response::download($file, $filename,$headers);
+        }else{
+            return back()
+            ->with('error','Cannot Download Because File Not Found');
+            // echo('File Not Found');
+        }
     }
     
 }

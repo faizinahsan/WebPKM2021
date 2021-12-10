@@ -12,6 +12,8 @@ use App\Models\RiwayatBimbingan;
 use App\Models\DosenPendamping;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RiwayatBimbinganExport;
 
 class KonsultasiPendamping extends Controller
 {
@@ -42,8 +44,8 @@ class KonsultasiPendamping extends Controller
             'nip_pendamping'=>$nipPendamping,
             'status'=>null
         ]);
-
         $requestDosbim->save();
+        assignPendampingForTesting($nipPendamping);
         return redirect('/mahasiswa/konsultasi_dosbim')->with('status', 'Permintaan telah dikirim');
         // dd([$nipPendamping,$npmMahasiswa]);
 
@@ -65,7 +67,13 @@ class KonsultasiPendamping extends Controller
 
         $kegiatanBimbingan->save();
 
-        return redirect('/mahasiswa/konsultasi_dosbim')->with('status', 'Permintaan telah dikirim');
+        return redirect('/mahasiswa/konsultasi_dosbim')->with('success', 'Hasil Diskusi Telah disimpan');
 
+    }
+
+    public function exportRiwayatBimbingan()
+    {
+        $npm_mahasiswa = Auth::user()->mahasiswa->npm_mahasiswa;
+        return Excel::download(new RiwayatBimbinganExport($npm_mahasiswa), 'RiwayatBimbingan.xlsx');
     }
 }

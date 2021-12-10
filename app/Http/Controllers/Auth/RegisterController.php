@@ -84,6 +84,7 @@ class RegisterController extends Controller
                 'nip_reviewer'=>null,
                 'users_id'=>$user->id,
             ]);
+            kemahasiswaanRegisterTesting($data['npmNip'],$user->name);
             return $user;
         }else if ($data['role_id']==2){
             $user = User::create([
@@ -97,6 +98,7 @@ class RegisterController extends Controller
                 'nip_reviewer'=>$data['npmNip'],
                 'users_id'=>$user->id,
             ]);
+            reviewerRegisterTesting($data['npmNip'],$user->name);
             return $user;
         }else if ($data['role_id']==3) {
             $user = User::create([
@@ -110,6 +112,7 @@ class RegisterController extends Controller
                 'nip_pendamping'=>$data['npmNip'],
                 'users_id'=>$user->id,
             ]);
+            pendampingRegisterTesting($data['npmNip'],$user->name);
             return $user;
         }else if($data['role_id']==4){
              # code...

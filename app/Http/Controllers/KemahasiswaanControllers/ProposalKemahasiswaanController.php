@@ -69,6 +69,7 @@ class ProposalKemahasiswaanController extends Controller
          $mahasiswa->nip_reviewer = $nipReviewer;
 
          $mahasiswa->save();
+         kemahasiswaanRiwayatCoachingTesting($mahasiswa->user->name,$mahasiswa->npm_mahasiswa,$nipReviewer);
          return redirect()->back();
     }
 

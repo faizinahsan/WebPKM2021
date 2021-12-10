@@ -13,4 +13,9 @@ class Kemahasiswaan extends Model
     
     protected $fillable = ['nip_kemahasiswaan','nip_reviewer','users_id'];
 
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'users_id');
+    }
+
 }

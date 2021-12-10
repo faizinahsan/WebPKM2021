@@ -165,7 +165,16 @@
         <div class="row status-header">
             <h5>Kegiatan Bimbingan</h5>
         </div>
-
+        @if ($message = Session::get('error'))
+        <div class="alert alert-warning">
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
         {{-- Start Form --}}
         <form class="form-bimbingan" action="{{route('mahasiswa-kegiatan_bimbingan')}}" method="POST">
             @csrf
@@ -173,7 +182,7 @@
             <div class="form-group row">
                 <label for="selectTanggal" class="col-sm-2 col-form-label">Tanggal</label>
                 <div class="col-sm-7">
-                    <input class="form-control"
+                    <input class="form-control date"
                     @if ($requestDosbim == null || $requestDosbim->status == 0)
                         readonly id="dateDisabled" name="dateDisabled" 
                     @else
@@ -235,11 +244,11 @@
         </table>
         <div class="row">
             <div class="col-sm-10 d-flex justify-content-end">
-                <button 
+                <a href="{{route('mahasiswa-exportRiwayatBimbingan')}}"
                 @if ($requestDosbim == null || $requestDosbim->status == 0)
                     disabled 
                 @endif
-                type="button" class="btn btn-custom" style="width:110px;">Unduh</button>
+                type="button" class="btn btn-custom" style="width:110px;">Unduh</a>
             </div>
         </div>
     </div>
@@ -278,24 +287,10 @@
 
     </script>
     <script>
-        $(document).ready(function () {
-            var date_input = $('input[name="date"]'); //our date input has the name "date"
-            var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-            var options = {
-                format: 'mm/dd/yyyy',
-                container: container,
-                todayHighlight: true,
-                autoclose: true,
-            };
-            date_input.datepicker(options);
-
-            
-            $(".list-unstyled li.disabled a").click(function() {
-                return false;
-            });
-        })
-
-    </script>
+        $('.date').datepicker({  
+       format: 'yyyy-mm-dd'
+     });
+</script>
 @endsection
 
 

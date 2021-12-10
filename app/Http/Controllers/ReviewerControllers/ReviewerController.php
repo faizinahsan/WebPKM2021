@@ -31,7 +31,6 @@ class ReviewerController extends Controller
 
     public function keteranganPage(Request $request)
     {
-        // Placeholder npm sementara
         $npmMahasiswa = $request->id;
         $mahasiswa = Mahasiswa::where('npm_mahasiswa',$npmMahasiswa)->get()->first();
         $daftarFileRevisi = FileRevisi::where('npm_mahasiswa',$npmMahasiswa)->get();
@@ -39,7 +38,6 @@ class ReviewerController extends Controller
         $daftarRiwayatCoaching = RiwayatCoaching::where('npm_mahasiswa',$npmMahasiswa)->get();
         $daftarRevisiReviewer = FileRevisiReviewer::where('id_file_proposal',$proposalMahasiswa->id_file_proposal)->get()->first();
         $daftarRevisiReviewerCollection = FileRevisiReviewer::where('id_file_proposal',$proposalMahasiswa->id_file_proposal)->get();
-        // dd($daftarRevisiReviewer);
         return view('dosen_reviewer.profile_keterangan',[
             'mahasiswa'=>$mahasiswa,
             'daftarFileRevisi'=>$daftarFileRevisi,
@@ -55,7 +53,6 @@ class ReviewerController extends Controller
             'fileUploadRevisi' => 'required',
             'npm_mahasiswa_hidden_input'=>'required',
         ]);
-
 
         // menyimpan data file yang diupload ke variabel $file
         $file_revisi_reviewer = $request->file('fileUploadRevisi');
@@ -104,7 +101,7 @@ class ReviewerController extends Controller
     public function downloadProposal(Request $request, $filename)
     {
         $file = public_path(). '/file_proposal/' .$filename;
-        $headers = ['Content-Type: file/pdf'];
+        $headers = ['Content-Type: file/*'];
 
         if (file_exists($file)) {
             return Response::download($file, $filename,$headers);
@@ -118,7 +115,7 @@ class ReviewerController extends Controller
     public function downloadRevisi(Request $request, $filename)
     {
         $file = public_path(). '/file_revisi/' .$filename;
-        $headers = ['Content-Type: file/pdf'];
+        $headers = ['Content-Type: file/*'];
 
         if (file_exists($file)) {
             return Response::download($file, $filename,$headers);

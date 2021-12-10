@@ -16,96 +16,19 @@
     <h1>Format Proposal PKM</h1>
     <!-- Row -->
     <div class="row">
+        @foreach ($daftarBerkas as $berkas)
         <div class="col-md-3">
             <div class="card card-format">
                 <div class="card-body">
-                    <h5 class="card-title">Format PKM-P</h5>
+                    <h5 class="card-title">{{$berkas->judul_berkas}}</h5>
                     <img src="img/doc.png" alt="Doc Icon">
                     <br>
-                    <button class="btn btn-custom">Download</button>
+                    <a href="{{route('berkas-download',['filename'=>$berkas->file_berkas])}}" class="btn btn-custom">Download</a>
                 </div>
             </div>
         </div>
+        @endforeach
 
-        <div class="col-md-3">
-            <div class="card card-format">
-                <div class="card-body">
-                    <h5 class="card-title">Format PKM-K</h5>
-                    <img src="img/doc.png" alt="Doc Icon">
-                    <br>
-                    <button class="btn btn-custom">Download</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card card-format">
-                <div class="card-body">
-                    <h5 class="card-title">Format PKM-M</h5>
-                    <img src="img/doc.png" alt="Doc Icon">
-                    <br>
-                    <button class="btn btn-custom">Download</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card card-format">
-                <div class="card-body">
-                    <h5 class="card-title">Format PKM-T</h5>
-                    <img src="img/doc.png" alt="Doc Icon">
-                    <br>
-                    <button class="btn btn-custom">Download</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Row -->
-    <!-- Row -->
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card card-format">
-                <div class="card-body">
-                    <h5 class="card-title">Format PKM-KC</h5>
-                    <img src="img/doc.png" alt="Doc Icon">
-                    <br>
-                    <button class="btn btn-custom">Download</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card card-format">
-                <div class="card-body">
-                    <h5 class="card-title">Format PKM-AI</h5>
-                    <img src="img/doc.png" alt="Doc Icon">
-                    <br>
-                    <button class="btn btn-custom">Download</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card card-format">
-                <div class="card-body">
-                    <h5 class="card-title">Format PKM-GT</h5>
-                    <img src="img/doc.png" alt="Doc Icon">
-                    <br>
-                    <button class="btn btn-custom">Download</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card card-format">
-                <div class="card-body">
-                    <h5 class="card-title">Proposal PKM-KC Lolos Pimnas 2018</h5>
-                    <img src="img/doc.png" alt="Doc Icon">
-                    <br>
-                    <button class="btn btn-custom">Download</button>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- End Row -->
     <!-- Row -->
