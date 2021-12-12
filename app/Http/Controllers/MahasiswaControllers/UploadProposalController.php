@@ -112,7 +112,7 @@ class UploadProposalController extends Controller
             'kategori_id'=>$kategoriPKM,
             'status_proposal'=>$STATUS_FINAL,
         ]);
-        assignAkunForTesting($npm_mahasiswa);
+        assignAkunForTesting($user);
         return redirect('/mahasiswa/upload_final')->with('success','Data telah disimpan');
     }
 }

@@ -51,10 +51,11 @@ function assignReviewerForTesting($idProposal)
     ]);
 }
 
-function assignAkunForTesting($npm_mahasiswa)
+function assignAkunForTesting($user)
 {
-    $username = "Simbelmawa Mahasiswa Testing";
+    $username = "Simbelmawa_Testing_Mahasiswa_".$user->name;
     $password = "password_simbelmawa_testing";
+    $npm_mahasiswa = $user->mahasiswa->npm_mahasiswa;
     return AkunSimbelmawa::create([
         'username'=>$username,
         'password'=>$password,
