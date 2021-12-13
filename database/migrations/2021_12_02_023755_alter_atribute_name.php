@@ -15,7 +15,7 @@ class AlterAtributeName extends Migration
     {
         Schema::table('tb_dosen_reviewer', function (Blueprint $table) {
             //
-            $table->renameColumn('fakultas','fakultas_id');
+            // $table->renameColumn('fakultas','fakultas_id');
         });
     }
 

@@ -15,8 +15,8 @@ class AddForeignToFakultasReviewer extends Migration
     {
         Schema::table('tb_dosen_reviewer', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('fakultas')->change()->nullable();
-            $table->foreign('fakultas')->references('id')->on('tb_fakultas')
+            // $table->unsignedBigInteger('fakultas')->change()->nullable();
+            $table->foreign('fakultas_id')->references('id')->on('tb_fakultas')
             ->onUpdate('cascade')->onDelete('cascade');
         });
     }

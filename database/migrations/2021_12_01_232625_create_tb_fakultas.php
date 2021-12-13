@@ -15,7 +15,7 @@ class CreateTbFakultas extends Migration
     {
         Schema::create('tb_fakultas', function (Blueprint $table) {
             $table->id();
-            $table->string('fakultas_name');
+            $table->string('fakultas');
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ class AddFakultasToReviewer extends Migration
     {
         Schema::table('tb_dosen_reviewer', function (Blueprint $table) {
             //
-            $table->string('fakultas')->nullable()->after('nip_reviewer');
-            $table->string('reviewer_picture')->nullable()->after('fakultas');
+            $table->unsignedBigInteger('fakultas_id')->nullable()->after('nip_reviewer');
+            $table->string('reviewer_picture')->nullable()->after('fakultas_id');
         });
     }
 
