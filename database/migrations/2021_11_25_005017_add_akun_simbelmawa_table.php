@@ -17,7 +17,7 @@ class AddAkunSimbelmawaTable extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('npm_mahasiswa')->nullable();
+            $table->bigInteger('npm_mahasiswa')->nullable();
             $table->timestamps();
         });
     }

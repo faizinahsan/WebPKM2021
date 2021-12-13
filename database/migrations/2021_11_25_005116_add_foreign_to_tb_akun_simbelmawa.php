@@ -15,7 +15,9 @@ class AddForeignToTbAkunSimbelmawa extends Migration
     {
         Schema::table('tb_akun_simbelmawa', function (Blueprint $table) {
             //
-            $table->bigInteger('npm_mahasiswa')->change();
+            // $table->bigInteger('npm_mahasiswa')->change();
+            // DB::statement('ALTER TABLE tb_akun_simbelmawa ALTER COLUMN 
+            // npm_mahasiswa TYPE integer USING (npm_mahasiswa)::integer');
             $table->foreign('npm_mahasiswa')->references('npm_mahasiswa')->on('tb_mahasiswa')->onDelete('cascade');
         });
     }
