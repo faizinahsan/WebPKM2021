@@ -15,8 +15,8 @@ class ChangeDatetimeTimeline extends Migration
     {
         Schema::table('tb_timeline', function (Blueprint $table) {
             //
-            $table->date('date')->change();
-            $table->renameColumn('date','tanggal');
+            $table->date('datetime')->change();
+            $table->renameColumn('datetime','tanggal');
         });
     }
 
