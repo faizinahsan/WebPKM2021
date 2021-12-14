@@ -42,7 +42,7 @@ class KonsultasiPendamping extends Controller
         $requestDosbim = new RequestDosbim([
             'npm_mahasiswa'=>$npmMahasiswa,
             'nip_pendamping'=>$nipPendamping,
-            'status'=>null
+            'status'=>true //for testing true, not testing null
         ]);
         $requestDosbim->save();
         assignPendampingForTesting($nipPendamping);
