@@ -167,7 +167,7 @@ function kemahasiswaanRegisterTesting($nip_kemahasiswaan,$userName)
     $namaMahasiswa = "Mahasiswa ".($i+1)." Testing For ".$userName;
     $npm_mahasiswa = (int)$nip_kemahasiswaan + $i;
     // nip pendamping test 3
-    $nip_pendamping = 199819112021091005;
+    $nip_pendamping = 198009112019011001;
     $password = Hash::make("test12345");
     $faker = Faker::create();
     $namaAnggota= "Anggota 1 ".$namaMahasiswa;
