@@ -69,7 +69,7 @@ function assignPendampingForTesting($nip_pendamping)
 {
   $requestPendamping = RequestDosbim::where('nip_pendamping',$nip_pendamping)->get()->first();
   // $requestPendamping->update(['status'=>1]);
-  $requestPendamping->status = 1;
+  $requestPendamping->status = true;
   $requestPendamping->save();
   $mahasiswa = Auth::user()->mahasiswa;
   // $mahasiswa->update(['nip_pendamping'=>$nip_pendamping]);
