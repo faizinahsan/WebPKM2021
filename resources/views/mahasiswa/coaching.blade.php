@@ -80,7 +80,11 @@
                     </tr>
                     <tr>
                         <td>Fakultas Reviewer </td>
-                        <td>: {{$reviewer->fakultas->fakultas_name}}</td>
+                        @if ($reviewer->fakultas != null)
+                            <td>: {{$reviewer->fakultas->fakultas_name}}</td>
+                        @else
+                            <td>: Belum Ditentukan</td>
+                        @endif
                     </tr>
                     <tr>
                         <td>Email Reviewer </td>
