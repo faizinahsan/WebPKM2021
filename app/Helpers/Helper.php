@@ -68,9 +68,13 @@ function assignAkunForTesting($user)
 function assignPendampingForTesting($nip_pendamping)
 {
   $requestPendamping = RequestDosbim::where('nip_pendamping',$nip_pendamping)->get()->first();
-  $requestPendamping->update(['status'=>1]);
+  // $requestPendamping->update(['status'=>1]);
+  $requestPendamping->status = 1;
+  $requestPendamping->save();
   $mahasiswa = Auth::user()->mahasiswa;
-  $mahasiswa->update(['nip_pendamping'=>$nip_pendamping]);
+  // $mahasiswa->update(['nip_pendamping'=>$nip_pendamping]);
+  $mahasiswa->nip_pendamping = $nip_pendamping;
+  $mahasiswa->save();
 }
 
 function reviewerRegisterTesting($nip_reviewer,$userName)
