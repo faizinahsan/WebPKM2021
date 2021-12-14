@@ -40,12 +40,13 @@ function set_fixed_top($uri, $output = "fixed-top")
 
 function assignReviewerForTesting($idProposal)
 {
+    $nip_reviewer = 198109112020011001;
     $mahasiswa = Auth::user()->mahasiswa;
-    $mahasiswa->update(['nip_reviewer'=>198201012015011001]);
+    $mahasiswa->update(['nip_reviewer'=>$nip_reviewer]);
     return FileRevisiReviewer::create([
         'file_revisi'=>'file_revisi_untuk_mahasiswa',
         'file_path'=>'file_revisi_reviewer',
-        'nip_reviewer'=>198201012015011001,
+        'nip_reviewer'=>$nip_reviewer,
         'npm_mahasiswa'=>$mahasiswa->npm_mahasiswa,
         'id_file_proposal'=>$idProposal
     ]);
