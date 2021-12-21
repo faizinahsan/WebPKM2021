@@ -18,7 +18,7 @@ body{
     margin-bottom: 60px;
 }
 .header-profile a{
-    /* margin-left: 479px; */
+    margin-left: 479px;
 }
 .card-ketua{
     width: 730px;
@@ -102,10 +102,10 @@ body{
     color: #f9ca48;
 }
 .status-mahasiswa a{
-    width: 120px;
+    /* width: 120px; */
     border: solid 1px #f9ca48 !important;
-    background-color: #ffffff !important;
-    color: #f9ca48 !important;
+    background-color: #f9ca48 !important;
+    /* color: #f9ca48 !important; */
 }
 .status-mahasiswa p{
     font-size: 16px;

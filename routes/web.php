@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Proposal;
+use Yajra\Datatables\Datatables;
+use Illuminate\Http\Request;
+use App\Http\Controllers\KemahasiswaanControllers\ProposalKemahasiswaanController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +72,7 @@ Route::group(['middleware' => ['can:isMahasiswa']], function () {
     Route::post('/mahasiswa/upload_final/proses','MahasiswaControllers\UploadProposalController@uploadProposalFinal')->name('mahasiswa-proses_upload_final');
     
     Route::get('/mahasiswa/akun_simbelmawa','MahasiswaControllers\AkunSimbelmawaController@index')->name('mahasiswa-akun_simbelmawa');
+    Route::post('/mahasiswa/akun_simbelmawa','MahasiswaControllers\AkunSimbelmawaController@upload_bukti_pendanaan')->name('mahasiswa-upload_bukti_pendanaan');
     
 
 });
@@ -97,6 +103,8 @@ Route::group(['middleware' => ['can:isReviewer']], function () {
 
     Route::post('/dosen_reviewer/uploadRevisiReviewer','ReviewerControllers\ReviewerController@uploadRevisiReviewer')->name('reviewer-upload_revisi');
     Route::post('/dosen_reviewer/verifikasiRiwayatCoaching','ReviewerControllers\ReviewerController@verifikasiRiwayatCoaching')->name('reviewer-verifikasiRiwayatCoaching');
+    Route::get('/dosen_reviewer/layak_diberi_akun/{idProposal?}','ReviewerControllers\ReviewerController@layak_diberi_akun')->name('reviewer-layak_diberi_akun');
+    Route::get('/dosen_reviewer/tolak_diberi_akun/{idProposal?}','ReviewerControllers\ReviewerController@tolak_diberi_akun')->name('reviewer-tolak_diberi_akun');
 
 
 });
@@ -104,7 +112,9 @@ Route::group(['middleware' => ['can:isReviewer']], function () {
 /** Kemahasiswaan */
 Route::group(['middleware' => ['can:isKemahasiswaan']], function () {
     
-    Route::get('/kemahasiswaan/proposal','KemahasiswaanControllers\ProposalKemahasiswaanController@index')->name('kemahasiswaan-proposal');
+    // Route::get('/kemahasiswaan/proposal','KemahasiswaanControllers\ProposalKemahasiswaanController@index')->name('kemahasiswaan-proposal');
+    Route::get('/kemahasiswaan/proposal',[ProposalKemahasiswaanController::class,'index'])->name('kemahasiswaan-proposal');
+    Route::get('/kemahasiswaan/proposal/datatables',[ProposalKemahasiswaanController::class,'proposalDataTables'])->name('datatables.proposal');
     
     Route::get('/kemahasiswaan/proposal/{id?}','KemahasiswaanControllers\ProposalKemahasiswaanController@detailProposal')->name('kemahasiswaan-detail_proposal');
     Route::post('kemahasiswaan/proposal/tugaskanReviewer', 'KemahasiswaanControllers\ProposalKemahasiswaanController@tugaskanReviewer')->name('kemahasiswaan-tugaskan_reviewer');
@@ -145,6 +155,8 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 
 // Auth::routes();

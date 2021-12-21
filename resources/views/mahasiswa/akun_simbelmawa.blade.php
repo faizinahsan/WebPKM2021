@@ -77,6 +77,12 @@
                         pihak reviewer akan mendapatkan username dan password pada tanggal 2 November 2020 untuk
                         nantinya dapat didaftarkan ke simbelmawa.</p>                    
                 @else
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+
                     <table class="info-akun">
                         <tr>
                             <td>Username:</td>
@@ -86,9 +92,54 @@
                             <td>Password:</td>
                             <td>{{$akunSimbelmawa->password}}</td>
                         </tr>
-                    </table>                     
-                @endif
+                        @if ($proposal->status_proposal == "STATUS_DIDANAI")
+                            <td>Selamat Proposal Anda Didanai Pemerintah</td>
+                        @else
+                        <tr>
+                            <td>Jika Didanai, maka upload bukti pendanaan disini</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="btn btn-custom" data-toggle="modal" data-target="#uploadBuktiPendanaan">Upload</a>
+                            </td>
+                        </tr>
+                        @endif
 
+                    </table>                                  
+                @endif
+                  <!-- Modal -->
+                  <div class="modal" id="uploadBuktiPendanaan" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Upload Bukti Pendanaan</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                                {{-- Start Form --}}
+                                <form id="file-upload-form" action="{{route('mahasiswa-upload_bukti_pendanaan')}}" method="POST" enctype="multipart/form-data">
+                                        
+                                    {{ csrf_field() }}
+                                    <div class="form-group row">
+                                        <label for="col-sm-2 col-form-label">File:</label>
+                                        <div class="col-sm-10">
+                                            <input id="file-upload" class="file-upload-class" type="file" accept=".pdf, .doc, .docx, .xls" name="fileBuktiPendanaan" data-title="" />
+                                        </div>
+                                    </div>
+                                        <!-- End Upload File -->
+                                    </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-custom">Submit</button>
+                            </div>
+                        </form>
+                        {{-- End Form --}}       
+                      </div>
+                    </div>
+                  </div>
+                <!-- End Modal -->
             </div>
         </div>
     </div>

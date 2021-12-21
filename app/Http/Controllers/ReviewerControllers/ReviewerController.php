@@ -34,10 +34,14 @@ class ReviewerController extends Controller
         $npmMahasiswa = $request->id;
         $mahasiswa = Mahasiswa::where('npm_mahasiswa',$npmMahasiswa)->get()->first();
         $daftarFileRevisi = FileRevisi::where('npm_mahasiswa',$npmMahasiswa)->get();
+        $countDaftarFileRevisi = $daftarFileRevisi->count();
         $proposalMahasiswa = Proposal::where('npm_mahasiswa',$npmMahasiswa)->get()->first();
         $daftarRiwayatCoaching = RiwayatCoaching::where('npm_mahasiswa',$npmMahasiswa)->get();
+        $countRiwayatCoaching = $daftarRiwayatCoaching->count();
         $daftarRevisiReviewer = FileRevisiReviewer::where('id_file_proposal',$proposalMahasiswa->id_file_proposal)->get()->first();
         $daftarRevisiReviewerCollection = FileRevisiReviewer::where('id_file_proposal',$proposalMahasiswa->id_file_proposal)->get();
+        $layakDiberiAkun = $proposalMahasiswa->layakDiberiAkun;
+        // dd($layakDiberiAkun);
         return view('dosen_reviewer.profile_keterangan',[
             'mahasiswa'=>$mahasiswa,
             'daftarFileRevisi'=>$daftarFileRevisi,
@@ -45,6 +49,8 @@ class ReviewerController extends Controller
             'proposal'=>$proposalMahasiswa,
             'daftarRevisiReviewer'=>$daftarRevisiReviewer,
             'daftarRevisiReviewerCollection'=>$daftarRevisiReviewerCollection,
+            'countDaftarFileRevisi'=>$countDaftarFileRevisi,
+            'countRiwayatCoaching'=>$countRiwayatCoaching
         ]);
     }
     public function uploadRevisiReviewer(Request $request)
@@ -136,5 +142,19 @@ class ReviewerController extends Controller
         $riwayatCoaching->verifikasi = $sesuai;
         $riwayatCoaching->save();
         return back()->with('Success','Riwayat Coaching Sesuai');
+    }
+
+    public function layak_diberi_akun(Request $request, $idProposal)
+    {
+        $proposal = Proposal::where('id_file_proposal',$idProposal)->get()->first();
+        $proposal->update(['layakDiberiAkun'=>true]);
+        return back()->with('Success','Proposal layak diberi akun');
+
+    }
+    public function tolak_diberi_akun(Request $request, $idProposal)
+    {
+        $proposal = Proposal::where('id_file_proposal',$idProposal)->get()->first();
+        $proposal->update(['layakDiberiAkun'=>false]);
+        return back()->with('Success','Proposal tidak layak diberi akun');
     }
 }

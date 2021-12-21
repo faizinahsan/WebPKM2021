@@ -21,13 +21,50 @@ use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\RiwayatCoachingExport;
 
+use Yajra\Datatables\Datatables;
+// use Datatables;
+use App\DataTables\ProposalDataTable;
+
+
 class ProposalKemahasiswaanController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request, ProposalDataTable $dataTable)
     {
-        $proposal_list = Proposal::all();
-        return view('kemahasiswaan.proposal',['proposal_list'=>$proposal_list]);
+        // $proposal_list = Proposal::all();
+        // return view('kemahasiswaan.proposal',['proposal_list'=>$proposal_list]);
+        return view('kemahasiswaan.proposal');
+        // return $dataTable->render('kemahasiswaan.proposal');
+    }
+    public function proposalDataTables()
+    {
+        // $proposal = Proposal::latest()->get();
+        $proposal = Proposal::with(['mahasiswa.user','kategori'])->get();
+        return Datatables::of($proposal)->addIndexColumn()->addColumn('status_proposal',function($proposal){
+            if ($proposal->status_proposal == "STATUS_FINAL") {
+                $status = "FINAL";
+             }else if(is_null($proposal->status_proposal)){
+                $status = "REVIEWER BELUM DITUGASKAN";
+             }else if($proposal->status_proposal == "STATUS_DIDANAI"){
+                $status = "DIDANAI";
+             }
+             return $status;
+        })->addColumn(
+            'layakDiberiAkun',function($proposal){
+                if ($proposal->layakDiberiAkun == true) {
+                   $td = "Layak Diberi Akun Simbelmawa";
+                }else if(is_null($proposal->layakDiberiAkun)){
+                   $td = "Proposal Masih Direview";
+                }else{
+                   $td = "Belum Layak Diberi Akun Simbelmawa";
+                }
+                return $td;
+            })->addColumn('total_proposal',function($proposal){
+                return $proposal->where('status_proposal',null)->count();
+            })->addColumn('action', function($proposal){
+               $btn = '<a href="/kemahasiswaan/proposal/'.$proposal->id_file_proposal.'" class="view btn btn-custom btn-sm">View</a>';
+                return $btn;
+        })->rawColumns(['status_proposal','layakDiberiAkun','total_proposal','action'])->make(true);
     }
     public function detailProposal($id)
     {
@@ -53,6 +90,10 @@ class ProposalKemahasiswaanController extends Controller
             'riwayatCoaching'=>$riwayatCoaching,
             ]);
     }
+    // public function anyData()
+    // {
+    //     return Datatables::of(Proposal::query())->make(true);
+    // }
     public function exportRiwayatCoaching($npm_mahasiswa)
     {
         return Excel::download(new RiwayatCoachingExport($npm_mahasiswa), 'RiwayatCoaching.xlsx');

@@ -25,13 +25,54 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <p>{{$mahasiswa->user->name}}</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <p>{{$mahasiswa->npm_mahasiswa}}</p>
                     </div>
                 </div>
+
+                @if (is_null($proposal->layakDiberiAkun))
+                <div class="row">
+                    <div class="col-md-10">
+                        <p>Apakah Proposal PKM ini layak untuk diberi akun simbelmawa?</p>
+                        <p>Tombol akan terbuka saat mahasiswa telah melakukan pelatihan dengan dosen reviewer</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <a href="{{route('reviewer-layak_diberi_akun',['idProposal'=>$proposal->id_file_proposal])}}" class="btn btn-custom-profile" 
+                        @if ($countDaftarFileRevisi<1 && $countRiwayatCoaching<1)
+                        disabled
+                        @endif
+                        >Layak Diberi akun</a>
+                    </div>
+                    <div class="col-md-5">
+                        <a href="{{route('reviewer-tolak_diberi_akun',['idProposal'=>$proposal->id_file_proposal])}}" class="btn btn-custom-profile" 
+                        @if ($countDaftarFileRevisi<1 && $countRiwayatCoaching<1)
+                        disabled
+                        @endif
+                        >Tidak</a>
+                    </div>
+                </div>
+                @else
+                @if ($proposal->layakDiberiAkun==true)
+                <div class="row">
+                    <div class="col-md-10">
+                        <p>Proposal Ini Telah Layak Diberi Akun</p>
+                    </div>
+                </div>
+                @else
+                <div class="row">
+                    <div class="col-md-10">
+                        <p>Proposal Ini Tidak Telah Layak Diberi Akun</p>
+                    </div>
+                </div>
+                @endif
+                @endif
+
+
                 <div class="row">
                     <div class="col-md-4">
                         <h5>File Proposal Awal</h5>
