@@ -15,7 +15,7 @@ class TbDosenReviewerTable extends Migration
     {
         Schema::table('tb_dosen_reviewer', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('users_id')->after('nip_reviewer');
+            $table->unsignedBigInteger('users_id')->nullable()->after('nip_reviewer');
             $table->foreign('users_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
         });

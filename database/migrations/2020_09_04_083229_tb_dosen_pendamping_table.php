@@ -15,7 +15,7 @@ class TbDosenPendampingTable extends Migration
     {
         Schema::table('tb_dosen_pendamping', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('users_id')->after('nip_pendamping');
+            $table->unsignedBigInteger('users_id')->nullable()->after('nip_pendamping');
             $table->foreign('users_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
         });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddKategoriToPropsoalTable extends Migration
+class ChangeRoleIdInUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddKategoriToPropsoalTable extends Migration
      */
     public function up()
     {
-        Schema::table('tb_proposal', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
-            $table->bigInteger('kategori_id')->nullable()->after('file_path');
+            // $table->dropForeign(['role_id']);
+            $table->bigInteger('role_id')->default(4)->nullable()->change();
         });
     }
 
@@ -26,7 +27,7 @@ class AddKategoriToPropsoalTable extends Migration
      */
     public function down()
     {
-        Schema::table('tb_proposal', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

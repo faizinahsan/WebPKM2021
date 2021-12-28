@@ -14,7 +14,7 @@ class AddColumnProposal extends Migration
     public function up()
     {
         Schema::table('tb_proposal', function (Blueprint $table) {
-            $table->string('file_path')->after('file_proposal');
+            $table->string('file_path')->nullable()->after('file_proposal');
         });
     }
 

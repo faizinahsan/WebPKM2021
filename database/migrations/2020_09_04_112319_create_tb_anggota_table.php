@@ -15,7 +15,7 @@ class CreateTbAnggotaTable extends Migration
     {
         Schema::create('tb_anggota', function (Blueprint $table) {
             $table->bigInteger('npm_anggota');
-            $table->string('nama_anggota');
+            $table->string('nama_anggota')->nullable();
             $table->bigInteger('npm_mahasiswa');
 
             $table->foreign('npm_mahasiswa')->references('npm_mahasiswa')->on('tb_mahasiswa')

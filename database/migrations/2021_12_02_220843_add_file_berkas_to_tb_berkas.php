@@ -15,7 +15,7 @@ class AddFileBerkasToTbBerkas extends Migration
     {
         Schema::table('tb_berkas', function (Blueprint $table) {
             //
-            $table->string('file_berkas')->after('judul_berkas');
+            $table->string('file_berkas')->nullable()->after('judul_berkas');
         });
     }
 

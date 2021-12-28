@@ -15,8 +15,8 @@ class TbKemahasiswaanTable extends Migration
     {
         Schema::table('tb_kemahasiswaan', function (Blueprint $table) {
             //
-            $table->bigInteger('nip_reviewer')->after('nip_kemahasiswaan');
-            $table->unsignedBigInteger('users_id')->after('nip_reviewer');
+            $table->bigInteger('nip_reviewer')->nullable()->after('nip_kemahasiswaan');
+            $table->unsignedBigInteger('users_id')->nullable()->after('nip_reviewer');
 
         });
     }

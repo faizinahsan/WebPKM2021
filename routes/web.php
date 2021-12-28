@@ -41,8 +41,8 @@ Route::group(['middleware' => ['can:isMahasiswa']], function () {
     Route::get('/mahasiswa/profile','ProfileMahasiswaController@index')->name('mahasiswa-profile');
     
     Route::post('/mahasiswa/tambah_anggota','ProfileMahasiswaController@tambahAnggota')->name('tambah-anggota');
-    Route::post('/mahasiswa/edit_anggota','ProfileMahasiswaController@editAnggota')->name('edit-anggota');
-    Route::post('/mahasiswa/delete_anggota','ProfileMahasiswaController@deleteAnggota')->name('delete-anggota');
+    Route::post('/mahasiswa/edit_anggota/{npm_anggota?}','ProfileMahasiswaController@editAnggota')->name('edit-anggota');
+    Route::post('/mahasiswa/delete_anggota/{npm_anggota?}','ProfileMahasiswaController@deleteAnggota')->name('delete-anggota');
 
     Route::get('/mahasiswa/konsultasi_dosbim','MahasiswaControllers\KonsultasiPendamping@index')->name('mahasiswa-konsultasi_dosbim');
     Route::post('/mahasiswa/konsultasi_dosbim/kegiatan_bimbingan','MahasiswaControllers\KonsultasiPendamping@kegiatanBimbingan')->name('mahasiswa-kegiatan_bimbingan');

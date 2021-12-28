@@ -54,18 +54,16 @@ class KonsultasiPendamping extends Controller
     public function kegiatanBimbingan(Request $request)
     {
         $date = $request->get('date');
-        $hasilDiskusi = $request->get('inputHasilDiskusi');
+        $hasil_diskusi = $request->get('inputHasilDiskusi');
         $tglBimbingan = Carbon::parse($date)->format('Y-m-d H:i:s');
         $mahasiswa = Auth::user()->mahasiswa;
 
-        $kegiatanBimbingan = new RiwayatBimbingan([
+        RiwayatBimbingan::create([
             'tanggal'=>$tglBimbingan,
-            'hasil_diskusi'=>$hasilDiskusi,
+            'hasil_diskusi'=>"$hasil_diskusi",
             'npm_mahasiswa'=>$mahasiswa->npm_mahasiswa,
-            'nip_pendamping'=>$mahasiswa->nip_pendamping,
+            'nip_pendamping'=>$mahasiswa->nip_pendamping
         ]);
-
-        $kegiatanBimbingan->save();
 
         return redirect('/mahasiswa/konsultasi_dosbim')->with('success', 'Hasil Diskusi Telah disimpan');
 

@@ -49,10 +49,10 @@
                         <td>{{$anggota->nama_anggota}}</td>
                         <td>{{$anggota->npm_anggota}}</td>
                         <td>
-                            <button class="editAnggotaBtn btn btn-custom" style="width: 70px;" data-toggle="modal" data-target="#editAnggotaModal" data-nama_anggota="{{$anggota->nama_anggota}}" data-npm_anggota={{$anggota->npm_anggota}}>Edit</button>
+                            <button class="editAnggotaBtn btn btn-custom" style="width: 70px;" data-toggle="modal" data-target="#editAnggotaModal" data-href="{{route('edit-anggota',['npm_anggota'=>$anggota->npm_anggota])}}" data-nama_anggota="{{$anggota->nama_anggota}}" data-npm_anggota={{$anggota->npm_anggota}}>Edit</button>
                         </td>
                         <td>
-                            <button class="deleteAnggotaBtn btn btn-custom" style="width: 70px;" data-toggle="modal" data-target="#deleteAnggotaModal" data-npm_anggota={{$anggota->npm_anggota}}>Delete</button>
+                            <button class="deleteAnggotaBtn btn btn-custom" style="width: 70px;" data-toggle="modal" data-target="#deleteAnggotaModal" data-href="{{route('delete-anggota',['npm_anggota'=>$anggota->npm_anggota])}}" data-npm_anggota={{$anggota->npm_anggota}}>Delete</button>
                         </td>
                     </tr>                        
                     @endforeach
@@ -108,7 +108,7 @@
                         </div>
                         <div class="modal-body">
                         {{-- Start Form --}}
-                        <form action="{{route('edit-anggota')}}" method="POST">
+                        <form action="#" id="editAnggotaForm" method="POST">
                             @csrf
                                 <input type="hidden" class="form-control" id="npm_anggota_old" name="npm_anggota_old"    aria-describedby="emailHelp" placeholder="">
                                 <div class="form-group">
@@ -144,9 +144,8 @@
                         <p>Apakah anda yakin ingin menghapus anggota?</p>
                     </div>
                     <div class="modal-footer">
-                        <form action="{{route('delete-anggota')}}" method="post">
+                        <form action="#" id="deleteAnggotaForm" method="POST">
                             {{ csrf_field() }}
-                            <input type="hidden" name="npm_anggota" id="npm_anggota">
                             <button type="submit" class="btn btn-primary">IYA DELETE THEM</button>
                         </form>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">TIDAK</button>
@@ -172,13 +171,18 @@
          var nama_anggota = $(this).data('nama_anggota');
          var npm_anggota = $(this).data('npm_anggota');
          var npm_anggota_old = $(this).data('npm_anggota');
+         var href_form = $(this).data('href');
          $(".editAnggotaModal #inputNamaLengkapAnggota").val(nama_anggota);
          $(".editAnggotaModal #inputNpmAnggota").val(npm_anggota);
          $(".editAnggotaModal #npm_anggota_old").val(npm_anggota_old);
+         $(".editAnggotaModal #editAnggotaForm").attr('action',href_form);
      });
      $(document).on("click",".deleteAnggotaBtn",function() {
          var npm_anggota = $(this).data('npm_anggota');
+         var href_form = $(this).data('href');
          $(".deleteAnggotaModal #npm_anggota").val(npm_anggota);
+         $(".deleteAnggotaModal #deleteAnggotaForm").attr('action',href_form);
+
      });
 
 </script>

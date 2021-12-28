@@ -16,9 +16,9 @@ class CreateTbRiwayatBimbingan extends Migration
         Schema::create('tb_riwayat_bimbingan', function (Blueprint $table) {
             $table->id('id_riwayat_bimbingan');
             $table->dateTime('tanggal');
-            $table->string('hasil_diskusi');
+            $table->string('hasil_diskusi')->nullable();
             $table->bigInteger('npm_mahasiswa');
-            $table->bigInteger('nip_pendamping');
+            $table->bigInteger('nip_pendamping')->nullable();
             $table->timestamps();
         });
     }

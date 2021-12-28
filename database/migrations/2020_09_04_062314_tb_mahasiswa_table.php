@@ -15,9 +15,9 @@ class TbMahasiswaTable extends Migration
     {
         Schema::table('tb_mahasiswa', function (Blueprint $table) {
             //
-            $table->bigInteger('nip_pendamping')->after('npm_mahasiswa');
-            $table->bigInteger('nip_reviewer')->after('nip_pendamping');
-            $table->bigInteger('users_id')->after('nip_reviewer');
+            $table->bigInteger('nip_pendamping')->nullable()->after('npm_mahasiswa');
+            $table->bigInteger('nip_reviewer')->nullable()->after('nip_pendamping');
+            $table->bigInteger('users_id')->nullable()->after('nip_reviewer');
         });
     }
 

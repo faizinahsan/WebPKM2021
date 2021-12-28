@@ -15,7 +15,7 @@ class AddFilePath extends Migration
     {
         Schema::table('tb_file_revisi', function (Blueprint $table) {
             //
-            $table->string('file_path')->after('file_revisi');
+            $table->string('file_path')->nullable()->after('file_revisi');
         });
     }
 

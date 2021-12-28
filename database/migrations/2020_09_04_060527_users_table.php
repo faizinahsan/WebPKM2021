@@ -14,7 +14,7 @@ class UsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('role_id')->after('password');
+            $table->bigInteger('role_id')->nullable()->after('password');
         });
     }
 
