@@ -80,7 +80,7 @@
                         <td>{{$berkas->judul_berkas}}</td>
                         <td>{{$berkas->file_berkas}}</td>
                         <td>
-                            <a href="{{route('kemahasiswaan-deleteBerkas',['id_berkas'=>$berkas->id_berkas])}}" class="btn btn-custom">Delete</a>
+                            <button class="deleteBerkasBtn btn btn-custom" data-toggle="modal" data-target="#deleteBerkasModal" data-href="{{route('kemahasiswaan-deleteBerkas',['id_berkas'=>$berkas->id_berkas])}}">Delete</button>
                         </td>
                     </tr>
                     @endforeach
@@ -90,7 +90,28 @@
             <!-- End Tabel Timeline -->
         </div>
         <!-- End Container Tabel Timeline -->
-
+        <div class="deleteBerkasModal modal fade" id="deleteBerkasModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Menghapus Berkas</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus berkas ini?</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="#" id="deleteBerkasForm" method="POST">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-primary">IYA</button>
+                    </form>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">TIDAK</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
 </div>
 @endsection
@@ -235,6 +256,11 @@
         };
         date_input.datepicker(options);
     })
+    $(document).on("click",".deleteBerkasBtn",function() {
+         var href_form = $(this).data('href');
+         $(".deleteBerkasModal #deleteBerkasForm").attr('action',href_form);
+
+     });
 </script>
 @endsection
 
