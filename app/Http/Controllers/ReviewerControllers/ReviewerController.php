@@ -16,7 +16,8 @@ use App\Models\FileRevisiReviewer;
 
 use Illuminate\Support\Facades\Storage;
 use Response;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RiwayatCoachingExport;
 
 class ReviewerController extends Controller
 {
@@ -142,6 +143,10 @@ class ReviewerController extends Controller
         $riwayatCoaching->verifikasi = $sesuai;
         $riwayatCoaching->save();
         return back()->with('Success','Riwayat Coaching Sesuai');
+    }
+    public function exportRiwayatCoaching($npm_mahasiswa)
+    {
+        return Excel::download(new RiwayatCoachingExport($npm_mahasiswa), 'RiwayatCoaching.xlsx');
     }
 
     public function layak_diberi_akun(Request $request, $idProposal)

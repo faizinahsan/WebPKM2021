@@ -91,6 +91,7 @@ Route::group(['middleware' => ['can:isPendamping']], function () {
     Route::get('/dosen_pendamping/profile1','DosenPendampingControllers\DosenPendampingController@showDaftarDisejutui')->name('dosen_pendamping-profile1');
     Route::post('/dosen_pendamping/verifikasiRiwayatBimbingan','DosenPendampingControllers\DosenPendampingController@verifikasiRiwayatBimbingan')->name('dosen_pendamping-verifikasiRiwayatBimbingan');
     Route::get('/dosen_pendamping/downloadProposal/{filename?}','DosenPendampingControllers\DosenPendampingController@downloadProposal')->name('dosen_pendamping-download_proposal');
+    Route::get('/dosen_pendamping/exportRiwayatBimbingan/{npm_mahasiswa?}','DosenPendampingControllers\DosenPendampingController@exportRiwayatBimbingan')->name('dosen_pendamping-exportRiwayatBimbingan');
     
 });
 
@@ -104,6 +105,7 @@ Route::group(['middleware' => ['can:isReviewer']], function () {
 
     Route::post('/dosen_reviewer/uploadRevisiReviewer','ReviewerControllers\ReviewerController@uploadRevisiReviewer')->name('reviewer-upload_revisi');
     Route::post('/dosen_reviewer/verifikasiRiwayatCoaching','ReviewerControllers\ReviewerController@verifikasiRiwayatCoaching')->name('reviewer-verifikasiRiwayatCoaching');
+    Route::get('/dosen_reviewer/exportRiwayatCoaching/{npm_mahasiswa?}','ReviewerControllers\ReviewerController@exportRiwayatCoaching')->name('reviewer-exportRiwayatCoaching');
     Route::get('/dosen_reviewer/layak_diberi_akun/{idProposal?}','ReviewerControllers\ReviewerController@layak_diberi_akun')->name('reviewer-layak_diberi_akun');
     Route::get('/dosen_reviewer/tolak_diberi_akun/{idProposal?}','ReviewerControllers\ReviewerController@tolak_diberi_akun')->name('reviewer-tolak_diberi_akun');
 

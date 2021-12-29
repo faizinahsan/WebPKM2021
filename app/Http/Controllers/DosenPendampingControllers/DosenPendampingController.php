@@ -11,6 +11,8 @@ use App\Models\RiwayatBimbingan;
 use App\Models\Proposal;
 use Response;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RiwayatBimbinganExport;
 
 
 
@@ -89,6 +91,11 @@ class DosenPendampingController extends Controller
             ->with('error','Cannot Download Because File Not Found');
             // echo('File Not Found');
         }
+    }
+
+    public function exportRiwayatBimbingan($npm_mahasiswa)
+    {
+        return Excel::download(new RiwayatBimbinganExport($npm_mahasiswa), 'RiwayatBimbingan.xlsx');
     }
     
 }

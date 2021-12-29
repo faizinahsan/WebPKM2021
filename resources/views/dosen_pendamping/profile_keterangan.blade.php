@@ -52,10 +52,10 @@
                         @else
                         <p>{{$proposal->judul_proposal}}</p>
                         <p>{{$proposal->kategori->kategori_name}}</p>
-                        @endif
                     </div>
                     <div class="col-md-2">
                         <a href="{{route('dosen_pendamping-download_proposal',['filename'=>$proposal->file_proposal])}}" class="btn btn-custom-profile">Download</a>
+                        @endif
                     </div>
                 </div>     
             </div>
@@ -94,6 +94,12 @@
                     @endforeach
 
                 </table>
+                <div class="row">
+                    <div class="col-sm-10 d-flex justify-content-end">
+                        <a type="button" href="{{route('dosen_pendamping-exportRiwayatBimbingan',['npm_mahasiswa'=>$proposal->npm_mahasiswa])}}" class="btn btn-custom" style="width:160px;"
+                        >Print</a>
+                    </div>
+                </div>
             </div>
             <!-- End Riwayat Bimbingan -->
         </div>

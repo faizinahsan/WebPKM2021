@@ -216,32 +216,13 @@
                         </td>
                     </tr>                        
                     @endforeach
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <a href="profile_keterangan.html" class="btn btn-custom-profile"
-                                style="width: 130px;">Sesuai</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <a href="profile_keterangan.html" class="btn btn-custom-profile"
-                                style="width: 130px;">Sesuai</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <a href="profile_keterangan.html" class="btn btn-custom-profile"
-                                style="width: 130px;">Sesuai</a>
-                        </td>
-                    </tr>
                 </table>
+                <div class="row">
+                    <div class="col-sm-10 d-flex justify-content-end">
+                        <a type="button" href="{{route('reviewer-exportRiwayatCoaching',['npm_mahasiswa'=>$proposal->npm_mahasiswa])}}" class="btn btn-custom" style="width:160px;"
+                        >Print</a>
+                    </div>
+                </div>
             </div>
             <!-- End Riwayat Bimbingan -->
 
