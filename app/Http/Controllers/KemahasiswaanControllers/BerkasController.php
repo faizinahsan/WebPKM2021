@@ -44,4 +44,10 @@ class BerkasController extends Controller
         ]);
         return back()->with('success','Berhasil Upload Berkas');
     }
+    public function deleteBerkas(Request $request, $id_berkas)
+    {
+        $deleteBerkas = Berkas::where('id_berkas',$id_berkas)->get()->first();
+        $deleteBerkas->delete();
+        return back()->with('success','Berkas telah dihapus');
+    }
 }

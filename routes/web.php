@@ -134,6 +134,7 @@ Route::group(['middleware' => ['can:isKemahasiswaan']], function () {
     
     Route::get('/kemahasiswaan/berkas','KemahasiswaanControllers\BerkasController@index')->name('kemahasiswaan-berkas');
     Route::post('/kemahasiswaan/berkas','KemahasiswaanControllers\BerkasController@uploadBerkas')->name('kemahasiswaan-uploadBerkas');
+    Route::post('/kemahasiswaan/berkas/delete/{id_berkas?}','KemahasiswaanControllers\BerkasController@deleteBerkas')->name('kemahasiswaan-deleteBerkas');
     
 
 });

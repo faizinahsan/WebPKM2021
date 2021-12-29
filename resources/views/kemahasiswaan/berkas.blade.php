@@ -61,6 +61,11 @@
 
         <!-- Container Tabel Timeline -->
         <div class="container container-table">
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
             <h5>Daftar Berkas</h5>
             <!-- Tabel Timeline -->
             <table class="table">
@@ -75,7 +80,7 @@
                         <td>{{$berkas->judul_berkas}}</td>
                         <td>{{$berkas->file_berkas}}</td>
                         <td>
-                            <a href="" class="btn btn-custom">Delete</a>
+                            <a href="{{route('kemahasiswaan-deleteBerkas',['id_berkas'=>$berkas->id_berkas])}}" class="btn btn-custom">Delete</a>
                         </td>
                     </tr>
                     @endforeach
