@@ -31,53 +31,7 @@
 
     </div>
     <!-- End Row -->
-    <!-- Row -->
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card card-format">
-                <div class="card-body">
-                    <h5 class="card-title">Proposal PKM-M Lolos Pimnas 2017</h5>
-                    <img src="img/doc.png" alt="Doc Icon">
-                    <br>
-                    <button class="btn btn-custom">Download</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card card-format">
-                <div class="card-body">
-                    <h5 class="card-title">Proposal PKM-KC Lolos Pimnas 2018</h5>
-                    <img src="img/doc.png" alt="Doc Icon">
-                    <br>
-                    <button class="btn btn-custom">Download</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card card-format">
-                <div class="card-body">
-                    <h5 class="card-title">Proposal PKM-P Lolos Pimnas 2019</h5>
-                    <img src="img/doc.png" alt="Doc Icon">
-                    <br>
-                    <button class="btn btn-custom">Download</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card card-format">
-                <div class="card-body">
-                    <h5 class="card-title">Format PKM-P</h5>
-                    <img src="img/doc.png" alt="Doc Icon">
-                    <br>
-                    <button class="btn btn-custom">Download</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Row -->
+    
     
 
 </div>
