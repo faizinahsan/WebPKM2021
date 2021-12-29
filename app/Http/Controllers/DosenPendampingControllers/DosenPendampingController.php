@@ -65,7 +65,18 @@ class DosenPendampingController extends Controller
         $proposal = Proposal::where('npm_mahasiswa',$dataMahasiswa->npm_mahasiswa)->get()->first();
         return view('dosen_pendamping.profile_keterangan',['mahasiswa'=>$dataMahasiswa,'daftarRiwayatBimbingan'=>$daftarRiwayatBimbingan,'proposal'=>$proposal]);
     }
-
+    public function verifikasiRiwayatBimbingan(Request $request)
+    {
+        $sesuai = false;
+        if ($request->input('sesuaiInput')=='Sesuai') {
+            $sesuai = true;
+        }
+        $id_riwayat_bimbingan = $request->input('idRiwayatBimbingan');
+        $riwayatBimbingan = RiwayatBimbingan::where('id_riwayat_bimbingan',$id_riwayat_bimbingan)->get()->first();
+        $riwayatBimbingan->verifikasi = $sesuai;
+        $riwayatBimbingan->save();
+        return back()->with('Success','Riwayat Coaching Sesuai');
+    }
     public function downloadProposal(Request $request, $filename)
     {
         $file = public_path(). '/file_proposal/' .$filename;

@@ -45,7 +45,7 @@ function assignReviewerForTesting($idProposal)
     $mahasiswa->nip_reviewer = $nip_reviewer;
     $mahasiswa->save();
     return FileRevisiReviewer::create([
-        'file_revisi'=>'file_revisi_untuk_mahasiswa',
+        'file_revisi'=>'file_revisi_untuk_mahasiswa.docx',
         'file_path'=>'file_revisi_reviewer',
         'nip_reviewer'=>$nip_reviewer,
         'npm_mahasiswa'=>$mahasiswa->npm_mahasiswa,

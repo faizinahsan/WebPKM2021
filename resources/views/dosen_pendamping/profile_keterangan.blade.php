@@ -47,8 +47,12 @@
                 <div class="row file-row">
                     <img src="../../img/doc.png" alt="Doc File">
                     <div class="col-md-6" style="word-wrap:break-word">
+                        @if (is_null($proposal))
+                        <p>Mahasiswa Belum Mengunggah Proposal PKM</p>
+                        @else
                         <p>{{$proposal->judul_proposal}}</p>
                         <p>{{$proposal->kategori->kategori_name}}</p>
+                        @endif
                     </div>
                     <div class="col-md-2">
                         <a href="{{route('dosen_pendamping-download_proposal',['filename'=>$proposal->file_proposal])}}" class="btn btn-custom-profile">Download</a>
@@ -72,8 +76,18 @@
                         <td>{{$riwayatBimbingan->tanggal}}</td>
                         <td>{{$riwayatBimbingan->hasil_diskusi}}</td>
                         <td>
-                            <a href="{{route('dosen_pendamping-profile_keterangan')}}" class="btn btn-custom-profile"
-                                style="width: 130px;">Sesuai</a>
+                            <form action="{{route('dosen_pendamping-verifikasiRiwayatBimbingan')}}" method="post">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="idRiwayatBimbingan" value="{{$riwayatBimbingan->id_riwayat_bimbingan}}">
+                                <input type="submit"class="btn btn-custom-profile"
+                                    style="width: 130px;" name="sesuaiInput" 
+                                    @if ($riwayatBimbingan->verifikasi == true)
+                                    disabled
+                                    value="Telah Sesuai"
+                                    @endif
+                                    value="Sesuai"
+                                    >
+                            </form>
                         </td>
                     </tr>
 

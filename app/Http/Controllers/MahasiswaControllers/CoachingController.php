@@ -87,9 +87,8 @@ class CoachingController extends Controller
 
     public function downloadFileRevisiReviewer(Request $request, $filename)
     {
-        $file = public_path(). '/file_revisi_reviewer/' .$filename;
+        $file = public_path(). '/file_revisi_test/' .$filename;
         $headers = ['Content-Type: file/pdf'];
-
         if (file_exists($file)) {
             return Response::download($file, $filename,$headers);
         }else{

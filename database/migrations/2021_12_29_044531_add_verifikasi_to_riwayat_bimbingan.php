@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeRoleIdInUser extends Migration
+class AddVerifikasiToRiwayatBimbingan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class ChangeRoleIdInUser extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('tb_riwayat_bimbingan', function (Blueprint $table) {
             //
-            // $table->dropForeign(['role_id']);
-            // $table->bigInteger('role_id')->nullable()->change();
+            $table->boolean('verifikasi')->after('nip_pendamping')->nullable();
         });
     }
 
@@ -27,7 +26,7 @@ class ChangeRoleIdInUser extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('tb_riwayat_bimbingan', function (Blueprint $table) {
             //
         });
     }

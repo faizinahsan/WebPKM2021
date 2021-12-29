@@ -89,6 +89,7 @@ Route::group(['middleware' => ['can:isPendamping']], function () {
     Route::get('/dosen_pendamping/profile_keterangan/{id?}','DosenPendampingControllers\DosenPendampingController@showKeteranganMahasiswa')->name('dosen_pendamping-profile_keterangan');
     
     Route::get('/dosen_pendamping/profile1','DosenPendampingControllers\DosenPendampingController@showDaftarDisejutui')->name('dosen_pendamping-profile1');
+    Route::post('/dosen_pendamping/verifikasiRiwayatBimbingan','DosenPendampingControllers\DosenPendampingController@verifikasiRiwayatBimbingan')->name('dosen_pendamping-verifikasiRiwayatBimbingan');
     Route::get('/dosen_pendamping/downloadProposal/{filename?}','DosenPendampingControllers\DosenPendampingController@downloadProposal')->name('dosen_pendamping-download_proposal');
     
 });
