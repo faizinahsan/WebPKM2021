@@ -96,7 +96,7 @@
                         @else
                         <td>Belum Dimasukan</td>
                         <td>{{$dosenReviewer->user->email}}</td>
-                        <td><img style="max-width: 83px; max-height:101px;" src="{{asset('/storage/images/'.$dosenReviewer->reviewer_picture)}}"></td>
+                        <td><img style="width: 83px; height:101px;" src="{{asset('/storage/images/'.$dosenReviewer->reviewer_picture)}}"></td>
                         @endif
                         <td>
                             <a href="{{route('kemahasiswaan-deleteReviewerInfo',['nip_reviewer'=>$dosenReviewer->nip_reviewer])}}" class="btn btn-custom">Delete</a>

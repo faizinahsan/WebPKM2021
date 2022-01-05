@@ -28,11 +28,13 @@ class ReviewerKemahasiswaanController extends Controller
         $nip_reviewer = $request->input('dosenReviewer');
         $reviewer_picture = $request->file('reviewer_picture');
         $fakultas = $request->input('fakultas');
-
+		$tujuan_upload = 'avatar';
         // dd($reviewer_picture,$fakultas);
         if($request->hasFile('reviewer_picture')){
             $filename = $reviewer_picture->getClientOriginalName();
-            $reviewer_picture->storeAs('images',$filename,'public');
+            // $reviewer_picture->storeAs('images',$filename,'public');
+            // upload file
+            $reviewer_picture->move($tujuan_upload,$reviewer_picture->getClientOriginalName());
             // Auth()->user()->update(['image'=>$filename]);
             DosenReviewer::where('nip_reviewer',$nip_reviewer)->update(['fakultas_id'=>$fakultas,'reviewer_picture'=>$filename]);
         }
