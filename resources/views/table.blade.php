@@ -57,7 +57,7 @@
                             @if ($reviewer->fakultas != null)
                             <td>{{$reviewer->fakultas->fakultas_name}}</td>
                             <td>{{$reviewer->user->name}}</td>
-                            <td><img style="max-width: 83px; max-height:101px;"  src="{{asset('/storage/images/'.$reviewer->reviewer_picture)}}"></td>                                
+                            <td><img style="max-width: 83px; max-height:101px;"  src="avatar/{{$reviewer->reviewer_picture}}"></td>                                
                             @else
                             <td>Informasi Reviewer Belum Dimasukan</td>
                             <td>{{$reviewer->user->name}}</td>
