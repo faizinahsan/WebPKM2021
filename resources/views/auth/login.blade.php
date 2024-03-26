@@ -12,9 +12,7 @@
     <div class="container login-card">
         <div class="row">
             <form class="col-md-6 login-form" action="{{route('login')}}" method="POST">
-
                 @csrf
-                
                 <div class="form-group">
                     <h1 class="login-header">PKM UNPAD</h1>
                 </div>
@@ -34,10 +32,20 @@
                 <div class="form-group">
                     <label for="Email">Email</label>
                     <input type="email" class="form-control" id="email" aria-describedby="npmAtauNip" placeholder="Enter your Email" name="email">
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                     <div class="text-right p-t-12">
                         <a class="txt2" href="#">
                             Forgot Password?
@@ -61,10 +69,10 @@
             <div class="col-md-6 login-img d-flex justify-content-lg-center">
                 <img src="img/loginimg.png" alt="loginimg">
             </div>
-            
+
         </div>
     </div>
-    
+
     <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

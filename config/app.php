@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'development'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -93,7 +93,7 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
                 'role_id'=>$data['role_id'],
             ]);
-    
+
             $reviewer = DosenReviewer::create([
                 'nip_reviewer'=>$data['npmNip'],
                 'users_id'=>$user->id,
@@ -107,7 +107,7 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
                 'role_id'=>$data['role_id'],
             ]);
-    
+
             $pendamping = DosenPendamping::create([
                 'nip_pendamping'=>$data['npmNip'],
                 'users_id'=>$user->id,
@@ -122,7 +122,7 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
                 'role_id'=>$data['role_id'],
             ]);
-    
+
             $mahasiswa = Mahasiswa::create([
                 'npm_mahasiswa'=>$data['npmNip'],
                 'nip_pendamping'=>null,

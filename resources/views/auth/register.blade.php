@@ -23,7 +23,6 @@
         <div class="row">
             <form class="col-md-6 login-form" method="POST" action="{{route('register')}}">
                 @csrf
-                
                 <div class="form-group">
                     <h1 class="login-header">PKM UNPAD</h1>
                 </div>
@@ -33,16 +32,31 @@
                 <div class="form-group">
                     <label for="NPMatauNIP">NPM atau NIP</label>
                     <input type="text" class="form-control" name="npmNip" id="npmNip" aria-describedby="npmAtauNip" placeholder="Enter your npm/nip">
+                    @error('npmNip')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" class="form-control" name="email" id="email" aria-describedby="npmAtauNip" placeholder="Enter your Unpad email">
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="namaLengkap">Nama Lengkap</label>
                     <input type="text" class="form-control" id="name" name="name" aria-describedby="namaLengkap" placeholder="Enter your name">
+                    @error('name')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <label for="tipeAkun">Akun</label>
                 <div class="form-group">
@@ -57,10 +71,20 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Confirm Password</label>
                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required autocomplete="new-password">
+                    @error('password_confirmation')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group text-center">
                     <button type="submit" class="btn signup-btn">Sign Up</button>
@@ -69,10 +93,10 @@
             <div class="col-md-6 signup-img d-flex justify-content-lg-center">
                 <img src="img/signupimg.png" alt="signupimg">
             </div>
-            
+
         </div>
     </div>
-    
+
     <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

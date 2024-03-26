@@ -28,11 +28,10 @@
             </div>
         </div>
         @endforeach
-
     </div>
     <!-- End Row -->
-    
-    
+
+
 
 </div>
 @endsection
