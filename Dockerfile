@@ -9,6 +9,7 @@ WORKDIR /var/www
 # Install dependencies yang diperlukan
 RUN apt-get update && apt-get install -y \
     build-essential \
+    libzip-dev\
     libpng-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
@@ -19,7 +20,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl
-RUN apt-get install libzip-dev
+
 # Hapus cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
